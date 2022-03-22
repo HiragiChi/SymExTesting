@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="jpf-symbc">
+    <property environment="env"/>
+    <property name="resource_loc" value="."/>
+    <property name="JRE_LIB" value="../../../../../usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="jpf-core.location" value="../jpf-core"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="jpf-core.classpath">
+        <pathelement location="${jpf-core.location}/build/main"/>
+        <pathelement location="${jpf-core.location}/build/peers"/>
+        <pathelement location="${jpf-core.location}/build/classes"/>
+        <pathelement location="${jpf-core.location}/build/annotations"/>
+        <pathelement location="${jpf-core.location}/build/examples"/>
+        <pathelement location="${jpf-core.location}/build/tests"/>
+    </path>
+    <path id="JUnit 4.libraryclasspath">
+        <pathelement location="../../../../../snap/eclipse/48/plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+        <pathelement location="../../../../../snap/eclipse/48/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar"/>
+    </path>
+    <path id="jpf-symbc.classpath">
+        <pathelement location="build/main"/>
+        <pathelement location="build/annotations"/>
+        <pathelement location="build/examples"/>
+        <pathelement location="build/peers"/>
+        <pathelement location="build/tests"/>
+        <pathelement location="build/classes"/>
+        <path refid="jpf-core.classpath"/>
+        <pathelement location="lib/grappa.jar"/>
+        <pathelement location="lib/aima-core.jar"/>
+        <pathelement location="lib/automaton.jar"/>
+        <pathelement location="lib/bcel.jar"/>
+        <pathelement location="lib/choco-1_2_04.jar"/>
+        <pathelement location="lib/choco-solver-2.1.1-20100709.142532-2.jar"/>
+        <pathelement location="lib/com.microsoft.z3.jar"/>
+        <pathelement location="lib/commons-lang-2.4.jar"/>
+        <pathelement location="lib/commons-math-1.2.jar"/>
+        <pathelement location="lib/coral.jar"/>
+        <pathelement location="lib/green.jar"/>
+        <pathelement location="lib/hampi.jar"/>
+        <pathelement location="lib/iasolver.jar"/>
+        <pathelement location="lib/jaxen.jar"/>
+        <pathelement location="lib/jedis-2.0.0.jar"/>
+        <pathelement location="lib/JSAP-2.1.jar"/>
+        <pathelement location="lib/libcvc3.jar"/>
+        <pathelement location="lib/opt4j-2.4.jar"/>
+        <pathelement location="lib/org.sat4j.core.jar"/>
+        <pathelement location="lib/org.sat4j.pb.jar"/>
+        <pathelement location="lib/scale.jar"/>
+        <pathelement location="lib/solver.jar"/>
+        <pathelement location="lib/Statemachines.jar"/>
+        <pathelement location="lib/STPJNI.jar"/>
+        <pathelement location="lib/string.jar"/>
+        <pathelement location="lib/yicesapijava.jar"/>
+        <path refid="JUnit 4.libraryclasspath"/>
+        <pathelement location="lib/proteus.jar"/>
+    </path>
+    <path id="run.run-JPF-symbc dReal.classpath">
+        <pathelement location="${JRE_LIB}"/>
+        <path refid="jpf-symbc.classpath"/>
+        <path refid="jpf-core.classpath"/>
+    </path>
+    <path id="run.run-JPF-symbc dReal.bootclasspath"/>
+    <path id="run.run-JPF-symbc-mac.classpath">
+        <pathelement location="${JRE_LIB}"/>
+        <path refid="jpf-symbc.classpath"/>
+        <path refid="jpf-core.classpath"/>
+    </path>
+    <path id="run.run-JPF-symbc-mac.bootclasspath"/>
+    <path id="run.run-JPF-symbc.classpath">
+        <pathelement location="${JRE_LIB}"/>
+        <path refid="jpf-symbc.classpath"/>
+        <path refid="jpf-core.classpath"/>
+    </path>
+    <path id="run.run-JPF-symbc.bootclasspath"/>
+    <target name="init">
+        <mkdir dir="build/main"/>
+        <mkdir dir="build/annotations"/>
+        <mkdir dir="build/examples"/>
+        <mkdir dir="build/peers"/>
+        <mkdir dir="build/tests"/>
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/main">
+            <fileset dir="src/main">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="gov/nasa/jpf/symbc/SymbolicListenerClean.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/annotations">
+            <fileset dir="src/annotations">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/examples">
+            <fileset dir="src/examples">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/peers">
+            <fileset dir="src/peers">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/tests">
+            <fileset dir="src/tests">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src/classes">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/main"/>
+        <delete dir="build/annotations"/>
+        <delete dir="build/examples"/>
+        <delete dir="build/peers"/>
+        <delete dir="build/tests"/>
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall">
+        <ant antfile="build.xml" dir="${jpf-core.location}" inheritAll="false" target="clean"/>
+    </target>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects">
+        <ant antfile="build.xml" dir="${jpf-core.location}" inheritAll="false" target="build-project">
+            <propertyset>
+                <propertyref name="build.compiler"/>
+            </propertyset>
+        </ant>
+    </target>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/main" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main"/>
+            <exclude name="gov/nasa/jpf/symbc/SymbolicListenerClean.java"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/annotations" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/annotations"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/examples" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/examples"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/peers" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/peers"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/tests" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/tests"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/classes"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="mathTest_sqrt (1)">
+        <java classname="mytest_SE.mathTest_sqrt" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="mathTest">
+        <java classname="mathTest" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="math_log">
+        <java classname="mytest_SE.math_log" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="SETest_log">
+        <java classname="SETest_log" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="math_sin">
+        <java classname="mytest_SE.math_sin" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="Tricky">
+        <java classname="Tricky" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="MyClass1 (1)">
+        <java classname="MyClass1" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="mathTest_sqrt">
+        <java classname="mathTest_sqrt" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="MyClass1">
+        <java classname="gov.nasa.jpf.JPF" failonerror="true" fork="yes">
+            <arg line="classpath=.&#10;+vm.insn_factory.class=gov.nasa.jpf.symbc.SymbolicInstructionFactory&#10;+vm.storage.class=&#10;+symbolic.method=myMethod(sym#sym)&#10;+search.multiple_errors=true&#10;+jpf.report.console.finished=&#10;MyClass1"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="jpf-symbc">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="gov.nasa.jpf.symbc.TestBooleanSpecial1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestBooleanStatic1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestBooleanVirtual1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestDCMPLConditions" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestDoubleSpecial1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestDoubleStatic1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestDoubleVirtual1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestFCMPLConditions" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestFloatSpecial1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestFloatStatic1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestFloatVirtual1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestIntSpecial1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestIntStatic1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestIntVirtual1" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestInvokeSTATICandVIRTUAL" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestLCMPConditions" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestMethodInvocation" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestPathCondition" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestSwitch" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestSymbc" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestSymbolicJPF" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.TestTermination" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.lazy.TestLazy" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestABC" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestABCSimple" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestABCSymString" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestNewAutomata" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestSymString" todir="${junit.output.dir}"/>
+            <test name="gov.nasa.jpf.symbc.strings.TestSymStringPreprocessing" todir="${junit.output.dir}"/>
+            <test name="sequences.sequences_StackTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="jpf-symbc.classpath"/>
+        </junit>
+    </target>
+    <target name="SETest_sin">
+        <java classname="SETest_sin" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="StringTest">
+        <java classname="StringTest" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="SETest_sqrt">
+        <java classname="SETest_sqrt" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="Abs_simple">
+        <java classname="Abs_simple" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="math_sqrt">
+        <java classname="mytest_SE.math_sqrt" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="HelloWorld">
+        <java classname="HelloWorld" failonerror="true" fork="yes">
+            <classpath refid="jpf-symbc.classpath"/>
+        </java>
+    </target>
+    <target name="run-JPF-symbc dReal">
+        <java classname="gov.nasa.jpf.tool.RunJPF" failonerror="true" fork="yes">
+            <env key="LD_LIBRARY_PATH" value="lib"/>
+            <jvmarg line="-Xmx1024m -ea -Ddreal-bin-path=/Users/corinapasareanu/Desktop/dReal-2.15.01-darwin/bin"/>
+            <arg line="&quot;${resource_loc}&quot;"/>
+            <classpath refid="run.run-JPF-symbc dReal.classpath"/>
+            <bootclasspath>
+                <path refid="run.run-JPF-symbc dReal.bootclasspath"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="run-JPF-symbc-mac">
+        <java classname="gov.nasa.jpf.tool.RunJPF" failonerror="true" fork="yes">
+            <env key="DYLD_LIBRARY_PATH" value="lib"/>
+            <jvmarg line="-Xmx1024m -ea"/>
+            <arg line="&quot;${resource_loc}&quot;"/>
+            <classpath refid="run.run-JPF-symbc-mac.classpath"/>
+            <bootclasspath>
+                <path refid="run.run-JPF-symbc-mac.bootclasspath"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="run-JPF-symbc">
+        <java classname="gov.nasa.jpf.tool.RunJPF" failonerror="true" fork="yes">
+            <env key="LD_LIBRARY_PATH" value="/Users/corinapasareanu/workspace-isstac/jpf-symbc"/>
+            <jvmarg line="-Xmx1024m -ea"/>
+            <arg line="&quot;${resource_loc}&quot;"/>
+            <classpath refid="run.run-JPF-symbc.classpath"/>
+            <bootclasspath>
+                <path refid="run.run-JPF-symbc.bootclasspath"/>
+            </bootclasspath>
+        </java>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

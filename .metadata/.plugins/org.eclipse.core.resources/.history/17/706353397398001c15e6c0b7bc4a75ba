@@ -1,0 +1,20 @@
+public class SETest_sqrt {
+public double run(double val) {
+
+		double a=Math.sqrt(val);
+		if (a==Math.sqrt(915)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_sqrt num = new SETest_sqrt();
+		num.run(12);
+	}
+	
+}

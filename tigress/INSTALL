@@ -1,0 +1,25 @@
+This is Tigress, the C obfuscator, downloaded from tigress.wtf.
+
+This is a fat distribution, with binaries for multiple platforms. Files for each platform go in
+   PATH-TO-THIS-DIRECTORY/tigress/3.0/Darwin-x86_64
+   PATH-TO-THIS-DIRECTORY/tigress/3.0/Linux-armv7
+   PATH-TO-THIS-DIRECTORY/tigress/3.0/Linux-x86_64
+
+To install, you need to set the TIGRESS_HOME environment variable:
+   export TIGRESS_HOME="/home/hiragi/Desktop/jpf/tigress/3.0"
+
+You also need to add this directory to your PATH:
+   export PATH="/home/hiragi/Desktop/jpf/tigress/3.0:$PATH"
+
+The tigress script will pick up the right binary to use by trying to figure out which
+platform you're on, using "uname -s" and "uname -m". If your uname returns strange
+values, this may fail.
+
+To try out Tigress, do
+     tigress --Environment=x86_64:Linux:Gcc:4.6 --Transform=Virtualize --Functions=main --out=result.c ~/Desktop/jpf/tigress/3.0/test2.c
+         where ENV is one of
+             x86_64:Linux:Gcc:4.6
+             x86_64:Darwin:Clang:5.1
+             armv7:Linux:Gcc:4.6 
+             armv8:Linux:Gcc:4.6
+This should give you and obfuscated program in result.c.

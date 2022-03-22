@@ -1,0 +1,21 @@
+public class SETest_sin {
+public double run(double val) {
+
+		double a=Math.sin(val);
+		System.out.println(val);
+		if (a==Math.sin(input)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_sin num = new SETest_sin();
+		num.run(12);
+	}
+	
+}

@@ -1,0 +1,33 @@
+
+
+public class Abs_simple {
+	
+	private int value = 0;
+	
+	public double run(int val) {
+		if(val<0) {
+			return val;
+		}
+		double a = Math.sqrt((double)val);
+		if(a==12345) {
+			System.out.println("correct");
+		}
+		else if(a==2)
+		{
+			System.out.println("incorrect");
+		}
+		if(a==3) {
+			System.out.println("Way3");
+		}
+		else {
+			System.out.println("Way4");
+		}
+		return a;
+	}
+
+	public static void main(String[] args) {
+		Abs_simple num = new Abs_simple();
+		num.run(12);
+	}
+	
+}

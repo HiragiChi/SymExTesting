@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="jpf-core">
+    <property environment="env"/>
+    <property name="jpf-symbc.location" value="../jpf-symbc"/>
+    <property name="project_loc" value="../jpf-symbc"/>
+    <property name="resource_loc" value="../jpf-symbc"/>
+    <property name="java_type_name" value="${java_type_name}"/>
+    <property name="string_prompt" value=""/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="jpf-core.classpath">
+        <pathelement location="build/main"/>
+        <pathelement location="build/peers"/>
+        <pathelement location="build/classes"/>
+        <pathelement location="build/annotations"/>
+        <pathelement location="build/examples"/>
+        <pathelement location="build/tests"/>
+    </path>
+    <path id="run.run-JPF.classpath">
+        <path refid="jpf-core.classpath"/>
+        <pathelement location="${resource_loc}/build/main"/>
+        <pathelement location="${resource_loc}/build/peers"/>
+        <pathelement location="${resource_loc}/lib/*"/>
+        <pathelement location="${resource_loc}/build/tests"/>
+        <pathelement location="${resource_loc}/build/examples"/>
+    </path>
+    <path id="run.test-JPF.classpath">
+        <path refid="jpf-core.classpath"/>
+        <pathelement location="${project_loc}/build/main"/>
+        <pathelement location="${project_loc}/peers"/>
+        <pathelement location="${project_loc}/lib/*"/>
+        <pathelement location="${project_loc}/build/tests"/>
+        <pathelement location="${project_loc}/build/examples"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/main"/>
+        <mkdir dir="build/peers"/>
+        <mkdir dir="build/classes"/>
+        <mkdir dir="build/annotations"/>
+        <mkdir dir="build/examples"/>
+        <mkdir dir="build/tests"/>
+        <copy includeemptydirs="false" todir="build/main">
+            <fileset dir="src/main">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/peers">
+            <fileset dir="src/peers">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src/classes">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/annotations">
+            <fileset dir="src/annotations">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/examples">
+            <fileset dir="src/examples">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="build/tests">
+            <fileset dir="src/tests">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/main"/>
+        <delete dir="build/peers"/>
+        <delete dir="build/classes"/>
+        <delete dir="build/annotations"/>
+        <delete dir="build/examples"/>
+        <delete dir="build/tests"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/main" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/peers" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/peers"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/classes"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/annotations" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/annotations"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/examples" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/examples"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/tests" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/tests"/>
+            <classpath refid="jpf-core.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects">
+        <ant antfile="build.xml" dir="${jpf-symbc.location}" inheritAll="false" target="clean"/>
+        <ant antfile="build.xml" dir="${jpf-symbc.location}" inheritAll="false" target="build"/>
+    </target>
+    <target name="BitSet256Test">
+        <java classname="gov.nasa.jpf.util.BitSet256Test" failonerror="true" fork="yes">
+            <classpath refid="jpf-core.classpath"/>
+        </java>
+    </target>
+    <target name="run-JPF">
+        <java classname="gov.nasa.jpf.tool.RunJPF" dir="${project_loc}" failonerror="true" fork="yes">
+            <jvmarg line="-Xmx1024m -ea"/>
+            <arg line="&quot;${resource_loc}&quot;"/>
+            <classpath refid="run.run-JPF.classpath"/>
+        </java>
+    </target>
+    <target name="test-JPF">
+        <java classname="gov.nasa.jpf.tool.RunTest" dir="${project_loc}" failonerror="true" fork="yes">
+            <jvmarg line="-Xmx2048m -ea"/>
+            <arg line="${java_type_name} ${string_prompt}"/>
+            <classpath refid="run.test-JPF.classpath"/>
+        </java>
+    </target>
+    <target name="update-JPF-siteproperties">
+        <java classname="gov.nasa.jpf.tool.RunJPF" dir="${project_loc}" failonerror="true" fork="yes">
+            <arg line="-addproject"/>
+            <classpath refid="jpf-core.classpath"/>
+        </java>
+    </target>
+</project>

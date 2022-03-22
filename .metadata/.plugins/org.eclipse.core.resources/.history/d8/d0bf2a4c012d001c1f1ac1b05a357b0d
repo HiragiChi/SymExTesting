@@ -1,0 +1,23 @@
+package mytest_SE;
+
+public class Abs_simple {
+	
+	private int value = 0;
+	
+	public double run(int val) {
+		if(Math.abs(val)==1&&val==3) {
+			System.out.println("correct");
+		}
+		else
+		{
+			System.out.println("incorrect");
+		}
+		return (double) value;
+	}
+
+	public static void main(String[] args) {
+		Abs_simple num = new Abs_simple();
+		num.run(1);
+	}
+	
+}
