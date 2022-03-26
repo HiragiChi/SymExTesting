@@ -1,0 +1,21 @@
+public class SETest_FUNC {
+public double run(double val) {
+
+		double a=Math.FUNC(val);
+		System.out.println(input);
+		if (a==Math.FUNC(input)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_FUNC num = new SETest_FUNC();
+		num.run(12);
+	}
+	
+}

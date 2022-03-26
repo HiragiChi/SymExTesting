@@ -1,0 +1,19 @@
+public class SETest_FUNC {
+public double run(variables) {
+
+		if (constraints) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_FUNC num = new SETest_FUNC();
+		num.run(otherVariables);
+	}
+	
+}

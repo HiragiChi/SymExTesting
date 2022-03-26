@@ -4,9 +4,7 @@
 3.randomly altering
 """
 
-"""
-only replace x , y or z
-"""
+
 import random
 from curses.ascii import isalpha
 
@@ -18,19 +16,15 @@ def fusion(formulas,fusionFunc,oracle):
     if(any(formula.oracle!=oracle for formula in formulas)):
         print("FATAL: Inconsistent fusion oracles")
         return
-    # for num in range(len(originString)):
-    #     if(isalpha(originString[num])):
-    #         ifChange=bool(random.getrandbits(1))
-    #         if(ifChange):
-    #             replacedString
+
     for formula in formulas:
-        while(formula.body.find("a")!=-1):
+        while(formula.body.find("#")!=-1):
             ifChange=bool(random.getrandbits(1))
             print(ifChange)
             if(ifChange):
-                formula.body=formula.body.replace("a",fusionFunc[formula.var],1)
+                formula.body=formula.body.replace("#",fusionFunc[formula.var],1)
             else:
-                formula.body=formula.body.replace("a",formula.var,1)
+                formula.body=formula.body.replace("#",formula.var,1)
             print(formula.body)
     if(oracle=="SAT"):
         finalFormula= " & ".join(formula.body for formula in formulas)
@@ -49,7 +43,7 @@ class Formula():
         self.var=var
 
 def test():
-    formulaBodies=["3*a+1<3 & a>0","a+3*a>5 & a<3"]
+    formulaBodies=["3*#+1<3 & #>0","#+3*#>5 & #<3"]
     Formulas=[]
     iterNum=0
     for item in formulaBodies:
