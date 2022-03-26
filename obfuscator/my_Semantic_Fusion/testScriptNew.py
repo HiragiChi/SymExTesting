@@ -90,7 +90,11 @@ def ExecuteCommand(compileCommand,runCommand):
     SEResult = SEResult.decode("utf-8")
     return compileResult,SEResult
 
+
 def findSolution(result):
+    """
+    used in checkResult
+    """
     solutionList=[]
     result=result.split("\n")
     for line in result:
@@ -102,6 +106,7 @@ def findSolution(result):
             solution=line[start+1:end]
             solutionList.append(float(solution))
     return solutionList
+
 
 def CheckResult(result,resultFile,SATStatus,solution,FUNC,constraints,counter):
     if(~ result.find("Correct Find Path") ^ SATStatus):
@@ -146,6 +151,7 @@ def test():
     _,result=ExecuteCommand(compileCommand,jpfRunCommand)
     counter=0
     CheckResult(result,resultFile,True,1,"log","x>1",counter)
+
 
 MODE= "RETEST"
 RUNJPF=True

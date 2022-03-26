@@ -11,6 +11,10 @@ from curses.ascii import isalpha
 letters=["x","y","a","b","c"]
 
 def fusion(formulas,fusionFunc,oracle):
+    num=0
+    for formula in formulas:
+        formula.setvar(letters[num])
+        num=num+1
     if(oracle!="SAT" and oracle != "UNSAT"):
         print("FATAL: WRONG ORACLES")
     if(any(formula.oracle!=oracle for formula in formulas)):
@@ -33,28 +37,42 @@ def fusion(formulas,fusionFunc,oracle):
         finalFormula= " & ".join(formula.body for formula in formulas) + " & "+ fusionFunc["z"]
     return finalFormula
 
-class Formula():
+class formulaTemplate():
     def __init__(self,body,oracle):
+        #oracle = SAT or UNSAT
         self.oracle=oracle
         self.body=body
-        self.var="0"
+        self.var="#"
     
     def setvar(self,var):
         self.var=var
 
+    def print(self):
+        print(self.body)
+        
+def getRecipe():
+    recipeFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/formulas","r")
+    formulas=[]
+    for line in recipeFile.readlines():
+        body,SAT=line.split(",")
+        formulas.append(formulaTemplate(body,SAT))
+    return formulas
+
+
+
 def test():
-    formulaBodies=["3*#+1<3 & #>0","#+3*#>5 & #<3"]
-    Formulas=[]
-    iterNum=0
-    for item in formulaBodies:
-        formula=Formula(item,"SAT")
-        formula.setvar(letters[iterNum])
-        Formulas.append(formula)
-        iterNum+=1
+    formulas=getRecipe()
+    formula1,formula2=random.sample(formulas,2)
+    # formulaBodies=["3*#+1<3 & #>0","#+3*#>5 & #<3"]
+    # Formulas=[]
+    # iterNum=0
+    # for item in formulaBodies:
+    #     formula=formulaTemplate(item,"SAT")
+    #     Formulas.append(formula)
+    #     iterNum+=1
     fusionFunc={"z":"z=x+y","x":"(z-y)", "y":"(z-x)"}
     print(fusion(Formulas,fusionFunc,"SAT"))
 """
     randomly altering
 """
-test()
     
