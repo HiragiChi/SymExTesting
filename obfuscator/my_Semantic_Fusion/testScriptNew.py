@@ -22,10 +22,136 @@ import os
 import random
 import time
 from subprocess import PIPE, Popen
+from unittest import result
 
 def mathInputGenerator(num):
     inputList=random.sample(range(1, 1000), num)
     return inputList
+class SymSEtest():
+    def __init__(self,func):
+        self.func=func
+        self.totalCounter=0
+        self.correctCounter=0
+
+        protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
+        self.resultPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result"
+        self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
+        SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
+
+        self.compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
+        self.jpfRunCommand0="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf"
+
+        self.protoSEPath=protoPath+"/testCase.java.prototype.new"
+        self.testFilePath0=SEPath+"/SETest_{FUNC}.java"
+        self.protoScriptPath=protoPath+'/proto.jpf'
+        self.testScriptPath0=protoPath+'/SETest_{FUNC}.jpf'
+
+        self.SATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
+        self.UNSATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
+        self.jpfRunCommand=jpfRunCommand0.format(FUNC=func)
+        self.compileCommand=compileCommand0.format(FUNC=func)
+        self.testFilePath=testFilePath0.format(FUNC=func)
+        self.testScriptPath=testScriptPath0.format(FUNC=func)
+    def SEProtoReading(self,func,variables,constraints,otherVariables):
+        protoSE=open(self.protoSEPath, 'r')
+        protoSEList=[]
+        for line in protoSE.readlines():
+            protoSEList.append(line)
+        protoSE.close()
+
+        testList=[]
+        for item in protoSEList:
+            item=item.replace("FUNC",func)
+            item=item.replace("variables",variables)
+            item=item.replace("constraints",constraints)
+            item=item.replace("otherVariables",otherVariables)
+            testList.append(item)
+        
+        testFile=open(self.testFilePath,"w+")
+        testFile.seek(0)
+        testFile.truncate()
+        testFile.writelines(testList)
+        testFile.close()
+
+    def scriptProtoReading(self,func,variables):
+        scriptProtoFile=open(self.scriptProtoPath,"r")
+        scriptProtoList=scriptProtoFile.readlines()
+        scriptProtoFile.close()
+
+        scriptList=[]
+        for item in scriptProtoList:
+            item=item.replace("FUNC",func)
+            item=item.replace("variables",variables)
+            scriptList.append(item)
+        
+        scriptFile=open(self.scriptPath,"w+")
+        scriptFile.seek(0)
+        scriptFile.truncate()
+        scriptFile.writelines(scriptList)
+        scriptFile.close()
+
+    def ExecuteCommand(self):
+        
+        p1 = Popen(self.compileCommand, shell=True, stdout=PIPE, stderr=PIPE)
+        compileResult, stderr=p1.communicate()
+        if(stderr):
+            print("FATAL: error with compilation")
+            print(stderr.decode('utf-8'))
+            exit(0)
+        p2 = Popen(self.runCommand, shell=True, stdout=PIPE, stderr=PIPE)
+        SEResult,stderr=p2.communicate()
+        if(stderr):
+            print("FATAL: error with SE run")
+            print(stderr.decode('utf-8'))
+            exit(0)
+        compileResult = compileResult.decode("utf-8")
+        SEResult = SEResult.decode("utf-8")
+        if(STORE_RESULT):
+            resultFile=open(self.procedurePath,"w+")
+            resultFile.write(SEResult)
+            resultFile.close()
+        return compileResult,SEResult
+
+    def findSolution(self,result):
+        """
+        used in checkResult
+        """
+        solutionList=[]
+        result=result.split("\n")
+        for line in result:
+            if(line.find("Method Summaries (HTML)")!=-1):
+                break
+            if(line.find("Return Value")!=-1):
+                start=line.find("(")
+                end=line.find(")")
+                solution=line[start+1:end]
+                solutionList.append(float(solution))
+        return solutionList
+
+    def CheckResult(self,result,SATStatus,solution,constraints):
+        if(~ result.find("Correct Find Path") ^ SATStatus):
+            # check SAT status
+            print("INFO: SAT status Correct with FUNC= %s, constraints %s\n" % (self.func, constraints))
+            checkResult="%s: SAT Correct "%(constraints)
+            solution=float(solution)
+            #check solution
+            solutionList=findSolution(result)
+            for item in solutionList:
+                error=abs(solution-item)
+                if(error < 0.001):
+                    checkResult+=" , Solution Correct \n"
+                    self.resultFile.write(checkResult)
+                    counter+=1
+                    return counter
+            checkResult+=" Solution InCorrect with solution %s \n" %(" ".join(str(elem) for elem in solutionList))
+            self.resultFile.write(checkResult)
+            return counter
+        else:
+            print("INFO: SAT status wrong with FUNC= %s, constraints %s \n" % (self.func, constraints))
+            checkResult="%s: SAT Incorrect\n"%(constraints)
+            self.resultFile.write(checkResult)
+            return counter
+
 
 def deleteAllFiles():
     SEDeleteCommand="cd "+SEPath+" && rm SETest* "
@@ -75,19 +201,26 @@ def scriptProtoReading(scriptProtoPath,scriptPath,FUNC,variables):
     scriptFile.close()
 
 
-def ExecuteCommand(compileCommand,runCommand):
+def ExecuteCommand(compileCommand,runCommand,procedurePath):
+    
     p1 = Popen(compileCommand, shell=True, stdout=PIPE, stderr=PIPE)
     compileResult, stderr=p1.communicate()
     if(stderr):
         print("FATAL: error with compilation")
+        print(stderr.decode('utf-8'))
         exit(0)
     p2 = Popen(runCommand, shell=True, stdout=PIPE, stderr=PIPE)
     SEResult,stderr=p2.communicate()
     if(stderr):
         print("FATAL: error with SE run")
+        print(stderr.decode('utf-8'))
         exit(0)
     compileResult = compileResult.decode("utf-8")
     SEResult = SEResult.decode("utf-8")
+    if(STORE_RESULT):
+        resultFile=open(procedurePath,"w+")
+        resultFile.write(SEResult)
+        resultFile.close()
     return compileResult,SEResult
 
 
@@ -107,13 +240,13 @@ def findSolution(result):
             solutionList.append(float(solution))
     return solutionList
 
-
+# check if result is correct
 def CheckResult(result,resultFile,SATStatus,solution,FUNC,constraints,counter):
     if(~ result.find("Correct Find Path") ^ SATStatus):
         # check SAT status
-        print("INFO: SAT status Correct with FUNC= %s, constraints %s" % (FUNC, constraints))
+        print("INFO: SAT status Correct with FUNC= %s, constraints %s\n" % (FUNC, constraints))
         checkResult="%s: SAT Correct "%(constraints)
-        
+        solution=float(solution)
         #check solution
         solutionList=findSolution(result)
         for item in solutionList:
@@ -122,17 +255,72 @@ def CheckResult(result,resultFile,SATStatus,solution,FUNC,constraints,counter):
                 checkResult+=" , Solution Correct \n"
                 resultFile.write(checkResult)
                 counter+=1
-                return
+                return counter
         checkResult+=" Solution InCorrect with solution %s \n" %(" ".join(str(elem) for elem in solutionList))
         resultFile.write(checkResult)
-        return
+        return counter
     else:
-        print("INFO: SAT status wrong with FUNC= %s, constraints %s" % (FUNC, constraints))
+        print("INFO: SAT status wrong with FUNC= %s, constraints %s \n" % (FUNC, constraints))
         checkResult="%s: SAT Incorrect\n"%(constraints)
         resultFile.write(checkResult)
-        return 
-    # check if result is correct
-       
+        return counter
+
+
+def getTestArgs(num):
+    variables="double x"
+    otherVariables="12"
+    jpfVariables="sym"
+    for i in range(num-1):
+        variables +=",double {}".format(letters[i+1])
+        otherVariables +=",12"
+        jpfVariables +="#sym"
+    return(variables, otherVariables,jpfVariables)
+
+def testFunc0(func,formulaSolutionPair,resultFile,correctCounter):
+    jpfRunCommand=jpfRunCommand0.format(FUNC=func)
+    compileCommand=compileCommand0.format(FUNC=func)
+    testFilePath=testFilePath0.format(FUNC=func)
+    testScriptPath=testScriptPath0.format(FUNC=func)
+    
+    constraint=formulaSolutionPair[0]
+    solution=formulaSolutionPair[1]
+    (variables, otherVariables,jpfVariables)=getTestArgs(1)
+    SEProtoReading(protoSEPath, testFilePath,func,variables,constraint,otherVariables)
+    scriptProtoReading(protoScriptPath,testScriptPath,func,jpfVariables)
+
+    _,result=ExecuteCommand(compileCommand,jpfRunCommand,procedurePath)
+
+    if(formulaSolutionPair[1]=="UNSAT"):
+        SATStatus=False
+    else:
+        SATStatus=True
+    correctCounter=CheckResult(result,resultFile,SATStatus,solution,func,constraint,correctCounter)
+    return correctCounter
+
+def testFunc(func,ifFusion):
+    # input read
+    SATInputFile=open(SATInputPath, 'r')
+    formulaSolutionPairList=[]
+    for line in SATInputFile.readlines():
+        formula,solution = line.split(",")
+        if(ifFusion=="NOFusion"):
+            formula=formula.replace("#","x")
+        solution=solution[:-1] # remove \n
+        formulaSolutionPairList.append((formula,solution))
+    SATInputFile.close()
+
+
+    resultFile=open(resultPath,"w+")
+    totalCounter=0
+    correctCounter=0
+    for formulaSolutionPair in formulaSolutionPairList:
+        print(func,formulaSolutionPair,correctCounter)
+        correctCounter=testFunc0(func,formulaSolutionPair,resultFile,correctCounter)
+        totalCounter+=1
+    
+    funcResult="{func}, {total} in total tested, {correct} correct\n".format(func=func,total=totalCounter,correct=correctCounter)
+    resultFile.write(funcResult)
+    resultFile.close()
 
 def test():
     protoSEPath=protoPath+"/testCase.java.prototype.new"
@@ -141,21 +329,24 @@ def test():
     testScriptPath=protoPath+'/SETest_log.jpf'
     FUNC="log"
     # outputCommand=" > "+ resultPath +"/result"
-    outputCommand=""
-    compileCommand="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java".format(FUNC=FUNC) + outputCommand
-    jpfRunCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf".format(FUNC=FUNC) + outputCommand
+    # compileCommand="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java".format(FUNC=FUNC) + outputCommand
+    # jpfRunCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf"
 
     SEProtoReading(protoSEPath, testFilePath,"log","double x","x>1","12")
     scriptProtoReading(protoScriptPath,testScriptPath,"log","sym")
     resultFile=open(resultPath,"w+")
-    _,result=ExecuteCommand(compileCommand,jpfRunCommand)
+    _,result=ExecuteCommand(compileCommand,jpfRunCommand,procedurePath)
     counter=0
     CheckResult(result,resultFile,True,1,"log","x>1",counter)
 
 
 MODE= "RETEST"
 RUNJPF=True
+
+STORE_RESULT=True
 # MODE= "CLEAN"
+
+letters=["x","y","a","b","c"]
 
 funcList=['sqrt','abs','log','tan','sin','cos']
 funcList1=['log']
@@ -164,19 +355,25 @@ funcList=funcList1
 # protoOriginPath=protoPath+"/mathOrigin.java.prototype"
 protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
 resultPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result"
+procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
 SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
 
+compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
+jpfRunCommand0="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf"
 
+protoSEPath=protoPath+"/testCase.java.prototype.new"
+testFilePath0=SEPath+"/SETest_{FUNC}.java"
+protoScriptPath=protoPath+'/proto.jpf'
+testScriptPath0=protoPath+'/SETest_{FUNC}.jpf'
+
+SATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
+UNSATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
 # if (MODE!="TEST"):
 #     deleteAllFiles()
-test()
+
+
+testFunc("log","NOFusion")
 exit(0)
-
-recordFileName="correctRecord.txt"
-recordFilePath=protoPath+"/subFolder/"+recordFileName
-recordFile=open(recordFilePath,"w+")
-# delete generated file
-
 
 
 ### File Reading Part

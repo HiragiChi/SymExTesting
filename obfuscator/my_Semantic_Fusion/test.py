@@ -1,3 +1,2 @@
-import random
-a="sad{asd}"
-print(random.random())
+a="0.28*#+-0.76<0.18 & 0.24*#+-0.05>-0.5".replace("#","x")
+print(a)
