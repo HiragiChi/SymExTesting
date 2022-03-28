@@ -1,3 +1,3 @@
-x="a,b"
-a,b=x.split(",")
-print(a)
+import random
+a="sad{asd}"
+print(random.random())

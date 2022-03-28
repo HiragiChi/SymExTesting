@@ -4,16 +4,18 @@ import math
 """
 has not support generate formula by adding two quadratic formula
 """
-formulaResultPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/formulas"
-formulaResultFile=open(formulaResultPath,"w+")
+SATResultPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
+SATResultFile=open(SATResultPath,"w+")
+UNSATResultPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
+UNSATResultFile=open(UNSATResultPath,"w+")
 
 def solveQuadratic(a,b,c):
     delta=b*b-4*a*c
     if(delta<0):
         return ("quad0",a,b,c)
     elif(delta>0):
-        solution1=(-b-math.sqrt(delta))/2*a
-        solution2=(-b+math.sqrt(delta))/2*a
+        solution1=(-b-math.sqrt(delta))/(2*a)
+        solution2=(-b+math.sqrt(delta))/(2*a)
         return("quad1",a,b,c,solution1,solution2)
 
 def generateFormula(formula1,formula2):
@@ -25,31 +27,31 @@ def generateFormula(formula1,formula2):
         solution2=formula2[4]
         if(solution1>solution2):
             UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="SAT"))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=(solution1+solution2)/2))
         elif(solution1<solution2):
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="SAT"))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2))
             UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="UNSAT"))
     
     if(formula1[0]=="linear" and formula2[0][0]=="q"):
-        template="{a1}*#+{b1}{sym1}{c1} & {a2}*#*#+{b2}*#+{c2}{sym2}0,{SAT}\n"
+        template="{a1}*#+({b1}){sym1}{c1} & {a2}*#*#+({b2})*#+({c2}){sym2}0,{SAT}\n"
+        solution=formula1[-1]
         if(formula2[0]=="quad0"):
             UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="SAT"))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution-1))
         if(formula2[0]=="quad1"):
-            solution=formula1[-1]
             solution1=formula2[-2]
             solution2=formula2[-1]
             if(solution<solution1):
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT="SAT"))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution2+1))
                 UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT="UNSAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="SAT"))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2))
             elif(solution>solution2):
-                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="UNSAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT="SAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT="SAT"))
+                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution+1))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT=(solution1+solution2)/2))
             else:
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="SAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="SAT"))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution+solution2)/2))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution1-1))
     if(formula1[0][0]=="q" and formula2[0]=="linear"):
         SATFormulas,UNSATFormulas=generateFormula(formula2,formula1)
     return SATFormulas,UNSATFormulas
@@ -57,35 +59,39 @@ def generateFormula(formula1,formula2):
 def main():
     linearFormulas=[]
     for i in range(20):
-        a=abs(round(random.random(),2))
+        a=abs(round(random.uniform(-1,1),2))
         if(a==0):
             continue
-        b=round(random.random(),2)
-        c=round(random.random(),2)
+        b=round(random.uniform(-1,1),2)
+        c=round(random.uniform(-1,1),2)
         solution=(c-b)/a
         linearFormulas.append(("linear",a,b,c,solution))
     
     quadFormulas=[]
     for i in range(20):
-        a=abs(round(random.random(),2))
+        a=abs(round(random.uniform(-1,1),2))
         if(a==0):
             continue
-        b=round(random.random(),2)
-        c=round(random.random(),2)
+        b=round(random.uniform(-1,1),2)
+        c=round(random.uniform(-1,1),2)
         formula=solveQuadratic(a,b,c)
         quadFormulas.append(formula)
     for i in range(2):
         form1,form2=random.sample(linearFormulas,2)
-        result=generateFormula(form1,form2)
-        for item in result:
-            formulaResultFile.writelines(item)
+        SATResult,UNSATResult=generateFormula(form1,form2)
+        for item in SATResult:
+            SATResultFile.writelines(item)
+        for item in UNSATResult:
+            UNSATResultFile.writelines(item)
     for i in range(2):
         form1=random.choice(linearFormulas)
         form2=random.choice(quadFormulas)
-        result=generateFormula(form1,form2)
-        for item in result:
-            formulaResultFile.writelines(item)
-    formulaResultFile.close()
+        SATResult,UNSATResult=generateFormula(form1,form2)
+        for item in SATResult:
+            SATResultFile.writelines(item)
+        for item in UNSATResult:
+            UNSATResultFile.writelines(item)
+    SATResultFile.close()
+    UNSATResultFile.close()
 main()
-
 

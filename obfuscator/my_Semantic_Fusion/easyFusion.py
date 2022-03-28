@@ -18,18 +18,19 @@ def fusion(formulas,fusionFunc,oracle):
     if(oracle!="SAT" and oracle != "UNSAT"):
         print("FATAL: WRONG ORACLES")
     if(any(formula.oracle!=oracle for formula in formulas)):
+        
         print("FATAL: Inconsistent fusion oracles")
         return
 
     for formula in formulas:
         while(formula.body.find("#")!=-1):
             ifChange=bool(random.getrandbits(1))
-            print(ifChange)
+            # print(ifChange)
             if(ifChange):
                 formula.body=formula.body.replace("#",fusionFunc[formula.var],1)
             else:
                 formula.body=formula.body.replace("#",formula.var,1)
-            print(formula.body)
+            # print(formula.body)
     if(oracle=="SAT"):
         finalFormula= " & ".join(formula.body for formula in formulas)
 
@@ -48,31 +49,30 @@ class formulaTemplate():
         self.var=var
 
     def print(self):
-        print(self.body)
+        print(self.body+","+self.oracle)
         
 def getRecipe():
-    recipeFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/formulas","r")
-    formulas=[]
-    for line in recipeFile.readlines():
+    SATRecipeFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT","r")
+    UNSATRecipeFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT","r")
+    SATFormulas=[]
+    UNSATFormulas=[]
+    for line in SATRecipeFile.readlines():
         body,SAT=line.split(",")
-        formulas.append(formulaTemplate(body,SAT))
-    return formulas
+        SATFormulas.append(formulaTemplate(body,"SAT"))
+    for line in UNSATRecipeFile.readlines():
+        body,UNSAT=line.split(",")
+        UNSATFormulas.append(formulaTemplate(body,"UNSAT"))
+    return SATFormulas,UNSATFormulas
 
 
 
 def test():
-    formulas=getRecipe()
-    formula1,formula2=random.sample(formulas,2)
-    # formulaBodies=["3*#+1<3 & #>0","#+3*#>5 & #<3"]
-    # Formulas=[]
-    # iterNum=0
-    # for item in formulaBodies:
-    #     formula=formulaTemplate(item,"SAT")
-    #     Formulas.append(formula)
-    #     iterNum+=1
+    SATFormulas,UNSATFormulas=getRecipe()
+    SATRecipes=random.sample(SATFormulas,2)
+    UNSATRecipes=random.sample(UNSATFormulas,2)
     fusionFunc={"z":"z=x+y","x":"(z-y)", "y":"(z-x)"}
-    print(fusion(Formulas,fusionFunc,"SAT"))
+
 """
     randomly altering
 """
-    
+test()
