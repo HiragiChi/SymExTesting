@@ -38,21 +38,21 @@ class SymSEtest():
         self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
         SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
 
-        self.compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
-        self.jpfRunCommand0="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf"
+        compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
+        jpfRunCommand0="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Xmx1024m -ea -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-core/build:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/lib/*:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf/build/examples gov.nasa.jpf.tool.RunJPF /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE/math_{FUNC}.jpf"
 
         self.protoSEPath=protoPath+"/testCase.java.prototype.new"
-        self.testFilePath0=SEPath+"/SETest_{FUNC}.java"
+        testFilePath0=SEPath+"/SETest_{FUNC}.java"
         self.protoScriptPath=protoPath+'/proto.jpf'
-        self.testScriptPath0=protoPath+'/SETest_{FUNC}.jpf'
+        testScriptPath0=protoPath+'/SETest_{FUNC}.jpf'
 
-        self.SATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
-        self.UNSATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
+        
         self.jpfRunCommand=jpfRunCommand0.format(FUNC=func)
         self.compileCommand=compileCommand0.format(FUNC=func)
         self.testFilePath=testFilePath0.format(FUNC=func)
         self.testScriptPath=testScriptPath0.format(FUNC=func)
-    def SEProtoReading(self,func,variables,constraints,otherVariables):
+    
+    def SEProtoReading(self,variables,constraints,otherVariables):
         protoSE=open(self.protoSEPath, 'r')
         protoSEList=[]
         for line in protoSE.readlines():
@@ -61,7 +61,7 @@ class SymSEtest():
 
         testList=[]
         for item in protoSEList:
-            item=item.replace("FUNC",func)
+            item=item.replace("FUNC",self.func)
             item=item.replace("variables",variables)
             item=item.replace("constraints",constraints)
             item=item.replace("otherVariables",otherVariables)
@@ -73,7 +73,9 @@ class SymSEtest():
         testFile.writelines(testList)
         testFile.close()
 
-    def scriptProtoReading(self,func,variables):
+
+    def scriptProtoReading(self,variables):
+        func=self.func
         scriptProtoFile=open(self.scriptProtoPath,"r")
         scriptProtoList=scriptProtoFile.readlines()
         scriptProtoFile.close()
@@ -141,16 +143,82 @@ class SymSEtest():
                 if(error < 0.001):
                     checkResult+=" , Solution Correct \n"
                     self.resultFile.write(checkResult)
-                    counter+=1
-                    return counter
+                    self.counter+=1
+                    return 
             checkResult+=" Solution InCorrect with solution %s \n" %(" ".join(str(elem) for elem in solutionList))
             self.resultFile.write(checkResult)
-            return counter
+            return
         else:
             print("INFO: SAT status wrong with FUNC= %s, constraints %s \n" % (self.func, constraints))
             checkResult="%s: SAT Incorrect\n"%(constraints)
             self.resultFile.write(checkResult)
-            return counter
+            return
+    
+    def getTestArgs(self,num):
+        variables="double x"
+        otherVariables="12"
+        jpfVariables="sym"
+        for i in range(num-1):
+            variables +=",double {}".format(letters[i+1])
+            otherVariables +=",12"
+            jpfVariables +="#sym"
+        return(variables, otherVariables,jpfVariables)
+    
+    def test0(self,formulaSolutionPair):
+        
+        constraint=formulaSolutionPair[0]
+        solution=formulaSolutionPair[1]
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(1)
+        self.SEProtoReading(variables,constraint,otherVariables)
+        _,result=ExecuteCommand(compileCommand,jpfRunCommand,procedurePath)
+
+        if(formulaSolutionPair[1]=="UNSAT"):
+            SATStatus=False
+        else:
+            SATStatus=True
+        self.correctCounter=CheckResult(result,SATStatus,solution,func,constraint,correctCounter)
+
+    
+    def readFormula(self,ifFusion="NOFusion"):
+        SATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
+        UNSATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
+        SATInputFile=open(SATInputPath, 'r')
+        UNSATInputFile=open(UNSATInputPath, 'r')
+        self.SATFormulaSolutionPairList=[]
+        self.UNSATFormulaSolutionPairList=[]
+        
+        for line in SATInputFile.readlines():
+            formula,solution = line.split(",")
+            if(ifFusion=="NOFusion"):
+                formula=formula.replace("#","x")
+            solution=solution[:-1] # remove \n
+            self.SATFormulaSolutionPairList.append((formula,solution))
+        
+        for line in UNSATInputFile.readlines():
+            formula,solution = line.split(",")
+            if(ifFusion=="NOFusion"):
+                formula=formula.replace("#","x")
+            solution=solution[:-1] # remove \n
+            self.UNSATFormulaSolutionPairList.append((formula,solution))
+        
+        SATInputFile.close()
+        UNSATInputFile.close()
+    
+    def test(self):
+        self.readFormula()
+        # only test SAT
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(1)
+        self.scriptProtoReading(variables)
+        # test SAT File
+        self.resultFile = open(self.resultFilePath,"w+")
+        for formulaSolutionPair in self.SATFormulaSolutionPairList:
+            self.test0(formulaSolutionPair)
+            self.totalCounter=self.totalCounter+1
+        
+        funcResult="{func}, {total} in total tested, {correct} correct\n".format(func=func,total=totalCounter,correct=correctCounter)
+        self.resultFile.write(funcResult)
+        self.resultFile.close()
+            
 
 
 def deleteAllFiles():

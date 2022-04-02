@@ -22,7 +22,7 @@ def generateFormula(formula1,formula2):
     SATFormulas=[]
     UNSATFormulas=[]
     if(formula1[0]=="linear" and formula2[0]=="linear"):
-        template="{a1}*#+{b1}{sym1}{c1} & {a2}*#+{b2}{sym2}{c2},{SAT}\n"
+        template="{a1}*#+{b1}{sym1}{c1} & {a2}*#+{b2}{sym2}{c2},{SAT},solution\n"
         solution1=formula1[4]
         solution2=formula2[4]
         if(solution1>solution2):

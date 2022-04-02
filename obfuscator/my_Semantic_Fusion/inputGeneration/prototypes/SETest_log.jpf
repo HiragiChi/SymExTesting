@@ -1,6 +1,6 @@
 target=SETest_log
 
-symbolic.method=log.run(sym)
+symbolic.method=log.run(double x)
 
 classpath=${jpf-symbc}/build/examples
 vm.storage.class=nil
