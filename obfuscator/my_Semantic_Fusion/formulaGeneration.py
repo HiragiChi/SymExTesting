@@ -22,36 +22,36 @@ def generateFormula(formula1,formula2):
     SATFormulas=[]
     UNSATFormulas=[]
     if(formula1[0]=="linear" and formula2[0]=="linear"):
-        template="{a1}*#+{b1}{sym1}{c1} & {a2}*#+{b2}{sym2}{c2},{SAT},solution\n"
+        template="{a1}*#+{b1}{sym1}{c1} & {a2}*#+{b2}{sym2}{c2},{SAT},{solution}\n"
         solution1=formula1[4]
         solution2=formula2[4]
         if(solution1>solution2):
-            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=(solution1+solution2)/2))
+            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT",solution=None))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=(solution1+solution2)/2,solution=solution1))
         elif(solution1<solution2):
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2))
-            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="UNSAT"))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2,solution=solution1))
+            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT="UNSAT",solution=None))
     
     if(formula1[0]=="linear" and formula2[0][0]=="q"):
-        template="{a1}*#+({b1}){sym1}{c1} & {a2}*#*#+({b2})*#+({c2}){sym2}0,{SAT}\n"
+        template="{a1}*#+({b1}){sym1}{c1} & {a2}*#*#+({b2})*#+({c2}){sym2}0,{SAT},{solution}\n"
         solution=formula1[-1]
         if(formula2[0]=="quad0"):
-            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
-            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution-1))
+            UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT",solution=None))
+            SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution-1,solution=solution))
         if(formula2[0]=="quad1"):
             solution1=formula2[-2]
             solution2=formula2[-1]
             if(solution<solution1):
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution2+1))
-                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT="UNSAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution2+1,solution=solution))
+                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT="UNSAT",solution=None))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution1+solution2)/2,solution=solution1))
             elif(solution>solution2):
-                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT"))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution+1))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT=(solution1+solution2)/2))
+                UNSATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT="UNSAT",solution=None))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2=">",SAT=solution+1,solution=solution))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2="<",SAT=(solution1+solution2)/2,solution=solution1))
             else:
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution+solution2)/2))
-                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution1-1))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1=">",sym2="<",SAT=(solution+solution2)/2,solution=solution))
+                SATFormulas.append(template.format(a1=formula1[1],b1=formula1[2],c1=formula1[3],a2=formula2[1],b2=formula2[2],c2=formula2[3],sym1="<",sym2=">",SAT=solution1-1,solution=solution1))
     if(formula1[0][0]=="q" and formula2[0]=="linear"):
         SATFormulas,UNSATFormulas=generateFormula(formula2,formula1)
     return SATFormulas,UNSATFormulas

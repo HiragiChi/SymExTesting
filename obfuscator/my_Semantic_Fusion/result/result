@@ -1,8 +1,2 @@
-0.28*x+-0.76<0.18 & 0.24*x+-0.05>-0.55: SAT Correct  Solution InCorrect with solution -77.7117774144 -2.0833333333333335 0.0 86.0118599847 
-***********Warning: everything false
-0.11*x+-0.01<0.15 & 0.34*x+-0.13>-0.48: SAT Correct  Solution InCorrect with solution -77.7117774144 -1.0294117647058822 0.0 86.0118599847 
-0.52*x+-0.55>0.62 & 0.57*x*x+(-0.09)*x+-0.68>0: SAT Correct  Solution InCorrect with solution 0.0 -1.0161394514799817 -77.7117774144 86.0118599847 
-0.52*x+-0.55<0.62 & 0.57*x*x+(-0.09)*x+-0.68<0: SAT Correct  Solution InCorrect with solution 0.0 -1.0161394514799817 -77.7117774144 86.0118599847 
-0.52*x+-0.55>0.62 & 0.75*x*x+(-0.96)*x+0.09>0: SAT Correct  Solution InCorrect with solution 0.6161616231949443 0.0 86.0118599847 
-0.52*x+-0.55<0.62 & 0.75*x*x+(-0.96)*x+0.09<0: SAT Correct  Solution InCorrect with solution 0.6161616231949443 0.0 86.0118599847 
-log, 6 in total tested, 0 correct
+Math.log(x)==Math.log(69.26): SAT Correct  Solution InCorrect with solution 0.0 69.26000000000002 86.0118599847, should be 6.0
+log, 1 in total tested, 0 correct

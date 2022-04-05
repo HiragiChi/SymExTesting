@@ -11,12 +11,15 @@ def mathInputGenerator(num):
     inputList=random.sample(range(1, 1000), num)
     return inputList
 class SymSEtest():
-    def __init__(self,func):
+    def __init__(self,func,argnum,round):
         self.func=func
+        self.round=round
+        self.argnum=argnum
         self.totalCounter=0
         self.correctCounter=0
 
         protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
+        jpfPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE"
         self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result"
         self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
         SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
@@ -27,7 +30,7 @@ class SymSEtest():
         self.protoSEPath=protoPath+"/testCase.java.prototype.new"
         testFilePath0=SEPath+"/SETest_{FUNC}.java"
         self.protoScriptPath=protoPath+'/proto.jpf'
-        testScriptPath0=protoPath+'/SETest_{FUNC}.jpf'
+        testScriptPath0=jpfPath+'/math_{FUNC}.jpf'
 
         
         self.jpfRunCommand=jpfRunCommand0.format(FUNC=func)
@@ -57,7 +60,7 @@ class SymSEtest():
         testFile.close()
 
 
-    def scriptProtoReading(self,variables):
+    def scriptProtoReading(self,jpfVariables):
         func=self.func
         scriptProtoFile=open(self.protoScriptPath,"r")
         scriptProtoList=scriptProtoFile.readlines()
@@ -66,7 +69,7 @@ class SymSEtest():
         scriptList=[]
         for item in scriptProtoList:
             item=item.replace("FUNC",func)
-            item=item.replace("variables",variables)
+            item=item.replace("variables",jpfVariables)
             scriptList.append(item)
         
         scriptFile=open(self.testScriptPath,"w+")
@@ -113,7 +116,7 @@ class SymSEtest():
         return solutionList
 
     def CheckResult(self,result,SATStatus,solution,constraints):
-        if(~ result.find("Correct Find Path") ^ SATStatus):
+        if(not ((result.find("Correct Find Path")!=-1) ^ SATStatus)):
             # check SAT status
             print("INFO: SAT status Correct with FUNC= %s, constraints %s\n" % (self.func, constraints))
             checkResult="%s: SAT Correct "%(constraints)
@@ -125,9 +128,9 @@ class SymSEtest():
                 if(error < 0.001):
                     checkResult+=" , Solution Correct \n"
                     self.resultFile.write(checkResult)
-                    self.counter+=1
+                    self.correctCounter+=1
                     return 
-            checkResult+=" Solution InCorrect with solution %s \n" %(" ".join(str(elem) for elem in solutionList))
+            checkResult+=" Solution InCorrect with solution %s, should be %s\n" %(" ".join(str(elem) for elem in solutionList),solution)
             self.resultFile.write(checkResult)
             return
         else:
@@ -150,7 +153,7 @@ class SymSEtest():
         
         constraint=formulaSolutionPair[0]
         solution=formulaSolutionPair[1]
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(1)
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
         self.SEProtoReading(variables,constraint,otherVariables)
         _,result=self.ExecuteCommand()
 
@@ -170,31 +173,32 @@ class SymSEtest():
         self.UNSATFormulaSolutionPairList=[]
         
         for line in SATInputFile.readlines():
-            formula,solution = line.split(",")
+            formula,solution, boundary = line.split(",")
             if(ifFusion=="NOFusion"):
                 formula=formula.replace("#","x")
-            solution=solution[:-1] # remove \n
-            self.SATFormulaSolutionPairList.append((formula,solution))
+            boundary=boundary[:-1] # remove \n
+            self.SATFormulaSolutionPairList.append((formula,boundary))
         
         for line in UNSATInputFile.readlines():
-            formula,solution = line.split(",")
+            formula,solution,boundary = line.split(",")
             if(ifFusion=="NOFusion"):
                 formula=formula.replace("#","x")
-            solution=solution[:-1] # remove \n
+            # remove \n
+            print(solution)
             self.UNSATFormulaSolutionPairList.append((formula,solution))
         
         SATInputFile.close()
         UNSATInputFile.close()
     
-    def test(self):
+    def normalFormulaTest(self):
         self.readFormula()
         # only test SAT
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(1)
-        self.scriptProtoReading(variables)
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        self.scriptProtoReading(jpfVariables)
         # test SAT File
-        self.resultFile = open(self.resultFilePath,"w+")
+        self.resultFile = open(self.resultFilePath,"a")
         if(STORE_RESULT):
-            self.procedureFile=open(self.procedurePath,"w+")
+            self.procedureFile=open(self.procedurePath,"a")
         for formulaSolutionPair in self.SATFormulaSolutionPairList:
             self.test0(formulaSolutionPair)
             self.totalCounter=self.totalCounter+1
@@ -204,5 +208,60 @@ class SymSEtest():
         self.resultFile.close()
         if(STORE_RESULT):
             self.procedureFile.close()
-a=SymSEtest("log")
-a.test()
+
+
+    def unitTest0(self,input):
+        args="("
+        for i in range(self.argnum):
+            args+=letters[i]+","
+        args=args[:-1]
+        args+=")"
+        constraint="Math.{func}{args}==Math.{func}({x})".format(func=self.func,x=input,args=args)
+        
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        self.SEProtoReading(variables,constraint,otherVariables)
+        _,result=self.ExecuteCommand()
+
+        solution=input[0]
+        SATStatus=True
+        self.CheckResult(result,SATStatus,solution,constraint)
+
+
+    def unitTest(self):
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        self.scriptProtoReading(jpfVariables)
+        self.resultFile = open(self.resultFilePath,"a")
+        if(STORE_RESULT):
+            self.procedureFile=open(self.procedurePath,"a")
+
+        ## change for each test
+        for i in range(self.round):
+            input=[]
+            for i in range(self.argnum):
+                input.append(str(round(random.uniform(1,100),2)))
+            print(input)
+            input=",".join(input)
+            self.unitTest0(input)
+            self.totalCounter=self.totalCounter+1
+        
+        funcResult="{func}, {total} in total tested, {correct} correct\n".format(func=self.func,total=self.totalCounter,correct=self.correctCounter)
+        self.resultFile.write(funcResult)
+        self.resultFile.close()
+        if(STORE_RESULT):
+            self.procedureFile.close()
+
+
+def unitTestAll():
+    SEDeleteCommand="cd ~/Desktop/jpf/obfuscator/my_Semantic_Fusion/result" +"&& rm -rf * "
+    os.system(SEDeleteCommand)
+    funcList=["log","atan22","tan","cos","sin","log","log10","pow2"]
+    for item in funcList:
+        argnum=1
+        if(item[-1]=="2"):
+            item=item[:-1]
+            argnum=2
+        test=SymSEtest(item,argnum,1)    
+        test.unitTest()
+unitTestAll()
+# a=SymSEtest("atan2",2,5)
+# a.unitTest()

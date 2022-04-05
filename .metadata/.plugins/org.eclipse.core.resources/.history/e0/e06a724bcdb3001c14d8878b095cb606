@@ -1,0 +1,19 @@
+public class SETest_log {
+public double run(double x) {
+
+		if (0.65*x+(0.02)<0.51 & 0.59*x*x+(0.41)*x+(-0.33)<0) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_log num = new SETest_log();
+		num.run(12);
+	}
+	
+}

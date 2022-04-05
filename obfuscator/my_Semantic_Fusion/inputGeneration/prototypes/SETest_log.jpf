@@ -1,9 +1,0 @@
-target=SETest_log
-
-symbolic.method=log.run(double x)
-
-classpath=${jpf-symbc}/build/examples
-vm.storage.class=nil
-listener = gov.nasa.jpf.symbc.SymbolicListener
-symbolic.dp=coral
-search.multiple_errors=true

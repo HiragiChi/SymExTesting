@@ -1,0 +1,19 @@
+public class SETest_atan2 {
+public double run(double x,double y) {
+
+		if (Math.atan2((x,y))==Math.atan2((39.71, 59.01))) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_atan2 num = new SETest_atan2();
+		num.run(12,12);
+	}
+	
+}
