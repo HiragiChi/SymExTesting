@@ -1,0 +1,19 @@
+public class SETest_atan {
+public double run(double x) {
+
+		if (Math.atan(x)==(-3)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_atan num = new SETest_atan();
+		num.run(1);
+	}
+	
+}

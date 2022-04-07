@@ -1,0 +1,55 @@
+Math.sqrt(X)==(27): no path condition found
+
+sqrt, 1 in total tested, 0 correct
+
+
+Math.exp(X)==(47): SAT Incorrect
+
+exp, 1 in total tested, 0 correct
+
+
+Math.asin(X)==(-1): SAT Incorrect
+
+asin, 1 in total tested, 0 correct
+
+
+Math.acos(X)==(1): SAT Correct  Solution InCorrect with solution ['0.5403023058681398'].
+
+acos, 1 in total tested, 1 correct
+
+
+Math.atan(X)==(3): no path condition found
+
+atan, 1 in total tested, 0 correct
+
+
+Math.atan2(X,Y)==(1): SAT Correct  Solution InCorrect with solution ['67.94476904282511', '43.626834493761514'].
+
+atan2, 1 in total tested, 1 correct
+
+
+Math.log(X)==(38): SAT Correct  Solution InCorrect with solution ['3.1855931757113692E16'].
+
+log, 1 in total tested, 1 correct
+
+
+Math.tan(X)==(40): SAT Incorrect
+
+tan, 1 in total tested, 0 correct
+
+
+Math.sin(X)==(0): SAT Correct  Solution InCorrect with solution ['0.0'].
+
+sin, 1 in total tested, 1 correct
+
+
+Math.cos(X)==(1): SAT Correct  Solution InCorrect with solution ['0.0'].
+
+cos, 1 in total tested, 1 correct
+
+
+Math.pow(X,Y)==(64): SAT Correct  Solution InCorrect with solution ['5.153408847135501', '2.536432627456067'].
+
+pow, 1 in total tested, 1 correct
+
+

@@ -1,0 +1,15 @@
+package mytest_SE;
+
+
+public class math_tan {
+     public static void main(String[] args) {
+
+        if(Math.tan(7.84)==(74.34)){
+            System.out.println("True");
+        }
+        else {
+            System.out.println("False");
+        }
+
+    }
+}

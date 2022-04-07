@@ -5,23 +5,22 @@ from subprocess import PIPE, Popen
 RUNJPF=True
 
 STORE_RESULT=True
-letters=["x","y","a","b","c"]
+letters=["X","Y","A","B","C"]
 
 def mathInputGenerator(num):
     inputList=random.sample(range(1, 1000), num)
     return inputList
 class SymSEtest():
-    def __init__(self,func,argNum,round):
+    def __init__(self,func,argNum):
         self.func=func
-        self.round=round
         self.argNum=argNum
         self.totalCounter=0
         self.correctCounter=0
 
         protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
         self.jpfPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE"
-        self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result"
-        self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
+        self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result.txt"
+        self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure.txt"
         SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
 
         compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
@@ -126,7 +125,6 @@ class SymSEtest():
         originalTestLines=[]
         # solutions are str
         iterNum=0
-
         for solution in solutions:
             for item in solution:
                 solutionNum=float(item)
@@ -175,6 +173,7 @@ class SymSEtest():
         using check solution
         """
         if(not ((result.find("Correct Find Path")!=-1) ^ SATStatus)):
+            self.correctCounter+=1 # had not solved the little inaccuracy problem of solution
             # check SAT status
             print("INFO: SAT status Correct with FUNC= %s, constraints %s\n" % (self.func, constraints))
             checkResult="%s: SAT Correct "%(constraints)
@@ -182,21 +181,25 @@ class SymSEtest():
             solutionList=self.findSESolution(result)
             ifCorrect=self.checkSolution(constraints,solutionList)
             if(ifCorrect=="True"):
-                checkResult+=" , Solution Correct \n"
-                self.correctCounter+=1
+                checkResult+=" , Solution Correct with solution %s.\n"%(" ".join(str(elem) for elem in solutionList))
+                
             else:
                 checkResult+=" Solution InCorrect with solution %s.\n" %(" ".join(str(elem) for elem in solutionList))
             self.resultFile.write(checkResult)
             return
         else:
-            print("INFO: SAT status wrong with FUNC= %s, constraints %s \n" % (self.func, constraints))
-            checkResult="%s: SAT Incorrect\n"%(constraints)
+            if(result.find("No path conditions for SETest")!=-1):
+                print("INFO: No path conditions found with FUNC= %s, constraints %s \n" % (self.func, constraints))
+                checkResult="%s: no path condition found\n"%(constraints)
+            else:
+                print("INFO: SAT status wrong with FUNC= %s, constraints %s \n" % (self.func, constraints))
+                checkResult="%s: SAT Incorrect\n"%(constraints)
             self.resultFile.write(checkResult)
             return
     
     def getTestArgs(self,num):
-        variables="double x"
-        otherVariables="12"
+        variables="double X"
+        otherVariables="1"
         jpfVariables="sym"
         for i in range(num-1):
             variables +=",double {}".format(letters[i+1])
@@ -230,14 +233,14 @@ class SymSEtest():
         for line in SATInputFile.readlines():
             formula,solution, boundary = line.split(",")
             if(ifFusion=="NOFusion"):
-                formula=formula.replace("#","x")
+                formula=formula.replace("#","X")
             boundary=boundary[:-1] # remove \n
             self.SATFormulaSolutionPairList.append((formula,boundary))
         
         for line in UNSATInputFile.readlines():
             formula,solution,boundary = line.split(",")
             if(ifFusion=="NOFusion"):
-                formula=formula.replace("#","x")
+                formula=formula.replace("#","X")
             # remove \n
             print(solution)
             self.UNSATFormulaSolutionPairList.append((formula,solution))
@@ -267,7 +270,7 @@ class SymSEtest():
 
     def unitTest0(self,input,mode):
         """
-        input=numbers 1.1,52.3
+        input=string 1.1,52.3
         args= x,y 
         """
         args="("
@@ -275,17 +278,31 @@ class SymSEtest():
             args+=letters[i]+","
         args=args[:-1]
         args+=")"
-        if (mode == 1):
+        if (mode == 1 or mode == 2):
+            constraint="Math.{func}{args}==({x})".format(func=self.func,x=input,args=args)
+        elif(mode == 3):
+            constraint="X==Math.{func}({x})".format(func=self.func,x=input,args=args)
+        elif(mode == 4):
             constraint="Math.{func}{args}==Math.{func}({x})".format(func=self.func,x=input,args=args)
-        elif(mode == 2):
-            constraint="x==Math.{func}({x})".format(func=self.func,x=input,args=args)
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.SEProtoReading(variables,constraint,otherVariables)
         _,result=self.ExecuteCommand()
         SATStatus=True
         self.CheckResult(result,SATStatus,constraint)
 
-    def unitTest(self,mode):
+    def unitTest(self,mode,testRound,inputRange=[1,100]):
+        """
+        mode=1 -> math.atan2(x,y)==integer
+        mode=2 -> math.atan2(x,y)==float
+        mode=3 -> x==math.atan2(a,b)
+        """
+        self.round=testRound
+        if (mode ==1 or mode==2):
+            inputNum=1
+        elif(mode ==3):
+            inputNum=self.argNum
+            self.argNum=1
+        
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.scriptProtoReading(jpfVariables)
         self.resultFile = open(self.resultFilePath,"a")
@@ -295,28 +312,59 @@ class SymSEtest():
         ## change for each test
         for i in range(self.round):
             input=[]
-            for i in range(self.argNum):
-                input.append(str(round(random.uniform(1,100),2)))
-            print(input)
+            start=inputRange[0]
+            end=inputRange[1]
+            for i in range(inputNum):
+                if(mode==1):
+                    start=round(start)
+                    end=round(end)
+                    input.append(str(random.randint(start,end)))
+                else:
+                    input.append(str(round(random.uniform(start,end),2)))
             input=",".join(input)
-            print(input)
+
             self.unitTest0(input,mode)
             self.totalCounter=self.totalCounter+1
         
-        funcResult="{func}, {total} in total tested, {correct} correct\n".format(func=self.func,total=self.totalCounter,correct=self.correctCounter)
+        funcResult="\n{func}, {total} in total tested, {correct} correct\n\n\n".format(func=self.func,total=self.totalCounter,correct=self.correctCounter)
         self.resultFile.write(funcResult)
         self.resultFile.close()
         if(STORE_RESULT):
             self.procedureFile.close()
 
 SEDeleteCommand="cd ~/Desktop/jpf/obfuscator/my_Semantic_Fusion/result" +"&& rm -rf * "
+
+def getRange(functionName):
+    "get range of a function(值域)"
+    if(functionName=="sin" or functionName=="cos"):
+        range=[-1,1]
+    elif(functionName in ["atan2","atan","asin","acos"] ):
+        range=[-3.14,3.14]
+    else:
+        range=[0,100]
+    return range
+
+def getDomain(functionName):
+    if(functionName=="asin" or functionName=="acos"):
+        range=[-1,1]
+    else:
+        range=[0,100]
+    return range
 def unitTestAll():
-   
     os.system(SEDeleteCommand)
-    funcList=["log1","atan22","tan1","cos1","sin1","pow2"]
-    for item in funcList:
+    fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2"]
+    funcList=["tan1","atan1","log1","atan22","cos1","sin1","pow2"]
+    for item in fullFuncList:
+        # argNum represents how many arguments the "run" function needs.
+        # in unit test 2, random input numbers are not in correspondence to argNum
         argNum=int(item[-1])
-        item=item[:-1]
-        test=SymSEtest(item,argNum,1)    
-        test.unitTest(2)
+        funcName=item[:-1]
+        test=SymSEtest(funcName,argNum)
+        mode=1
+        if (mode in [1,2]):
+            funcRange=getRange(funcName)
+        elif(mode ==3):
+            funcRange=getDomain(funcName)    
+        test.unitTest(mode=mode,testRound=1,inputRange=funcRange)
+
 unitTestAll()

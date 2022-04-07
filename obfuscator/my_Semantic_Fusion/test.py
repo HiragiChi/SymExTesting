@@ -1,4 +1,4 @@
 import random,math
-a=math.atan2(7,8)
+x=1
 # a=["123","1234565"]
-print(a)
+print(math.tan(-3))

@@ -1,0 +1,9 @@
+
+public class aaaatest {
+	public static void main(String[] args) {
+		double a;
+		a=Math.log(1.3);
+		System.out.println(a);
+	}
+	
+}
