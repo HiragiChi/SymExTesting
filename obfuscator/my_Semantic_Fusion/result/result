@@ -1,2 +1,2 @@
-Math.log(x)==Math.log(69.26): SAT Correct  Solution InCorrect with solution 0.0 69.26000000000002 86.0118599847, should be 6.0
-log, 1 in total tested, 0 correct
+x==Math.log(60.89): SAT Correct  , Solution Correct 
+log, 1 in total tested, 1 correct

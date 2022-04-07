@@ -1,0 +1,12 @@
+package mytest_SE;
+
+
+public class math_sin {
+     public static void main(String[] args) {
+
+
+        	System.out.println(Math.sin(7.63)==Math.sin(51.61));
+            System.out.println("True");
+
+    }
+}

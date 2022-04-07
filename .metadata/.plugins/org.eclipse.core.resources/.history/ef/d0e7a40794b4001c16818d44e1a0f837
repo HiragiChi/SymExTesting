@@ -1,0 +1,19 @@
+public class SETest_tan {
+public double run(double x) {
+
+		if (Math.tan(x)==2) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_tan num = new SETest_tan();
+		num.run(12);
+	}
+	
+}

@@ -11,15 +11,15 @@ def mathInputGenerator(num):
     inputList=random.sample(range(1, 1000), num)
     return inputList
 class SymSEtest():
-    def __init__(self,func,argnum,round):
+    def __init__(self,func,argNum,round):
         self.func=func
         self.round=round
-        self.argnum=argnum
+        self.argNum=argNum
         self.totalCounter=0
         self.correctCounter=0
 
         protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
-        jpfPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE"
+        self.jpfPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE"
         self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result"
         self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure"
         SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
@@ -30,7 +30,7 @@ class SymSEtest():
         self.protoSEPath=protoPath+"/testCase.java.prototype.new"
         testFilePath0=SEPath+"/SETest_{FUNC}.java"
         self.protoScriptPath=protoPath+'/proto.jpf'
-        testScriptPath0=jpfPath+'/math_{FUNC}.jpf'
+        testScriptPath0=self.jpfPath+'/math_{FUNC}.jpf'
 
         
         self.jpfRunCommand=jpfRunCommand0.format(FUNC=func)
@@ -99,7 +99,59 @@ class SymSEtest():
             self.procedureFile.write(SEResult)
         return compileResult,SEResult
 
-    def findSolution(self,result):
+    def findGroundTruth(self,input):
+
+        """
+        no use
+        """
+        originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.prototype","r")
+        originalTestLines=[]
+        for line in originalProtoFile.readlines():
+            line=line.replace("FUNC",self.func)
+            line=line.replace("input",input)
+            originalTestLines.append(line)
+
+        originalTestPath=self.jpfPath+"/math_{func}.java".format(func=self.func)
+        originalTestFile=open(originalTestPath,"w+")
+        originalTestFile.writelines(originalTestLines)
+        originalTestFile.close()
+        runCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-symbc/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/build/annotations:/home/hiragi/Desktop/jpf/jpf-symbc/build/examples:/home/hiragi/Desktop/jpf/jpf-symbc/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/lib/grappa.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/aima-core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/automaton.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/bcel.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-1_2_04.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-solver-2.1.1-20100709.142532-2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/com.microsoft.z3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-lang-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-math-1.2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/coral.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/green.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/hampi.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/iasolver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jaxen.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jedis-2.0.0.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/JSAP-2.1.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/libcvc3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/opt4j-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.pb.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/scale.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/solver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/Statemachines.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/STPJNI.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/string.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/yicesapijava.jar:/snap/eclipse/48/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/48/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/proteus.jar mytest_SE.math_{func}".format(func=self.func)
+        p1 = Popen(runCommand, shell=True, stdout=PIPE, stderr=PIPE)
+        result, stderr=p1.communicate()
+        result=result.decode("utf-8")
+        return float(result)
+
+    def checkSolution(self,constraint,solutions):
+        originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.proto2","r")
+        originalTestLines=[]
+        # solutions are str
+        iterNum=0
+
+        for solution in solutions:
+            for item in solution:
+                solutionNum=float(item)
+                solutionNum=round(solutionNum,2)
+                item=str(solutionNum)
+                letter=letters[iterNum]
+                if(constraint.find(letter)):
+                    constraint=constraint.replace(letter,item)
+                    iterNum+=1
+        for line in originalProtoFile.readlines():
+            line=line.replace("FUNC",self.func)
+            line=line.replace("constraints",constraint)
+            originalTestLines.append(line)
+
+        originalTestPath=self.jpfPath+"/math_{func}.java".format(func=self.func)
+        originalTestFile=open(originalTestPath,"w+")
+        originalTestFile.writelines(originalTestLines)
+        originalTestFile.close()
+        runCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-symbc/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/build/annotations:/home/hiragi/Desktop/jpf/jpf-symbc/build/examples:/home/hiragi/Desktop/jpf/jpf-symbc/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/lib/grappa.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/aima-core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/automaton.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/bcel.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-1_2_04.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-solver-2.1.1-20100709.142532-2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/com.microsoft.z3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-lang-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-math-1.2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/coral.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/green.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/hampi.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/iasolver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jaxen.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jedis-2.0.0.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/JSAP-2.1.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/libcvc3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/opt4j-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.pb.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/scale.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/solver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/Statemachines.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/STPJNI.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/string.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/yicesapijava.jar:/snap/eclipse/48/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/48/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/proteus.jar mytest_SE.math_{func}".format(func=self.func)
+        p1 = Popen(runCommand, shell=True, stdout=PIPE, stderr=PIPE)
+        result, stderr=p1.communicate()
+        result=result.decode("utf-8")
+        return result[:-1] #remove \n
+
+    def findSESolution(self,result):
         """
         used in checkResult
         """
@@ -108,29 +160,32 @@ class SymSEtest():
         for line in result:
             if(line.find("Method Summaries (HTML)")!=-1):
                 break
-            if(line.find("Return Value")!=-1):
+            if(line.find("Return Value: 1")!=-1):
                 start=line.find("(")
                 end=line.find(")")
                 solution=line[start+1:end]
-                solutionList.append(float(solution))
+                
+                solution=solution.split(",")
+                print("solution: ", solution)
+                solutionList.append(solution)
         return solutionList
 
-    def CheckResult(self,result,SATStatus,solution,constraints):
+    def CheckResult(self,result,SATStatus,constraints):
+        """
+        using check solution
+        """
         if(not ((result.find("Correct Find Path")!=-1) ^ SATStatus)):
             # check SAT status
             print("INFO: SAT status Correct with FUNC= %s, constraints %s\n" % (self.func, constraints))
             checkResult="%s: SAT Correct "%(constraints)
-            solution=float(solution)
             #check solution
-            solutionList=self.findSolution(result)
-            for item in solutionList:
-                error=abs(solution-item)
-                if(error < 0.001):
-                    checkResult+=" , Solution Correct \n"
-                    self.resultFile.write(checkResult)
-                    self.correctCounter+=1
-                    return 
-            checkResult+=" Solution InCorrect with solution %s, should be %s\n" %(" ".join(str(elem) for elem in solutionList),solution)
+            solutionList=self.findSESolution(result)
+            ifCorrect=self.checkSolution(constraints,solutionList)
+            if(ifCorrect=="True"):
+                checkResult+=" , Solution Correct \n"
+                self.correctCounter+=1
+            else:
+                checkResult+=" Solution InCorrect with solution %s.\n" %(" ".join(str(elem) for elem in solutionList))
             self.resultFile.write(checkResult)
             return
         else:
@@ -153,7 +208,7 @@ class SymSEtest():
         
         constraint=formulaSolutionPair[0]
         solution=formulaSolutionPair[1]
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.SEProtoReading(variables,constraint,otherVariables)
         _,result=self.ExecuteCommand()
 
@@ -193,7 +248,7 @@ class SymSEtest():
     def normalFormulaTest(self):
         self.readFormula()
         # only test SAT
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.scriptProtoReading(jpfVariables)
         # test SAT File
         self.resultFile = open(self.resultFilePath,"a")
@@ -210,25 +265,28 @@ class SymSEtest():
             self.procedureFile.close()
 
 
-    def unitTest0(self,input):
+    def unitTest0(self,input,mode):
+        """
+        input=numbers 1.1,52.3
+        args= x,y 
+        """
         args="("
-        for i in range(self.argnum):
+        for i in range(self.argNum):
             args+=letters[i]+","
         args=args[:-1]
         args+=")"
-        constraint="Math.{func}{args}==Math.{func}({x})".format(func=self.func,x=input,args=args)
-        
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+        if (mode == 1):
+            constraint="Math.{func}{args}==Math.{func}({x})".format(func=self.func,x=input,args=args)
+        elif(mode == 2):
+            constraint="x==Math.{func}({x})".format(func=self.func,x=input,args=args)
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.SEProtoReading(variables,constraint,otherVariables)
         _,result=self.ExecuteCommand()
-
-        solution=input[0]
         SATStatus=True
-        self.CheckResult(result,SATStatus,solution,constraint)
+        self.CheckResult(result,SATStatus,constraint)
 
-
-    def unitTest(self):
-        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argnum)
+    def unitTest(self,mode):
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.scriptProtoReading(jpfVariables)
         self.resultFile = open(self.resultFilePath,"a")
         if(STORE_RESULT):
@@ -237,11 +295,12 @@ class SymSEtest():
         ## change for each test
         for i in range(self.round):
             input=[]
-            for i in range(self.argnum):
+            for i in range(self.argNum):
                 input.append(str(round(random.uniform(1,100),2)))
             print(input)
             input=",".join(input)
-            self.unitTest0(input)
+            print(input)
+            self.unitTest0(input,mode)
             self.totalCounter=self.totalCounter+1
         
         funcResult="{func}, {total} in total tested, {correct} correct\n".format(func=self.func,total=self.totalCounter,correct=self.correctCounter)
@@ -250,18 +309,14 @@ class SymSEtest():
         if(STORE_RESULT):
             self.procedureFile.close()
 
-
+SEDeleteCommand="cd ~/Desktop/jpf/obfuscator/my_Semantic_Fusion/result" +"&& rm -rf * "
 def unitTestAll():
-    SEDeleteCommand="cd ~/Desktop/jpf/obfuscator/my_Semantic_Fusion/result" +"&& rm -rf * "
+   
     os.system(SEDeleteCommand)
-    funcList=["log","atan22","tan","cos","sin","log","log10","pow2"]
+    funcList=["log1","atan22","tan1","cos1","sin1","pow2"]
     for item in funcList:
-        argnum=1
-        if(item[-1]=="2"):
-            item=item[:-1]
-            argnum=2
-        test=SymSEtest(item,argnum,1)    
-        test.unitTest()
+        argNum=int(item[-1])
+        item=item[:-1]
+        test=SymSEtest(item,argNum,1)    
+        test.unitTest(2)
 unitTestAll()
-# a=SymSEtest("atan2",2,5)
-# a.unitTest()

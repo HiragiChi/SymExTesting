@@ -1,0 +1,15 @@
+package mytest_SE;
+
+
+public class math_FUNC {
+     public static void main(String[] args) {
+
+        if(constraints){
+            System.out.println("True");
+        }
+        else {
+            System.out.println("False");
+        }
+
+    }
+}

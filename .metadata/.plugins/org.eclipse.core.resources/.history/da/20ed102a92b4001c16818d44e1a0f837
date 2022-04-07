@@ -1,0 +1,10 @@
+package mytest_SE;
+
+
+public class math_atan2 {
+     public static void main(String[] args) {
+
+        System.out.println(Math.atan2(3,4));
+
+    }
+}
