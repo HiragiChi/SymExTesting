@@ -1,7 +1,7 @@
-public class SETest_log {
+public class testCase {
 public double run(double x) {
 
-		if (x>1) {
+		if (Math.cosh(x)>1) {
 			System.out.println("Correct Find Path");
 			return 1;
 		}
@@ -12,7 +12,7 @@ public double run(double x) {
 	}
 
 	public static void main(String[] args) {
-		SETest_log num = new SETest_log();
+		testCase num = new testCase();
 		num.run(12);
 	}
 	

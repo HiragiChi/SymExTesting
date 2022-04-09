@@ -1,0 +1,9 @@
+
+public class aaaatest {
+	public static void main(String[] args) {
+		double a;
+		a=Math.acos(2.37);
+		System.out.println(a);
+	}
+	
+}

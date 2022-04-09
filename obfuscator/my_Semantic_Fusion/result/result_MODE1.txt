@@ -1,0 +1,378 @@
+Math.abs(X)==(96): SAT Correct  Solution InCorrect with solution ['-96.0'] ['96.0'].
+Math.abs(X)==(28): SAT Correct  Solution InCorrect with solution ['-28.0'] ['28.0'].
+Math.abs(X)==(54): SAT Correct  Solution InCorrect with solution ['-54.0'] ['54.0'].
+Math.abs(X)==(96): SAT Correct  Solution InCorrect with solution ['-96.0'] ['96.0'].
+Math.abs(X)==(33): SAT Correct  Solution InCorrect with solution ['-33.0'] ['33.0'].
+Math.abs(X)==(63): SAT Correct  Solution InCorrect with solution ['-63.0'] ['63.0'].
+Math.abs(X)==(9): SAT Correct  Solution InCorrect with solution ['-9.0'] ['9.0'].
+Math.abs(X)==(85): SAT Correct  Solution InCorrect with solution ['-85.0'] ['85.0'].
+Math.abs(X)==(73): SAT Correct  Solution InCorrect with solution ['-73.0'] ['73.0'].
+Math.abs(X)==(53): SAT Correct  Solution InCorrect with solution ['-53.0'] ['53.0'].
+Math.abs(X)==(95): SAT Correct  Solution InCorrect with solution ['-95.0'] ['95.0'].
+Math.abs(X)==(1): SAT Correct  Solution InCorrect with solution ['-1.0'] ['1.0'].
+Math.abs(X)==(34): SAT Correct  Solution InCorrect with solution ['-34.0'] ['34.0'].
+Math.abs(X)==(0): SAT Correct  Solution InCorrect with solution ['0.0'].
+Math.abs(X)==(41): SAT Correct  Solution InCorrect with solution ['-41.0'] ['41.0'].
+Math.abs(X)==(28): SAT Correct  Solution InCorrect with solution ['-28.0'] ['28.0'].
+Math.abs(X)==(9): SAT Correct  Solution InCorrect with solution ['-9.0'] ['9.0'].
+Math.abs(X)==(75): SAT Correct  Solution InCorrect with solution ['-75.0'] ['75.0'].
+Math.abs(X)==(10): SAT Correct  Solution InCorrect with solution ['-10.0'] ['10.0'].
+Math.abs(X)==(79): SAT Correct  Solution InCorrect with solution ['-79.0'] ['79.0'].
+Math.abs(X)==(47): SAT Correct  Solution InCorrect with solution ['-47.0'] ['47.0'].
+Math.abs(X)==(48): SAT Correct  Solution InCorrect with solution ['-48.0'] ['48.0'].
+Math.abs(X)==(47): SAT Correct  Solution InCorrect with solution ['-47.0'] ['47.0'].
+Math.abs(X)==(64): SAT Correct  Solution InCorrect with solution ['-64.0'] ['64.0'].
+Math.abs(X)==(74): SAT Correct  Solution InCorrect with solution ['-74.0'] ['74.0'].
+Math.abs(X)==(87): SAT Correct  Solution InCorrect with solution ['-87.0'] ['87.0'].
+Math.abs(X)==(20): SAT Correct  Solution InCorrect with solution ['-20.0'] ['20.0'].
+Math.abs(X)==(6): SAT Correct  Solution InCorrect with solution ['-6.0'] ['6.0'].
+Math.abs(X)==(79): SAT Correct  Solution InCorrect with solution ['-79.0'] ['79.0'].
+Math.abs(X)==(37): SAT Correct  Solution InCorrect with solution ['-37.0'] ['37.0'].
+Math.abs(X)==(60): SAT Correct  Solution InCorrect with solution ['-60.0'] ['60.0'].
+Math.abs(X)==(42): SAT Correct  Solution InCorrect with solution ['-42.0'] ['42.0'].
+Math.abs(X)==(1): SAT Correct  Solution InCorrect with solution ['-1.0'] ['1.0'].
+Math.abs(X)==(88): SAT Correct  Solution InCorrect with solution ['-88.0'] ['88.0'].
+Math.abs(X)==(96): SAT Correct  Solution InCorrect with solution ['-96.0'] ['96.0'].
+Math.abs(X)==(23): SAT Correct  Solution InCorrect with solution ['-23.0'] ['23.0'].
+Math.abs(X)==(94): SAT Correct  Solution InCorrect with solution ['-94.0'] ['94.0'].
+Math.abs(X)==(5): SAT Correct  Solution InCorrect with solution ['-5.0'] ['5.0'].
+Math.abs(X)==(20): SAT Correct  Solution InCorrect with solution ['-20.0'] ['20.0'].
+Math.abs(X)==(40): SAT Correct  Solution InCorrect with solution ['-40.0'] ['40.0'].
+Math.abs(X)==(3): SAT Correct  Solution InCorrect with solution ['-3.0'] ['3.0'].
+Math.abs(X)==(75): SAT Correct  Solution InCorrect with solution ['-75.0'] ['75.0'].
+Math.abs(X)==(28): SAT Correct  Solution InCorrect with solution ['-28.0'] ['28.0'].
+Math.abs(X)==(60): SAT Correct  Solution InCorrect with solution ['-60.0'] ['60.0'].
+Math.abs(X)==(0): SAT Correct  Solution InCorrect with solution ['0.0'].
+Math.abs(X)==(5): SAT Correct  Solution InCorrect with solution ['-5.0'] ['5.0'].
+Math.abs(X)==(56): SAT Correct  Solution InCorrect with solution ['-56.0'] ['56.0'].
+Math.abs(X)==(73): SAT Correct  Solution InCorrect with solution ['-73.0'] ['73.0'].
+Math.abs(X)==(80): SAT Correct  Solution InCorrect with solution ['-80.0'] ['80.0'].
+Math.abs(X)==(73): SAT Correct  Solution InCorrect with solution ['-73.0'] ['73.0'].
+
+abs, 50 in total tested, 50 correct
+
+
+Math.max(X,Y)==(57): SAT Correct  Solution InCorrect with solution ['0.0', '57.0'] ['57.0', '57.0'] ['57.0', '0.0'].
+Math.max(X,Y)==(1): SAT Correct  Solution InCorrect with solution ['0.0', '1.0'] ['1.0', '1.0'] ['1.0', '0.0'].
+Math.max(X,Y)==(51): SAT Correct  Solution InCorrect with solution ['0.0', '51.0'] ['51.0', '51.0'] ['51.0', '0.0'].
+Math.max(X,Y)==(71): SAT Correct  Solution InCorrect with solution ['0.0', '71.0'] ['71.0', '71.0'] ['71.0', '0.0'].
+Math.max(X,Y)==(4): SAT Correct  Solution InCorrect with solution ['0.0', '4.0'] ['4.0', '4.0'] ['4.0', '0.0'].
+Math.max(X,Y)==(45): SAT Correct  Solution InCorrect with solution ['0.0', '45.0'] ['45.0', '45.0'] ['45.0', '0.0'].
+Math.max(X,Y)==(5): SAT Correct  Solution InCorrect with solution ['0.0', '5.0'] ['5.0', '5.0'] ['5.0', '0.0'].
+Math.max(X,Y)==(35): SAT Correct  Solution InCorrect with solution ['0.0', '35.0'] ['35.0', '35.0'] ['35.0', '0.0'].
+Math.max(X,Y)==(18): SAT Correct  Solution InCorrect with solution ['0.0', '18.0'] ['18.0', '18.0'] ['18.0', '0.0'].
+Math.max(X,Y)==(25): SAT Correct  Solution InCorrect with solution ['0.0', '25.0'] ['25.0', '25.0'] ['25.0', '0.0'].
+Math.max(X,Y)==(27): SAT Correct  Solution InCorrect with solution ['0.0', '27.0'] ['27.0', '27.0'] ['27.0', '0.0'].
+Math.max(X,Y)==(82): SAT Correct  Solution InCorrect with solution ['0.0', '82.0'] ['82.0', '82.0'] ['82.0', '0.0'].
+Math.max(X,Y)==(27): SAT Correct  Solution InCorrect with solution ['0.0', '27.0'] ['27.0', '27.0'] ['27.0', '0.0'].
+Math.max(X,Y)==(76): SAT Correct  Solution InCorrect with solution ['0.0', '76.0'] ['76.0', '76.0'] ['76.0', '0.0'].
+Math.max(X,Y)==(12): SAT Correct  Solution InCorrect with solution ['0.0', '12.0'] ['12.0', '12.0'] ['12.0', '0.0'].
+Math.max(X,Y)==(87): SAT Correct  Solution InCorrect with solution ['0.0', '87.0'] ['87.0', '87.0'] ['87.0', '0.0'].
+Math.max(X,Y)==(11): SAT Correct  Solution InCorrect with solution ['0.0', '11.0'] ['11.0', '11.0'] ['11.0', '0.0'].
+Math.max(X,Y)==(51): SAT Correct  Solution InCorrect with solution ['0.0', '51.0'] ['51.0', '51.0'] ['51.0', '0.0'].
+Math.max(X,Y)==(31): SAT Correct  Solution InCorrect with solution ['0.0', '31.0'] ['31.0', '31.0'] ['31.0', '0.0'].
+Math.max(X,Y)==(71): SAT Correct  Solution InCorrect with solution ['0.0', '71.0'] ['71.0', '71.0'] ['71.0', '0.0'].
+Math.max(X,Y)==(30): SAT Correct  Solution InCorrect with solution ['0.0', '30.0'] ['30.0', '30.0'] ['30.0', '0.0'].
+Math.max(X,Y)==(4): SAT Correct  Solution InCorrect with solution ['0.0', '4.0'] ['4.0', '4.0'] ['4.0', '0.0'].
+Math.max(X,Y)==(10): SAT Correct  Solution InCorrect with solution ['0.0', '10.0'] ['10.0', '10.0'] ['10.0', '0.0'].
+Math.max(X,Y)==(75): SAT Correct  Solution InCorrect with solution ['0.0', '75.0'] ['75.0', '75.0'] ['75.0', '0.0'].
+Math.max(X,Y)==(63): SAT Correct  Solution InCorrect with solution ['0.0', '63.0'] ['63.0', '63.0'] ['63.0', '0.0'].
+Math.max(X,Y)==(8): SAT Correct  Solution InCorrect with solution ['0.0', '8.0'] ['8.0', '8.0'] ['8.0', '0.0'].
+Math.max(X,Y)==(80): SAT Correct  Solution InCorrect with solution ['0.0', '80.0'] ['80.0', '80.0'] ['80.0', '0.0'].
+Math.max(X,Y)==(44): SAT Correct  Solution InCorrect with solution ['0.0', '44.0'] ['44.0', '44.0'] ['44.0', '0.0'].
+Math.max(X,Y)==(96): SAT Correct  Solution InCorrect with solution ['0.0', '96.0'] ['96.0', '96.0'] ['96.0', '0.0'].
+Math.max(X,Y)==(47): SAT Correct  Solution InCorrect with solution ['0.0', '47.0'] ['47.0', '47.0'] ['47.0', '0.0'].
+Math.max(X,Y)==(54): SAT Correct  Solution InCorrect with solution ['0.0', '54.0'] ['54.0', '54.0'] ['54.0', '0.0'].
+Math.max(X,Y)==(56): SAT Correct  Solution InCorrect with solution ['0.0', '56.0'] ['56.0', '56.0'] ['56.0', '0.0'].
+Math.max(X,Y)==(68): SAT Correct  Solution InCorrect with solution ['0.0', '68.0'] ['68.0', '68.0'] ['68.0', '0.0'].
+Math.max(X,Y)==(72): SAT Correct  Solution InCorrect with solution ['0.0', '72.0'] ['72.0', '72.0'] ['72.0', '0.0'].
+Math.max(X,Y)==(20): SAT Correct  Solution InCorrect with solution ['0.0', '20.0'] ['20.0', '20.0'] ['20.0', '0.0'].
+Math.max(X,Y)==(75): SAT Correct  Solution InCorrect with solution ['0.0', '75.0'] ['75.0', '75.0'] ['75.0', '0.0'].
+Math.max(X,Y)==(31): SAT Correct  Solution InCorrect with solution ['0.0', '31.0'] ['31.0', '31.0'] ['31.0', '0.0'].
+Math.max(X,Y)==(41): SAT Correct  Solution InCorrect with solution ['0.0', '41.0'] ['41.0', '41.0'] ['41.0', '0.0'].
+Math.max(X,Y)==(24): SAT Correct  Solution InCorrect with solution ['0.0', '24.0'] ['24.0', '24.0'] ['24.0', '0.0'].
+Math.max(X,Y)==(40): SAT Correct  Solution InCorrect with solution ['0.0', '40.0'] ['40.0', '40.0'] ['40.0', '0.0'].
+Math.max(X,Y)==(21): SAT Correct  Solution InCorrect with solution ['0.0', '21.0'] ['21.0', '21.0'] ['21.0', '0.0'].
+Math.max(X,Y)==(56): SAT Correct  Solution InCorrect with solution ['0.0', '56.0'] ['56.0', '56.0'] ['56.0', '0.0'].
+Math.max(X,Y)==(1): SAT Correct  Solution InCorrect with solution ['0.0', '1.0'] ['1.0', '1.0'] ['1.0', '0.0'].
+Math.max(X,Y)==(15): SAT Correct  Solution InCorrect with solution ['0.0', '15.0'] ['15.0', '15.0'] ['15.0', '0.0'].
+Math.max(X,Y)==(28): SAT Correct  Solution InCorrect with solution ['0.0', '28.0'] ['28.0', '28.0'] ['28.0', '0.0'].
+Math.max(X,Y)==(52): SAT Correct  Solution InCorrect with solution ['0.0', '52.0'] ['52.0', '52.0'] ['52.0', '0.0'].
+Math.max(X,Y)==(53): SAT Correct  Solution InCorrect with solution ['0.0', '53.0'] ['53.0', '53.0'] ['53.0', '0.0'].
+Math.max(X,Y)==(2): SAT Correct  Solution InCorrect with solution ['0.0', '2.0'] ['2.0', '2.0'] ['2.0', '0.0'].
+Math.max(X,Y)==(99): SAT Correct  Solution InCorrect with solution ['0.0', '99.0'] ['99.0', '99.0'] ['99.0', '0.0'].
+Math.max(X,Y)==(43): SAT Correct  Solution InCorrect with solution ['0.0', '43.0'] ['43.0', '43.0'] ['43.0', '0.0'].
+
+max, 50 in total tested, 50 correct
+
+
+Math.min(X,Y)==(56): SAT Correct  Solution InCorrect with solution ['0.0', '56.0'] ['56.0', '56.0'] ['56.0', '0.0'].
+Math.min(X,Y)==(73): SAT Correct  Solution InCorrect with solution ['0.0', '73.0'] ['73.0', '73.0'] ['73.0', '0.0'].
+Math.min(X,Y)==(1): SAT Correct  Solution InCorrect with solution ['0.0', '1.0'] ['1.0', '1.0'] ['1.0', '0.0'].
+Math.min(X,Y)==(17): SAT Correct  Solution InCorrect with solution ['0.0', '17.0'] ['17.0', '17.0'] ['17.0', '0.0'].
+Math.min(X,Y)==(9): SAT Correct  Solution InCorrect with solution ['0.0', '9.0'] ['9.0', '9.0'] ['9.0', '0.0'].
+Math.min(X,Y)==(21): SAT Correct  Solution InCorrect with solution ['0.0', '21.0'] ['21.0', '21.0'] ['21.0', '0.0'].
+Math.min(X,Y)==(52): SAT Correct  Solution InCorrect with solution ['0.0', '52.0'] ['52.0', '52.0'] ['52.0', '0.0'].
+Math.min(X,Y)==(55): SAT Correct  Solution InCorrect with solution ['0.0', '55.0'] ['55.0', '55.0'] ['55.0', '0.0'].
+Math.min(X,Y)==(10): SAT Correct  Solution InCorrect with solution ['0.0', '10.0'] ['10.0', '10.0'] ['10.0', '0.0'].
+Math.min(X,Y)==(84): SAT Correct  Solution InCorrect with solution ['0.0', '84.0'] ['84.0', '84.0'] ['84.0', '0.0'].
+Math.min(X,Y)==(16): SAT Correct  Solution InCorrect with solution ['0.0', '16.0'] ['16.0', '16.0'] ['16.0', '0.0'].
+Math.min(X,Y)==(16): SAT Correct  Solution InCorrect with solution ['0.0', '16.0'] ['16.0', '16.0'] ['16.0', '0.0'].
+Math.min(X,Y)==(34): SAT Correct  Solution InCorrect with solution ['0.0', '34.0'] ['34.0', '34.0'] ['34.0', '0.0'].
+Math.min(X,Y)==(53): SAT Correct  Solution InCorrect with solution ['0.0', '53.0'] ['53.0', '53.0'] ['53.0', '0.0'].
+Math.min(X,Y)==(16): SAT Correct  Solution InCorrect with solution ['0.0', '16.0'] ['16.0', '16.0'] ['16.0', '0.0'].
+Math.min(X,Y)==(76): SAT Correct  Solution InCorrect with solution ['0.0', '76.0'] ['76.0', '76.0'] ['76.0', '0.0'].
+Math.min(X,Y)==(51): SAT Correct  Solution InCorrect with solution ['0.0', '51.0'] ['51.0', '51.0'] ['51.0', '0.0'].
+Math.min(X,Y)==(77): SAT Correct  Solution InCorrect with solution ['0.0', '77.0'] ['77.0', '77.0'] ['77.0', '0.0'].
+Math.min(X,Y)==(68): SAT Correct  Solution InCorrect with solution ['0.0', '68.0'] ['68.0', '68.0'] ['68.0', '0.0'].
+Math.min(X,Y)==(92): SAT Correct  Solution InCorrect with solution ['0.0', '92.0'] ['92.0', '92.0'] ['92.0', '0.0'].
+Math.min(X,Y)==(88): SAT Correct  Solution InCorrect with solution ['0.0', '88.0'] ['88.0', '88.0'] ['88.0', '0.0'].
+Math.min(X,Y)==(3): SAT Correct  Solution InCorrect with solution ['0.0', '3.0'] ['3.0', '3.0'] ['3.0', '0.0'].
+Math.min(X,Y)==(56): SAT Correct  Solution InCorrect with solution ['0.0', '56.0'] ['56.0', '56.0'] ['56.0', '0.0'].
+Math.min(X,Y)==(31): SAT Correct  Solution InCorrect with solution ['0.0', '31.0'] ['31.0', '31.0'] ['31.0', '0.0'].
+Math.min(X,Y)==(50): SAT Correct  Solution InCorrect with solution ['0.0', '50.0'] ['50.0', '50.0'] ['50.0', '0.0'].
+Math.min(X,Y)==(80): SAT Correct  Solution InCorrect with solution ['0.0', '80.0'] ['80.0', '80.0'] ['80.0', '0.0'].
+Math.min(X,Y)==(97): SAT Correct  Solution InCorrect with solution ['0.0', '97.0'] ['97.0', '97.0'] ['97.0', '0.0'].
+Math.min(X,Y)==(17): SAT Correct  Solution InCorrect with solution ['0.0', '17.0'] ['17.0', '17.0'] ['17.0', '0.0'].
+Math.min(X,Y)==(31): SAT Correct  Solution InCorrect with solution ['0.0', '31.0'] ['31.0', '31.0'] ['31.0', '0.0'].
+Math.min(X,Y)==(22): SAT Correct  Solution InCorrect with solution ['0.0', '22.0'] ['22.0', '22.0'] ['22.0', '0.0'].
+Math.min(X,Y)==(52): SAT Correct  Solution InCorrect with solution ['0.0', '52.0'] ['52.0', '52.0'] ['52.0', '0.0'].
+Math.min(X,Y)==(74): SAT Correct  Solution InCorrect with solution ['0.0', '74.0'] ['74.0', '74.0'] ['74.0', '0.0'].
+Math.min(X,Y)==(80): SAT Correct  Solution InCorrect with solution ['0.0', '80.0'] ['80.0', '80.0'] ['80.0', '0.0'].
+Math.min(X,Y)==(83): SAT Correct  Solution InCorrect with solution ['0.0', '83.0'] ['83.0', '83.0'] ['83.0', '0.0'].
+Math.min(X,Y)==(18): SAT Correct  Solution InCorrect with solution ['0.0', '18.0'] ['18.0', '18.0'] ['18.0', '0.0'].
+Math.min(X,Y)==(90): SAT Correct  Solution InCorrect with solution ['0.0', '90.0'] ['90.0', '90.0'] ['90.0', '0.0'].
+Math.min(X,Y)==(74): SAT Correct  Solution InCorrect with solution ['0.0', '74.0'] ['74.0', '74.0'] ['74.0', '0.0'].
+Math.min(X,Y)==(78): SAT Correct  Solution InCorrect with solution ['0.0', '78.0'] ['78.0', '78.0'] ['78.0', '0.0'].
+Math.min(X,Y)==(50): SAT Correct  Solution InCorrect with solution ['0.0', '50.0'] ['50.0', '50.0'] ['50.0', '0.0'].
+Math.min(X,Y)==(92): SAT Correct  Solution InCorrect with solution ['0.0', '92.0'] ['92.0', '92.0'] ['92.0', '0.0'].
+Math.min(X,Y)==(86): SAT Correct  Solution InCorrect with solution ['0.0', '86.0'] ['86.0', '86.0'] ['86.0', '0.0'].
+Math.min(X,Y)==(69): SAT Correct  Solution InCorrect with solution ['0.0', '69.0'] ['69.0', '69.0'] ['69.0', '0.0'].
+Math.min(X,Y)==(91): SAT Correct  Solution InCorrect with solution ['0.0', '91.0'] ['91.0', '91.0'] ['91.0', '0.0'].
+Math.min(X,Y)==(32): SAT Correct  Solution InCorrect with solution ['0.0', '32.0'] ['32.0', '32.0'] ['32.0', '0.0'].
+Math.min(X,Y)==(18): SAT Correct  Solution InCorrect with solution ['0.0', '18.0'] ['18.0', '18.0'] ['18.0', '0.0'].
+Math.min(X,Y)==(75): SAT Correct  Solution InCorrect with solution ['0.0', '75.0'] ['75.0', '75.0'] ['75.0', '0.0'].
+Math.min(X,Y)==(81): SAT Correct  Solution InCorrect with solution ['0.0', '81.0'] ['81.0', '81.0'] ['81.0', '0.0'].
+Math.min(X,Y)==(5): SAT Correct  Solution InCorrect with solution ['0.0', '5.0'] ['5.0', '5.0'] ['5.0', '0.0'].
+Math.min(X,Y)==(8): SAT Correct  Solution InCorrect with solution ['0.0', '8.0'] ['8.0', '8.0'] ['8.0', '0.0'].
+Math.min(X,Y)==(13): SAT Correct  Solution InCorrect with solution ['0.0', '13.0'] ['13.0', '13.0'] ['13.0', '0.0'].
+
+min, 50 in total tested, 50 correct
+
+
+Math.round(X)==(56): SAT Incorrect
+Math.round(X)==(66): SAT Incorrect
+Math.round(X)==(75): SAT Incorrect
+Math.round(X)==(30): SAT Incorrect
+Math.round(X)==(96): SAT Incorrect
+Math.round(X)==(57): SAT Incorrect
+Math.round(X)==(65): SAT Incorrect
+Math.round(X)==(96): SAT Incorrect
+Math.round(X)==(4): SAT Incorrect
+Math.round(X)==(55): SAT Incorrect
+Math.round(X)==(0): SAT Correct  Solution InCorrect with solution ['-99.5'].
+Math.round(X)==(1): SAT Correct  Solution InCorrect with solution ['0.5'] ['99.5'].
+Math.round(X)==(60): SAT Incorrect
+Math.round(X)==(39): SAT Incorrect
+Math.round(X)==(48): SAT Incorrect
+Math.round(X)==(62): SAT Incorrect
+Math.round(X)==(80): SAT Incorrect
+Math.round(X)==(24): SAT Incorrect
+Math.round(X)==(68): SAT Incorrect
+Math.round(X)==(93): SAT Incorrect
+Math.round(X)==(24): SAT Incorrect
+Math.round(X)==(39): SAT Incorrect
+Math.round(X)==(70): SAT Incorrect
+Math.round(X)==(59): SAT Incorrect
+Math.round(X)==(59): SAT Incorrect
+Math.round(X)==(36): SAT Incorrect
+Math.round(X)==(82): SAT Incorrect
+Math.round(X)==(91): SAT Incorrect
+Math.round(X)==(4): SAT Incorrect
+Math.round(X)==(67): SAT Incorrect
+Math.round(X)==(69): SAT Incorrect
+Math.round(X)==(22): SAT Incorrect
+Math.round(X)==(8): SAT Incorrect
+Math.round(X)==(88): SAT Incorrect
+Math.round(X)==(54): SAT Incorrect
+Math.round(X)==(64): SAT Incorrect
+Math.round(X)==(81): SAT Incorrect
+Math.round(X)==(66): SAT Incorrect
+Math.round(X)==(100): SAT Incorrect
+Math.round(X)==(48): SAT Incorrect
+Math.round(X)==(90): SAT Incorrect
+Math.round(X)==(56): SAT Incorrect
+Math.round(X)==(19): SAT Incorrect
+Math.round(X)==(26): SAT Incorrect
+Math.round(X)==(24): SAT Incorrect
+Math.round(X)==(72): SAT Incorrect
+Math.round(X)==(78): SAT Incorrect
+Math.round(X)==(71): SAT Incorrect
+Math.round(X)==(57): SAT Incorrect
+Math.round(X)==(43): SAT Incorrect
+
+round, 50 in total tested, 2 correct
+
+
+Math.ceil(X)==(47): SAT Correct  Solution InCorrect with solution ['47.0'].
+Math.ceil(X)==(11): SAT Correct  Solution InCorrect with solution ['11.0'].
+Math.ceil(X)==(22): SAT Correct  Solution InCorrect with solution ['22.0'].
+Math.ceil(X)==(87): SAT Correct  Solution InCorrect with solution ['87.0'].
+Math.ceil(X)==(13): SAT Correct  Solution InCorrect with solution ['13.0'].
+Math.ceil(X)==(52): SAT Correct  Solution InCorrect with solution ['52.0'].
+Math.ceil(X)==(99): SAT Correct  Solution InCorrect with solution ['99.0'].
+Math.ceil(X)==(55): SAT Correct  Solution InCorrect with solution ['55.0'].
+Math.ceil(X)==(48): SAT Correct  Solution InCorrect with solution ['48.0'].
+Math.ceil(X)==(6): SAT Correct  Solution InCorrect with solution ['6.0'].
+Math.ceil(X)==(91): SAT Correct  Solution InCorrect with solution ['91.0'].
+Math.ceil(X)==(57): SAT Correct  Solution InCorrect with solution ['57.0'].
+Math.ceil(X)==(84): SAT Correct  Solution InCorrect with solution ['84.0'].
+Math.ceil(X)==(65): SAT Correct  Solution InCorrect with solution ['65.0'].
+Math.ceil(X)==(55): SAT Correct  Solution InCorrect with solution ['55.0'].
+Math.ceil(X)==(73): SAT Correct  Solution InCorrect with solution ['73.0'].
+Math.ceil(X)==(1): SAT Correct  Solution InCorrect with solution ['1.0'].
+Math.ceil(X)==(96): SAT Correct  Solution InCorrect with solution ['96.0'].
+Math.ceil(X)==(98): SAT Correct  Solution InCorrect with solution ['98.0'].
+Math.ceil(X)==(25): SAT Correct  Solution InCorrect with solution ['25.0'].
+Math.ceil(X)==(10): SAT Correct  Solution InCorrect with solution ['10.0'].
+Math.ceil(X)==(36): SAT Correct  Solution InCorrect with solution ['36.0'].
+Math.ceil(X)==(48): SAT Correct  Solution InCorrect with solution ['48.0'].
+Math.ceil(X)==(62): SAT Correct  Solution InCorrect with solution ['62.0'].
+Math.ceil(X)==(95): SAT Correct  Solution InCorrect with solution ['95.0'].
+Math.ceil(X)==(69): SAT Correct  Solution InCorrect with solution ['69.0'].
+Math.ceil(X)==(43): SAT Correct  Solution InCorrect with solution ['43.0'].
+Math.ceil(X)==(48): SAT Correct  Solution InCorrect with solution ['48.0'].
+Math.ceil(X)==(32): SAT Correct  Solution InCorrect with solution ['32.0'].
+Math.ceil(X)==(14): SAT Correct  Solution InCorrect with solution ['14.0'].
+Math.ceil(X)==(25): SAT Correct  Solution InCorrect with solution ['25.0'].
+Math.ceil(X)==(73): SAT Correct  Solution InCorrect with solution ['73.0'].
+Math.ceil(X)==(43): SAT Correct  Solution InCorrect with solution ['43.0'].
+Math.ceil(X)==(6): SAT Correct  Solution InCorrect with solution ['6.0'].
+Math.ceil(X)==(38): SAT Correct  Solution InCorrect with solution ['38.0'].
+Math.ceil(X)==(25): SAT Correct  Solution InCorrect with solution ['25.0'].
+Math.ceil(X)==(5): SAT Correct  Solution InCorrect with solution ['5.0'].
+Math.ceil(X)==(69): SAT Correct  Solution InCorrect with solution ['69.0'].
+Math.ceil(X)==(52): SAT Correct  Solution InCorrect with solution ['52.0'].
+Math.ceil(X)==(31): SAT Correct  Solution InCorrect with solution ['31.0'].
+Math.ceil(X)==(79): SAT Correct  Solution InCorrect with solution ['79.0'].
+Math.ceil(X)==(99): SAT Correct  Solution InCorrect with solution ['99.0'].
+Math.ceil(X)==(79): SAT Correct  Solution InCorrect with solution ['79.0'].
+Math.ceil(X)==(31): SAT Correct  Solution InCorrect with solution ['31.0'].
+Math.ceil(X)==(77): SAT Correct  Solution InCorrect with solution ['77.0'].
+Math.ceil(X)==(49): SAT Correct  Solution InCorrect with solution ['49.0'].
+Math.ceil(X)==(7): SAT Correct  Solution InCorrect with solution ['7.0'].
+Math.ceil(X)==(28): SAT Correct  Solution InCorrect with solution ['28.0'].
+Math.ceil(X)==(36): SAT Correct  Solution InCorrect with solution ['36.0'].
+Math.ceil(X)==(30): SAT Correct  Solution InCorrect with solution ['30.0'].
+
+ceil, 50 in total tested, 50 correct
+
+
+Math.floor(X)==(13): SAT Correct  Solution InCorrect with solution ['13.0'].
+Math.floor(X)==(98): SAT Correct  Solution InCorrect with solution ['98.0'].
+Math.floor(X)==(0): SAT Correct  Solution InCorrect with solution ['0.0'].
+Math.floor(X)==(10): SAT Correct  Solution InCorrect with solution ['10.0'].
+Math.floor(X)==(6): SAT Correct  Solution InCorrect with solution ['6.0'].
+Math.floor(X)==(26): SAT Correct  Solution InCorrect with solution ['26.0'].
+Math.floor(X)==(97): SAT Correct  Solution InCorrect with solution ['97.0'].
+Math.floor(X)==(57): SAT Correct  Solution InCorrect with solution ['57.0'].
+Math.floor(X)==(5): SAT Correct  Solution InCorrect with solution ['5.0'].
+Math.floor(X)==(8): SAT Correct  Solution InCorrect with solution ['8.0'].
+Math.floor(X)==(76): SAT Correct  Solution InCorrect with solution ['76.0'].
+Math.floor(X)==(2): SAT Correct  Solution InCorrect with solution ['2.0'].
+Math.floor(X)==(70): SAT Correct  Solution InCorrect with solution ['70.0'].
+Math.floor(X)==(35): SAT Correct  Solution InCorrect with solution ['35.0'].
+Math.floor(X)==(90): SAT Correct  Solution InCorrect with solution ['90.0'].
+Math.floor(X)==(50): SAT Correct  Solution InCorrect with solution ['50.0'].
+Math.floor(X)==(36): SAT Correct  Solution InCorrect with solution ['36.0'].
+Math.floor(X)==(26): SAT Correct  Solution InCorrect with solution ['26.0'].
+Math.floor(X)==(71): SAT Correct  Solution InCorrect with solution ['71.0'].
+Math.floor(X)==(47): SAT Correct  Solution InCorrect with solution ['47.0'].
+Math.floor(X)==(48): SAT Correct  Solution InCorrect with solution ['48.0'].
+Math.floor(X)==(95): SAT Correct  Solution InCorrect with solution ['95.0'].
+Math.floor(X)==(93): SAT Correct  Solution InCorrect with solution ['93.0'].
+Math.floor(X)==(43): SAT Correct  Solution InCorrect with solution ['43.0'].
+Math.floor(X)==(98): SAT Correct  Solution InCorrect with solution ['98.0'].
+Math.floor(X)==(20): SAT Correct  Solution InCorrect with solution ['20.0'].
+Math.floor(X)==(60): SAT Correct  Solution InCorrect with solution ['60.0'].
+Math.floor(X)==(97): SAT Correct  Solution InCorrect with solution ['97.0'].
+Math.floor(X)==(87): SAT Correct  Solution InCorrect with solution ['87.0'].
+Math.floor(X)==(66): SAT Correct  Solution InCorrect with solution ['66.0'].
+Math.floor(X)==(43): SAT Correct  Solution InCorrect with solution ['43.0'].
+Math.floor(X)==(32): SAT Correct  Solution InCorrect with solution ['32.0'].
+Math.floor(X)==(69): SAT Correct  Solution InCorrect with solution ['69.0'].
+Math.floor(X)==(61): SAT Correct  Solution InCorrect with solution ['61.0'].
+Math.floor(X)==(33): SAT Correct  Solution InCorrect with solution ['33.0'].
+Math.floor(X)==(65): SAT Correct  Solution InCorrect with solution ['65.0'].
+Math.floor(X)==(82): SAT Correct  Solution InCorrect with solution ['82.0'].
+Math.floor(X)==(100): SAT Correct  Solution InCorrect with solution ['100.0'].
+Math.floor(X)==(48): SAT Correct  Solution InCorrect with solution ['48.0'].
+Math.floor(X)==(67): SAT Correct  Solution InCorrect with solution ['67.0'].
+Math.floor(X)==(42): SAT Correct  Solution InCorrect with solution ['42.0'].
+Math.floor(X)==(22): SAT Correct  Solution InCorrect with solution ['22.0'].
+Math.floor(X)==(64): SAT Correct  Solution InCorrect with solution ['64.0'].
+Math.floor(X)==(44): SAT Correct  Solution InCorrect with solution ['44.0'].
+Math.floor(X)==(40): SAT Correct  Solution InCorrect with solution ['40.0'].
+Math.floor(X)==(30): SAT Correct  Solution InCorrect with solution ['30.0'].
+Math.floor(X)==(78): SAT Correct  Solution InCorrect with solution ['78.0'].
+Math.floor(X)==(42): SAT Correct  Solution InCorrect with solution ['42.0'].
+Math.floor(X)==(19): SAT Correct  Solution InCorrect with solution ['19.0'].
+Math.floor(X)==(89): SAT Correct  Solution InCorrect with solution ['89.0'].
+
+floor, 50 in total tested, 50 correct
+
+
+Math.rint(X)==(84): SAT Correct  Solution InCorrect with solution ['83.5'].
+Math.rint(X)==(23): SAT Correct  Solution InCorrect with solution ['22.5'].
+Math.rint(X)==(70): SAT Correct  Solution InCorrect with solution ['69.5'].
+Math.rint(X)==(84): SAT Correct  Solution InCorrect with solution ['83.5'].
+Math.rint(X)==(73): SAT Correct  Solution InCorrect with solution ['72.5'].
+Math.rint(X)==(41): SAT Correct  Solution InCorrect with solution ['40.5'].
+Math.rint(X)==(16): SAT Correct  Solution InCorrect with solution ['15.5'].
+Math.rint(X)==(94): SAT Correct  Solution InCorrect with solution ['93.5'].
+Math.rint(X)==(44): SAT Correct  Solution InCorrect with solution ['43.5'].
+Math.rint(X)==(42): SAT Correct  Solution InCorrect with solution ['41.5'].
+Math.rint(X)==(4): SAT Correct  Solution InCorrect with solution ['3.5'].
+Math.rint(X)==(79): SAT Correct  Solution InCorrect with solution ['78.5'].
+Math.rint(X)==(75): SAT Correct  Solution InCorrect with solution ['74.5'].
+Math.rint(X)==(21): SAT Correct  Solution InCorrect with solution ['20.5'].
+Math.rint(X)==(17): SAT Correct  Solution InCorrect with solution ['16.5'].
+Math.rint(X)==(4): SAT Correct  Solution InCorrect with solution ['3.5'].
+Math.rint(X)==(2): SAT Correct  Solution InCorrect with solution ['1.5'].
+Math.rint(X)==(52): SAT Correct  Solution InCorrect with solution ['51.5'].
+Math.rint(X)==(21): SAT Correct  Solution InCorrect with solution ['20.5'].
+Math.rint(X)==(18): SAT Correct  Solution InCorrect with solution ['17.5'].
+Math.rint(X)==(29): SAT Correct  Solution InCorrect with solution ['28.5'].
+Math.rint(X)==(34): SAT Correct  Solution InCorrect with solution ['33.5'].
+Math.rint(X)==(19): SAT Correct  Solution InCorrect with solution ['18.5'].
+Math.rint(X)==(2): SAT Correct  Solution InCorrect with solution ['1.5'].
+Math.rint(X)==(6): SAT Correct  Solution InCorrect with solution ['5.5'].
+Math.rint(X)==(83): SAT Correct  Solution InCorrect with solution ['82.5'].
+Math.rint(X)==(79): SAT Correct  Solution InCorrect with solution ['78.5'].
+Math.rint(X)==(85): SAT Correct  Solution InCorrect with solution ['84.5'].
+Math.rint(X)==(34): SAT Correct  Solution InCorrect with solution ['33.5'].
+Math.rint(X)==(22): SAT Correct  Solution InCorrect with solution ['21.5'].
+Math.rint(X)==(95): SAT Correct  Solution InCorrect with solution ['94.5'].
+Math.rint(X)==(47): SAT Correct  Solution InCorrect with solution ['46.5'].
+Math.rint(X)==(53): SAT Correct  Solution InCorrect with solution ['52.5'].
+Math.rint(X)==(34): SAT Correct  Solution InCorrect with solution ['33.5'].
+Math.rint(X)==(93): SAT Correct  Solution InCorrect with solution ['92.5'].
+Math.rint(X)==(89): SAT Correct  Solution InCorrect with solution ['88.5'].
+Math.rint(X)==(81): SAT Correct  Solution InCorrect with solution ['80.5'].
+Math.rint(X)==(11): SAT Correct  Solution InCorrect with solution ['10.5'].
+Math.rint(X)==(43): SAT Correct  Solution InCorrect with solution ['42.5'].
+Math.rint(X)==(29): SAT Correct  Solution InCorrect with solution ['28.5'].
+Math.rint(X)==(28): SAT Correct  Solution InCorrect with solution ['27.5'].
+Math.rint(X)==(92): SAT Correct  Solution InCorrect with solution ['91.5'].
+Math.rint(X)==(11): SAT Correct  Solution InCorrect with solution ['10.5'].
+Math.rint(X)==(29): SAT Correct  Solution InCorrect with solution ['28.5'].
+Math.rint(X)==(92): SAT Correct  Solution InCorrect with solution ['91.5'].
+Math.rint(X)==(46): SAT Correct  Solution InCorrect with solution ['45.5'].
+Math.rint(X)==(25): SAT Correct  Solution InCorrect with solution ['24.5'].
+Math.rint(X)==(20): SAT Correct  Solution InCorrect with solution ['19.5'].
+Math.rint(X)==(37): SAT Correct  Solution InCorrect with solution ['36.5'].
+Math.rint(X)==(82): SAT Correct  Solution InCorrect with solution ['81.5'].
+
+rint, 50 in total tested, 50 correct
+
+

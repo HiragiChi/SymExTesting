@@ -5,3 +5,11 @@ log10 not implemented in sym mode
 tan cannot solve while cannot detect path condition in atan
 
 statisticallize No path conditions for ...
+
+## for SAT status wrong items, spf will only search for certain values:
+like for round, only 
+SETest_round.run(-99.5)  --> Return Value: 0.0
+SETest_round.run(0.5)  --> Return Value: 0.0
+SETest_round.run(65.5)  --> Return Value: 0.0
+SETest_round.run(99.5)  --> Return Value: 0.0
+are tested.

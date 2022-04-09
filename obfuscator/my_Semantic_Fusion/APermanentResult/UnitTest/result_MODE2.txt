@@ -1,0 +1,644 @@
+Math.sqrt(X)==(27.38): no path condition found
+Math.sqrt(X)==(37.55): no path condition found
+Math.sqrt(X)==(40.63): no path condition found
+Math.sqrt(X)==(81.78): no path condition found
+Math.sqrt(X)==(39.07): no path condition found
+Math.sqrt(X)==(83.0): no path condition found
+Math.sqrt(X)==(58.0): no path condition found
+Math.sqrt(X)==(20.8): no path condition found
+Math.sqrt(X)==(39.61): no path condition found
+Math.sqrt(X)==(89.35): no path condition found
+Math.sqrt(X)==(66.36): no path condition found
+Math.sqrt(X)==(95.16): no path condition found
+Math.sqrt(X)==(13.88): no path condition found
+Math.sqrt(X)==(86.34): no path condition found
+Math.sqrt(X)==(13.58): no path condition found
+Math.sqrt(X)==(51.27): no path condition found
+Math.sqrt(X)==(32.39): no path condition found
+Math.sqrt(X)==(85.88): no path condition found
+Math.sqrt(X)==(91.45): no path condition found
+Math.sqrt(X)==(4.54): SAT Correct  Solution InCorrect with solution ['20.6116'].
+Math.sqrt(X)==(23.17): no path condition found
+Math.sqrt(X)==(87.79): no path condition found
+Math.sqrt(X)==(28.47): no path condition found
+Math.sqrt(X)==(78.2): no path condition found
+Math.sqrt(X)==(48.83): no path condition found
+Math.sqrt(X)==(7.73): SAT Correct  Solution InCorrect with solution ['59.75290000000001'].
+Math.sqrt(X)==(14.57): no path condition found
+Math.sqrt(X)==(35.81): no path condition found
+Math.sqrt(X)==(73.04): no path condition found
+Math.sqrt(X)==(39.37): no path condition found
+Math.sqrt(X)==(35.43): no path condition found
+Math.sqrt(X)==(89.56): no path condition found
+Math.sqrt(X)==(94.67): no path condition found
+Math.sqrt(X)==(67.48): no path condition found
+Math.sqrt(X)==(21.25): no path condition found
+Math.sqrt(X)==(61.6): no path condition found
+Math.sqrt(X)==(92.09): no path condition found
+Math.sqrt(X)==(54.5): no path condition found
+Math.sqrt(X)==(17.09): no path condition found
+Math.sqrt(X)==(53.48): no path condition found
+Math.sqrt(X)==(54.88): no path condition found
+Math.sqrt(X)==(51.55): no path condition found
+Math.sqrt(X)==(21.11): no path condition found
+Math.sqrt(X)==(73.35): no path condition found
+Math.sqrt(X)==(37.98): no path condition found
+Math.sqrt(X)==(63.11): no path condition found
+Math.sqrt(X)==(51.61): no path condition found
+Math.sqrt(X)==(85.34): no path condition found
+Math.sqrt(X)==(54.11): no path condition found
+Math.sqrt(X)==(91.46): no path condition found
+
+sqrt, 50 in total tested, 2 correct
+
+
+Math.exp(X)==(85.07): SAT Incorrect
+Math.exp(X)==(74.22): SAT Incorrect
+Math.exp(X)==(19.31): SAT Incorrect
+Math.exp(X)==(95.03): SAT Incorrect
+Math.exp(X)==(97.25): SAT Incorrect
+Math.exp(X)==(55.75): SAT Incorrect
+Math.exp(X)==(63.65): SAT Incorrect
+Math.exp(X)==(26.83): SAT Incorrect
+Math.exp(X)==(55.38): SAT Incorrect
+Math.exp(X)==(53.05): SAT Incorrect
+Math.exp(X)==(38.7): SAT Incorrect
+Math.exp(X)==(56.99): SAT Incorrect
+Math.exp(X)==(78.92): SAT Incorrect
+Math.exp(X)==(9.23): SAT Correct  Solution InCorrect with solution ['2.222459048514761'].
+Math.exp(X)==(88.82): SAT Incorrect
+Math.exp(X)==(60.83): SAT Incorrect
+Math.exp(X)==(16.95): SAT Incorrect
+Math.exp(X)==(19.69): SAT Correct  Solution InCorrect with solution ['2.9801108926510342'].
+Math.exp(X)==(18.39): SAT Correct  Solution InCorrect with solution ['2.91180703861623'].
+Math.exp(X)==(92.25): SAT Incorrect
+Math.exp(X)==(94.26): SAT Correct  Solution InCorrect with solution ['4.546056921495585'].
+Math.exp(X)==(32.33): SAT Incorrect
+Math.exp(X)==(26.43): SAT Incorrect
+Math.exp(X)==(65.11): SAT Incorrect
+Math.exp(X)==(86.37): SAT Correct  Solution InCorrect with solution ['4.458640393292194'].
+Math.exp(X)==(79.49): SAT Incorrect
+Math.exp(X)==(18.42): SAT Correct  Solution InCorrect with solution ['2.913437030827161'].
+Math.exp(X)==(46.66): SAT Incorrect
+Math.exp(X)==(95.68): SAT Incorrect
+Math.exp(X)==(81.83): SAT Incorrect
+Math.exp(X)==(34.19): SAT Incorrect
+Math.exp(X)==(58.59): SAT Incorrect
+Math.exp(X)==(88.7): SAT Incorrect
+Math.exp(X)==(31.26): SAT Incorrect
+Math.exp(X)==(0.95): SAT Correct  Solution InCorrect with solution ['-0.05129329438755056'].
+Math.exp(X)==(33.51): SAT Incorrect
+Math.exp(X)==(81.33): SAT Incorrect
+Math.exp(X)==(47.82): SAT Incorrect
+Math.exp(X)==(44.1): SAT Incorrect
+Math.exp(X)==(28.31): SAT Incorrect
+Math.exp(X)==(0.25): SAT Correct  Solution InCorrect with solution ['-1.3862943611198906'].
+Math.exp(X)==(24.67): SAT Correct  Solution InCorrect with solution ['3.2055879305412653'].
+Math.exp(X)==(3.92): SAT Incorrect
+Math.exp(X)==(31.43): SAT Correct  Solution InCorrect with solution ['3.447762850809476'].
+Math.exp(X)==(27.17): SAT Incorrect
+Math.exp(X)==(60.15): SAT Incorrect
+Math.exp(X)==(3.82): SAT Incorrect
+Math.exp(X)==(83.06): SAT Incorrect
+Math.exp(X)==(32.5): SAT Correct  Solution InCorrect with solution ['3.481240089335692'].
+Math.exp(X)==(83.03): SAT Correct  Solution InCorrect with solution ['4.419201988273939'].
+
+exp, 50 in total tested, 12 correct
+
+
+Math.asin(X)==(1.47): SAT Incorrect
+Math.asin(X)==(1.28): SAT Incorrect
+Math.asin(X)==(2.73): no path condition found
+Math.asin(X)==(-0.6): SAT Incorrect
+Math.asin(X)==(-0.44): SAT Incorrect
+Math.asin(X)==(0.27): SAT Correct  Solution InCorrect with solution ['0.26673143668883115'].
+Math.asin(X)==(1.93): no path condition found
+Math.asin(X)==(1.95): no path condition found
+Math.asin(X)==(1.23): SAT Incorrect
+Math.asin(X)==(1.4): SAT Incorrect
+Math.asin(X)==(-3.14): no path condition found
+Math.asin(X)==(1.09): SAT Incorrect
+Math.asin(X)==(3.07): no path condition found
+Math.asin(X)==(1.11): SAT Incorrect
+Math.asin(X)==(-2.73): no path condition found
+Math.asin(X)==(-2.11): no path condition found
+Math.asin(X)==(-1.81): no path condition found
+Math.asin(X)==(0.99): SAT Incorrect
+Math.asin(X)==(1.02): SAT Incorrect
+Math.asin(X)==(3.08): no path condition found
+Math.asin(X)==(-0.85): SAT Incorrect
+Math.asin(X)==(-0.49): SAT Incorrect
+Math.asin(X)==(-2.08): no path condition found
+Math.asin(X)==(0.5): SAT Correct  Solution InCorrect with solution ['0.479425538604203'].
+Math.asin(X)==(-2.44): no path condition found
+Math.asin(X)==(2.81): no path condition found
+Math.asin(X)==(-0.39): SAT Incorrect
+Math.asin(X)==(-2.84): no path condition found
+Math.asin(X)==(-2.46): no path condition found
+Math.asin(X)==(-1.83): no path condition found
+Math.asin(X)==(-0.36): SAT Incorrect
+Math.asin(X)==(-1.72): no path condition found
+Math.asin(X)==(-2.19): no path condition found
+Math.asin(X)==(3.12): no path condition found
+Math.asin(X)==(-0.54): SAT Incorrect
+Math.asin(X)==(-0.0): SAT Correct  Solution InCorrect with solution ['0.0'].
+Math.asin(X)==(2.35): no path condition found
+Math.asin(X)==(-1.95): no path condition found
+Math.asin(X)==(-2.41): no path condition found
+Math.asin(X)==(-1.03): SAT Incorrect
+Math.asin(X)==(0.72): SAT Incorrect
+Math.asin(X)==(1.5): SAT Incorrect
+Math.asin(X)==(1.34): SAT Incorrect
+Math.asin(X)==(2.73): no path condition found
+Math.asin(X)==(2.99): no path condition found
+Math.asin(X)==(-1.98): no path condition found
+Math.asin(X)==(-0.12): SAT Incorrect
+Math.asin(X)==(-2.83): no path condition found
+Math.asin(X)==(1.23): SAT Incorrect
+Math.asin(X)==(0.02): SAT Incorrect
+
+asin, 50 in total tested, 3 correct
+
+
+Math.acos(X)==(-1.22): no path condition found
+Math.acos(X)==(-1.36): no path condition found
+Math.acos(X)==(2.5): SAT Incorrect
+Math.acos(X)==(2.63): SAT Incorrect
+Math.acos(X)==(-2.67): no path condition found
+Math.acos(X)==(-2.66): no path condition found
+Math.acos(X)==(-1.1): no path condition found
+Math.acos(X)==(-0.02): no path condition found
+Math.acos(X)==(-0.35): no path condition found
+Math.acos(X)==(-1.22): no path condition found
+Math.acos(X)==(1.47): SAT Correct  Solution InCorrect with solution ['0.1006257333869318'].
+Math.acos(X)==(0.6): SAT Incorrect
+Math.acos(X)==(-1.35): no path condition found
+Math.acos(X)==(-1.58): no path condition found
+Math.acos(X)==(-2.67): no path condition found
+Math.acos(X)==(0.95): SAT Incorrect
+Math.acos(X)==(-0.38): no path condition found
+Math.acos(X)==(0.99): SAT Incorrect
+Math.acos(X)==(0.03): no path condition found
+Math.acos(X)==(-1.11): no path condition found
+Math.acos(X)==(-2.21): no path condition found
+Math.acos(X)==(-1.79): no path condition found
+Math.acos(X)==(-0.3): no path condition found
+Math.acos(X)==(2.35): SAT Incorrect
+Math.acos(X)==(-1.16): no path condition found
+Math.acos(X)==(2.15): SAT Incorrect
+Math.acos(X)==(-0.95): no path condition found
+Math.acos(X)==(1.84): SAT Incorrect
+Math.acos(X)==(1.46): SAT Correct  Solution InCorrect with solution ['0.11056977982006967'].
+Math.acos(X)==(-1.42): no path condition found
+Math.acos(X)==(1.64): SAT Incorrect
+Math.acos(X)==(-0.02): no path condition found
+Math.acos(X)==(-2.5): no path condition found
+Math.acos(X)==(0.87): SAT Correct  Solution InCorrect with solution ['0.6448265472400012'].
+Math.acos(X)==(2.93): SAT Incorrect
+Math.acos(X)==(-2.33): no path condition found
+Math.acos(X)==(2.78): SAT Incorrect
+Math.acos(X)==(2.93): SAT Incorrect
+Math.acos(X)==(-0.9): no path condition found
+Math.acos(X)==(-0.02): no path condition found
+Math.acos(X)==(-1.96): no path condition found
+Math.acos(X)==(-1.76): no path condition found
+Math.acos(X)==(1.43): SAT Incorrect
+Math.acos(X)==(1.96): SAT Incorrect
+Math.acos(X)==(2.65): SAT Incorrect
+Math.acos(X)==(3.14): no path condition found
+Math.acos(X)==(0.04): no path condition found
+Math.acos(X)==(-0.85): no path condition found
+Math.acos(X)==(0.52): SAT Incorrect
+Math.acos(X)==(-1.33): no path condition found
+
+acos, 50 in total tested, 3 correct
+
+
+Math.atan(X)==(-0.99): SAT Incorrect
+Math.atan(X)==(-2.79): no path condition found
+Math.atan(X)==(-0.55): SAT Incorrect
+Math.atan(X)==(3.05): no path condition found
+Math.atan(X)==(-2.75): no path condition found
+Math.atan(X)==(0.21): SAT Correct  Solution InCorrect with solution ['0.2131424443826454'].
+Math.atan(X)==(-2.6): no path condition found
+Math.atan(X)==(1.12): SAT Correct  Solution InCorrect with solution ['2.065955261380511'].
+Math.atan(X)==(-2.24): no path condition found
+Math.atan(X)==(-2.98): no path condition found
+Math.atan(X)==(-0.2): SAT Incorrect
+Math.atan(X)==(0.82): SAT Correct  Solution InCorrect with solution ['1.0717137226410736'].
+Math.atan(X)==(-2.63): no path condition found
+Math.atan(X)==(-2.54): no path condition found
+Math.atan(X)==(1.76): no path condition found
+Math.atan(X)==(1.73): no path condition found
+Math.atan(X)==(-0.59): SAT Incorrect
+Math.atan(X)==(-2.6): no path condition found
+Math.atan(X)==(0.57): SAT Correct  Solution InCorrect with solution ['0.6409685517111559'].
+Math.atan(X)==(0.64): SAT Correct  Solution InCorrect with solution ['0.7445438222209638'].
+Math.atan(X)==(-1.37): SAT Incorrect
+Math.atan(X)==(0.53): SAT Correct  Solution InCorrect with solution ['0.5859170125984708'].
+Math.atan(X)==(0.53): SAT Correct  Solution InCorrect with solution ['0.5859170125984708'].
+Math.atan(X)==(0.54): SAT Correct  Solution InCorrect with solution ['0.5994296231624898'].
+Math.atan(X)==(0.97): SAT Correct  Solution InCorrect with solution ['1.4592011276663537'].
+Math.atan(X)==(1.03): SAT Correct  Solution InCorrect with solution ['1.6652439932315126'].
+Math.atan(X)==(1.7): no path condition found
+Math.atan(X)==(-2.93): no path condition found
+Math.atan(X)==(2.27): no path condition found
+Math.atan(X)==(-0.43): SAT Incorrect
+Math.atan(X)==(2.11): no path condition found
+Math.atan(X)==(3.1): no path condition found
+Math.atan(X)==(-0.48): SAT Incorrect
+Math.atan(X)==(-3.1): no path condition found
+java.lang.NoClassDefFoundError: gov/nasa/jpf/vm/ThreadInfo$2
+	at gov.nasa.jpf.vm.ThreadInfo.getRunnableNonDaemonPredicate(ThreadInfo.java:2348)
+	at gov.nasa.jpf.vm.ThreadInfo.exit(ThreadInfo.java:2336)
+	at gov.nasa.jpf.jvm.bytecode.DIRECTCALLRETURN.execute(DIRECTCALLRETURN.java:64)
+	at gov.nasa.jpf.vm.ThreadInfo.executeInstruction(ThreadInfo.java:1908)
+	at gov.nasa.jpf.vm.ThreadInfo.executeTransition(ThreadInfo.java:1859)
+	at gov.nasa.jpf.vm.SystemState.executeNextTransition(SystemState.java:765)
+	at gov.nasa.jpf.vm.VM.forward(VM.java:1722)
+	at gov.nasa.jpf.search.Search.forward(Search.java:579)
+	at gov.nasa.jpf.search.DFSearch.search(DFSearch.java:79)
+	at gov.nasa.jpf.JPF.run(JPF.java:617)
+	at gov.nasa.jpf.JPF.start(JPF.java:189)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at gov.nasa.jpf.tool.Run.call(Run.java:80)
+	at gov.nasa.jpf.tool.RunJPF.main(RunJPF.java:116)
+Caused by: java.lang.ClassNotFoundException: gov.nasa.jpf.vm.ThreadInfo$2
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	... 17 more
+Math.atan(X)==(-3.03): SAT Incorrect
+Error: Could not find or load main class gov.nasa.jpf.tool.RunJPF
+Math.atan(X)==(-1.99): SAT Incorrect
+Error: Could not find or load main class gov.nasa.jpf.tool.RunJPF
+Math.atan(X)==(2.43): SAT Incorrect
+java.lang.NoClassDefFoundError: gov/nasa/jpf/util/JPFSiteUtils
+	at gov.nasa.jpf.Config.getSitePropertiesLocation(Config.java:282)
+	at gov.nasa.jpf.Config.<init>(Config.java:207)
+	at gov.nasa.jpf.tool.RunJPF.main(RunJPF.java:87)
+Caused by: java.lang.ClassNotFoundException: gov.nasa.jpf.util.JPFSiteUtils
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	... 3 more
+Math.atan(X)==(-1.97): SAT Incorrect
+java.lang.NoClassDefFoundError: gov/nasa/jpf/vm/VMListener
+	at java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.lang.Class.privateGetDeclaredMethods(Class.java:2701)
+	at java.lang.Class.privateGetMethodRecursive(Class.java:3048)
+	at java.lang.Class.getMethod0(Class.java:3018)
+	at java.lang.Class.getMethod(Class.java:1784)
+	at gov.nasa.jpf.tool.Run.call(Run.java:76)
+	at gov.nasa.jpf.tool.RunJPF.main(RunJPF.java:116)
+Caused by: java.lang.ClassNotFoundException: gov.nasa.jpf.vm.VMListener
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:387)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:418)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:352)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:351)
+	... 7 more
+Math.atan(X)==(-2.84): SAT Incorrect
+Math.atan(X)==(2.77): no path condition found
+Math.atan(X)==(2.7): no path condition found
+Math.atan(X)==(1.89): no path condition found
+Math.atan(X)==(3.09): no path condition found
+Math.atan(X)==(-1.55): no path condition found
+Math.atan(X)==(-0.01): SAT Incorrect
+Math.atan(X)==(2.15): no path condition found
+Math.atan(X)==(0.65): SAT Correct  Solution InCorrect with solution ['0.7602043991336763'].
+Math.atan(X)==(2.41): no path condition found
+Math.atan(X)==(-2.0): no path condition found
+Math.atan(X)==(0.7): SAT Correct  Solution InCorrect with solution ['0.8422883804630793'].
+
+atan, 50 in total tested, 12 correct
+
+
+Math.atan2(X,Y)==(-1.72): SAT Correct  , Solution Correct with solution ['-94.16444002214703', '-14.15487391128125'].
+Math.atan2(X,Y)==(-0.15): SAT Correct  , Solution Correct with solution ['-4.25737627046', '28.16931966722586'].
+Math.atan2(X,Y)==(-2.03): SAT Correct  , Solution Correct with solution ['-51.84413535111117', '-25.634714262900378'].
+Math.atan2(X,Y)==(-0.78): SAT Correct  , Solution Correct with solution ['-87.15131837394257', '88.09734850210127'].
+Math.atan2(X,Y)==(0.08): SAT Incorrect
+Math.atan2(X,Y)==(0.85): SAT Correct  , Solution Correct with solution ['50.97080564448797', '44.776720419400974'].
+Math.atan2(X,Y)==(-0.23): SAT Correct  , Solution Correct with solution ['-7.782543957354708', '33.23837105265694'].
+Math.atan2(X,Y)==(-0.48): SAT Correct  , Solution Correct with solution ['-7.11454031863801', '13.665755137486771'].
+Math.atan2(X,Y)==(1.1): SAT Correct  , Solution Correct with solution ['69.78271478444003', '35.51717612227449'].
+Math.atan2(X,Y)==(2.32): SAT Correct  , Solution Correct with solution ['42.430554205987555', '-39.46508810945224'].
+Math.atan2(X,Y)==(0.54): SAT Correct  , Solution Correct with solution ['12.970918502375826', '21.638767923986542'].
+Math.atan2(X,Y)==(0.66): SAT Correct  , Solution Correct with solution ['19.472343576187328', '25.08983418857675'].
+Math.atan2(X,Y)==(-2.17): SAT Correct  , Solution Correct with solution ['-34.39753192161863', '-23.492427427267028'].
+Math.atan2(X,Y)==(-3.11): SAT Correct  , Solution Correct with solution ['-3.0876471406382127', '-97.70055584805083'].
+Math.atan2(X,Y)==(1.56): SAT Correct  , Solution Correct with solution ['43.091481124727736', '0.46524778897083435'].
+Math.atan2(X,Y)==(-2.7): SAT Correct  , Solution Correct with solution ['-43.66492399359953', '-92.36803881433839'].
+Math.atan2(X,Y)==(0.89): SAT Correct  , Solution Correct with solution ['70.438412932671', '57.053656079623394'].
+Math.atan2(X,Y)==(-2.03): SAT Correct  , Solution Correct with solution ['-51.84413535111117', '-25.634714262900378'].
+Math.atan2(X,Y)==(2.47): SAT Correct  , Solution Correct with solution ['15.519779132418833', '-19.525424665749103'].
+Math.atan2(X,Y)==(0.06): SAT Incorrect
+Math.atan2(X,Y)==(2.25): SAT Correct  , Solution Correct with solution ['31.748912677182346', '-25.632330703208087'].
+Math.atan2(X,Y)==(0.51): SAT Correct  , Solution Correct with solution ['13.725217373060584', '24.537415774840113'].
+Math.atan2(X,Y)==(-0.46): SAT Correct  , Solution Correct with solution ['-26.294066099150854', '53.07121086581246'].
+Math.atan2(X,Y)==(2.45): SAT Correct  , Solution Correct with solution ['28.790742004665805', '-34.77070657091563'].
+Math.atan2(X,Y)==(2.0): SAT Correct  , Solution Correct with solution ['92.69888539372728', '-42.42434518121765'].
+Math.atan2(X,Y)==(-0.76): SAT Correct  , Solution Correct with solution ['-90.46926822064167', '95.18557440344445'].
+Math.atan2(X,Y)==(-1.26): SAT Correct  , Solution Correct with solution ['-96.0623676186816', '30.855786466195298'].
+Math.atan2(X,Y)==(2.55): SAT Correct  , Solution Correct with solution ['31.630416284292394', '-47.07854656497222'].
+Math.atan2(X,Y)==(-1.21): SAT Correct  , Solution Correct with solution ['-23.74721769353602', '8.96011671121342'].
+Math.atan2(X,Y)==(-1.92): SAT Correct  , Solution Correct with solution ['-67.05063668645744', '-24.41490178390385'].
+Math.atan2(X,Y)==(-0.98): SAT Correct  , Solution Correct with solution ['-94.59703036982486', '63.44713498840693'].
+Math.atan2(X,Y)==(-2.9): SAT Correct  , Solution Correct with solution ['-24.47722016930677', '-99.33719296782742'].
+Math.atan2(X,Y)==(2.26): SAT Correct  , Solution Correct with solution ['18.59869423420788', '-15.32529086641449'].
+Math.atan2(X,Y)==(-2.73): SAT Correct  , Solution Correct with solution ['-41.7078258315347', '-95.5448768609618'].
+Math.atan2(X,Y)==(2.45): SAT Correct  , Solution Correct with solution ['28.790742004665805', '-34.77070657091563'].
+Math.atan2(X,Y)==(-0.53): SAT Correct  , Solution Correct with solution ['-39.29363555569563', '67.0634829008175'].
+Math.atan2(X,Y)==(-2.71): SAT Correct  , Solution Correct with solution ['-42.417222887083426', '-92.10121791865485'].
+Math.atan2(X,Y)==(-1.33): SAT Correct  , Solution Correct with solution ['-62.91693975599599', '15.449939296873437'].
+Math.atan2(X,Y)==(-1.03): SAT Correct  , Solution Correct with solution ['-57.33740488339731', '34.43183408344288'].
+Math.atan2(X,Y)==(-2.2): SAT Correct  , Solution Correct with solution ['-62.918436648309594', '-45.79806426912977'].
+Math.atan2(X,Y)==(-1.84): SAT Correct  , Solution Correct with solution ['-24.205178590458484', '-6.678233053301456'].
+Math.atan2(X,Y)==(3.0): SAT Correct  , Solution Correct with solution ['10.456529217798579', '-73.35519327431123'].
+Math.atan2(X,Y)==(0.67): SAT Correct  , Solution Correct with solution ['73.52212604990875', '92.80118476513782'].
+Math.atan2(X,Y)==(0.75): SAT Correct  , Solution Correct with solution ['40.76184755096221', '43.75483302438624'].
+Math.atan2(X,Y)==(-1.43): SAT Correct  , Solution Correct with solution ['-91.91089329553492', '13.026910255395743'].
+Math.atan2(X,Y)==(-2.88): SAT Correct  , Solution Correct with solution ['-7.279357149341825', '-27.18941341022898'].
+Math.atan2(X,Y)==(-1.89): SAT Correct  , Solution Correct with solution ['-49.324101892533136', '-16.301904697078637'].
+Math.atan2(X,Y)==(-0.89): SAT Correct  , Solution Correct with solution ['-29.600360806897246', '23.975679391353378'].
+Math.atan2(X,Y)==(-2.26): SAT Correct  , Solution Correct with solution ['-98.73221369376948', '-81.35516793211332'].
+Math.atan2(X,Y)==(-1.92): SAT Correct  , Solution Correct with solution ['-67.05063668645744', '-24.41490178390385'].
+
+atan2, 50 in total tested, 48 correct
+
+
+Math.log(X)==(32.89): SAT Correct  , Solution Correct with solution ['1.9228504569446725E14'].
+Math.log(X)==(94.79): SAT Correct  , Solution Correct with solution ['1.468161866275334E41'].
+Math.log(X)==(30.81): SAT Correct  , Solution Correct with solution ['2.402221156122387E13'].
+Math.log(X)==(23.1): SAT Correct  , Solution Correct with solution ['1.0769673371157637E10'].
+Math.log(X)==(0.11): SAT Correct  , Solution Correct with solution ['1.1162780704588713'].
+Math.log(X)==(13.24): SAT Correct  , Solution Correct with solution ['562417.6486821504'].
+Math.log(X)==(26.49): SAT Correct  , Solution Correct with solution ['3.194926161962238E11'].
+Math.log(X)==(9.74): SAT Correct  , Solution Correct with solution ['16983.541380733725'].
+Math.log(X)==(60.46): SAT Correct  , Solution Correct with solution ['1.8090241968784733E26'].
+Math.log(X)==(12.26): SAT Correct  , Solution Correct with solution ['211081.58574031817'].
+Math.log(X)==(60.45): SAT Correct  , Solution Correct with solution ['1.7910241053677584E26'].
+Math.log(X)==(58.5): SAT Correct  , Solution Correct with solution ['2.5481629178026316E25'].
+Math.log(X)==(3.92): SAT Correct  , Solution Correct with solution ['50.400444778065484'].
+Math.log(X)==(96.31): SAT Correct  , Solution Correct with solution ['6.712766675530988E41'].
+Math.log(X)==(6.43): SAT Correct  , Solution Correct with solution ['620.1739480127127'].
+Math.log(X)==(27.28): SAT Correct  , Solution Correct with solution ['7.03968888741921E11'].
+Math.log(X)==(21.1): SAT Correct  , Solution Correct with solution ['1.4575167960514243E9'].
+Math.log(X)==(74.89): SAT Correct  , Solution Correct with solution ['3.3443656160551064E32'].
+Math.log(X)==(98.98): SAT Correct  , Solution Correct with solution ['9.693214399314144E42'].
+Math.log(X)==(67.69): SAT Correct  , Solution Correct with solution ['2.496855906969667E29'].
+Math.log(X)==(9.34): SAT Correct  , Solution Correct with solution ['11384.40824018161'].
+Math.log(X)==(96.24): SAT Correct  , Solution Correct with solution ['6.2589421627356445E41'].
+Math.log(X)==(68.42): SAT Correct  , Solution Correct with solution ['5.1811772727093595E29'].
+Math.log(X)==(29.75): SAT Correct  , Solution Correct with solution ['8.322634772363901E12'].
+Math.log(X)==(47.97): SAT Correct  , Solution Correct with solution ['6.809360025984539E20'].
+Math.log(X)==(49.85): SAT Correct  , Solution Correct with solution ['4.4625174038699835E21'].
+Math.log(X)==(84.11): SAT Correct  , Solution Correct with solution ['3.3768274762155635E36'].
+Math.log(X)==(93.23): SAT Correct  , Solution Correct with solution ['3.0851376646588055E40'].
+Math.log(X)==(74.54): SAT Correct  , Solution Correct with solution ['2.356734617298835E32'].
+Math.log(X)==(81.99): SAT Correct  , Solution Correct with solution ['4.053261011723847E35'].
+Math.log(X)==(34.67): SAT Correct  , Solution Correct with solution ['1.1402227124104298E15'].
+Math.log(X)==(11.42): SAT Correct  , Solution Correct with solution ['91126.14186619295'].
+Math.log(X)==(82.61): SAT Correct  , Solution Correct with solution ['7.534720555615969E35'].
+Math.log(X)==(45.47): SAT Correct  , Solution Correct with solution ['5.589463083625724E19'].
+Math.log(X)==(47.03): SAT Correct  , Solution Correct with solution ['2.65992556712719E20'].
+Math.log(X)==(64.53): SAT Correct  , Solution Correct with solution ['1.059309622244409E28'].
+Math.log(X)==(65.02): SAT Correct  , Solution Correct with solution ['1.7291282783443453E28'].
+Math.log(X)==(9.83): SAT Correct  , Solution Correct with solution ['18582.95422504212'].
+Math.log(X)==(96.86): SAT Correct  , Solution Correct with solution ['1.1634923098603734E42'].
+Math.log(X)==(24.27): SAT Correct  , Solution Correct with solution ['3.469980832122625E10'].
+Math.log(X)==(34.24): SAT Correct  , Solution Correct with solution ['7.417252444330734E14'].
+Math.log(X)==(85.72): SAT Correct  , Solution Correct with solution ['1.6893630412468166E37'].
+Math.log(X)==(48.42): SAT Correct  , Solution Correct with solution ['1.0679202304141235E21'].
+Math.log(X)==(42.24): SAT Correct  , Solution Correct with solution ['2.2110517915832471E18'].
+Math.log(X)==(13.07): SAT Correct  , Solution Correct with solution ['474491.98242599587'].
+Math.log(X)==(95.71): SAT Correct  , Solution Correct with solution ['3.6840444619155885E41'].
+Math.log(X)==(48.99): SAT Correct  , Solution Correct with solution ['1.8883681570008177E21'].
+Math.log(X)==(93.27): SAT Correct  , Solution Correct with solution ['3.2110445212436023E40'].
+Math.log(X)==(83.15): SAT Correct  , Solution Correct with solution ['1.2929632178082392E36'].
+Math.log(X)==(19.09): SAT Correct  , Solution Correct with solution ['1.9529074381045297E8'].
+
+log, 50 in total tested, 50 correct
+
+
+Math.tan(X)==(60.61): SAT Incorrect
+Math.tan(X)==(62.22): SAT Incorrect
+Math.tan(X)==(30.99): SAT Incorrect
+Math.tan(X)==(90.13): SAT Incorrect
+Math.tan(X)==(6.24): SAT Incorrect
+Math.tan(X)==(23.03): SAT Incorrect
+Math.tan(X)==(14.66): SAT Incorrect
+Math.tan(X)==(41.92): SAT Incorrect
+Math.tan(X)==(93.72): SAT Incorrect
+Math.tan(X)==(82.21): SAT Incorrect
+Math.tan(X)==(14.81): SAT Incorrect
+Math.tan(X)==(89.44): SAT Incorrect
+Math.tan(X)==(50.02): SAT Incorrect
+Math.tan(X)==(45.86): SAT Incorrect
+Math.tan(X)==(23.82): SAT Incorrect
+Math.tan(X)==(49.58): SAT Incorrect
+Math.tan(X)==(40.45): SAT Incorrect
+Math.tan(X)==(36.31): SAT Incorrect
+Math.tan(X)==(13.09): SAT Incorrect
+Math.tan(X)==(30.15): SAT Incorrect
+Math.tan(X)==(66.32): SAT Incorrect
+Math.tan(X)==(68.04): SAT Incorrect
+Math.tan(X)==(18.9): SAT Incorrect
+Math.tan(X)==(66.69): SAT Incorrect
+Math.tan(X)==(18.79): SAT Incorrect
+Math.tan(X)==(8.93): SAT Incorrect
+Math.tan(X)==(24.81): SAT Incorrect
+Math.tan(X)==(39.29): SAT Incorrect
+Math.tan(X)==(15.43): SAT Incorrect
+Math.tan(X)==(77.44): SAT Incorrect
+Math.tan(X)==(80.29): SAT Incorrect
+Math.tan(X)==(30.05): SAT Incorrect
+Math.tan(X)==(14.08): SAT Incorrect
+Math.tan(X)==(51.15): SAT Incorrect
+Math.tan(X)==(55.13): SAT Incorrect
+Math.tan(X)==(86.85): SAT Incorrect
+Math.tan(X)==(23.79): SAT Incorrect
+Math.tan(X)==(74.99): SAT Incorrect
+Math.tan(X)==(26.67): SAT Incorrect
+Math.tan(X)==(60.85): SAT Incorrect
+Math.tan(X)==(61.36): SAT Incorrect
+Math.tan(X)==(43.04): SAT Incorrect
+Math.tan(X)==(58.18): SAT Incorrect
+Math.tan(X)==(61.56): SAT Incorrect
+Math.tan(X)==(35.83): SAT Incorrect
+Math.tan(X)==(26.47): SAT Incorrect
+Math.tan(X)==(86.67): SAT Incorrect
+Math.tan(X)==(46.76): SAT Incorrect
+Math.tan(X)==(87.51): SAT Incorrect
+Math.tan(X)==(51.21): SAT Incorrect
+
+tan, 50 in total tested, 0 correct
+
+
+Math.sin(X)==(0.0): SAT Correct  Solution InCorrect with solution ['0.0'].
+Math.sin(X)==(-0.05): SAT Incorrect
+Math.sin(X)==(0.4): SAT Incorrect
+Math.sin(X)==(0.57): SAT Incorrect
+Math.sin(X)==(0.59): SAT Incorrect
+Math.sin(X)==(-0.92): SAT Incorrect
+Math.sin(X)==(0.7): SAT Incorrect
+Math.sin(X)==(-0.81): SAT Incorrect
+Math.sin(X)==(-0.91): SAT Incorrect
+Math.sin(X)==(0.61): SAT Incorrect
+Math.sin(X)==(-0.66): SAT Incorrect
+Math.sin(X)==(0.06): SAT Incorrect
+Math.sin(X)==(-0.65): SAT Incorrect
+Math.sin(X)==(-0.16): SAT Incorrect
+Math.sin(X)==(-0.52): SAT Correct  Solution InCorrect with solution ['3.6884436042857374'].
+Math.sin(X)==(-0.55): SAT Incorrect
+Math.sin(X)==(-0.09): SAT Incorrect
+Math.sin(X)==(-0.88): SAT Incorrect
+Math.sin(X)==(-0.62): SAT Incorrect
+Math.sin(X)==(-0.2): SAT Incorrect
+Math.sin(X)==(0.81): SAT Incorrect
+Math.sin(X)==(-0.9): SAT Incorrect
+Math.sin(X)==(-0.7): SAT Incorrect
+Math.sin(X)==(-0.03): SAT Incorrect
+Math.sin(X)==(-0.19): SAT Incorrect
+Math.sin(X)==(-0.58): SAT Incorrect
+Math.sin(X)==(0.06): SAT Incorrect
+Math.sin(X)==(0.73): SAT Incorrect
+Math.sin(X)==(0.14): SAT Correct  Solution InCorrect with solution ['0.14046141470985582'].
+Math.sin(X)==(-0.68): SAT Incorrect
+Math.sin(X)==(-0.42): SAT Incorrect
+Math.sin(X)==(0.78): SAT Incorrect
+Math.sin(X)==(-0.39): SAT Incorrect
+Math.sin(X)==(0.96): SAT Correct  Solution InCorrect with solution ['1.8545904360032246'].
+Math.sin(X)==(-0.65): SAT Incorrect
+Math.sin(X)==(0.69): SAT Incorrect
+Math.sin(X)==(0.59): SAT Incorrect
+Math.sin(X)==(0.24): SAT Incorrect
+Math.sin(X)==(0.37): SAT Correct  Solution InCorrect with solution ['2.7625836328938425'].
+Math.sin(X)==(0.35): SAT Incorrect
+Math.sin(X)==(0.29): SAT Incorrect
+Math.sin(X)==(0.27): SAT Incorrect
+Math.sin(X)==(0.42): SAT Incorrect
+Math.sin(X)==(0.14): SAT Correct  Solution InCorrect with solution ['0.14046141470985582'].
+Math.sin(X)==(0.4): SAT Incorrect
+Math.sin(X)==(-0.95): SAT Incorrect
+Math.sin(X)==(-0.11): SAT Incorrect
+Math.sin(X)==(-0.56): SAT Incorrect
+Math.sin(X)==(-0.12): SAT Incorrect
+Math.sin(X)==(-0.65): SAT Incorrect
+
+sin, 50 in total tested, 6 correct
+
+
+Math.cos(X)==(0.66): SAT Incorrect
+Math.cos(X)==(-0.47): SAT Incorrect
+Math.cos(X)==(-0.33): SAT Incorrect
+Math.cos(X)==(-0.93): SAT Incorrect
+Math.cos(X)==(-0.21): SAT Incorrect
+Math.cos(X)==(-0.05): SAT Incorrect
+Math.cos(X)==(-0.71): SAT Correct  , Solution Correct with solution ['14.926665150500241'].
+Math.cos(X)==(0.84): SAT Incorrect
+Math.cos(X)==(0.9): SAT Correct  , Solution Correct with solution ['0.4510268117962624'].
+Math.cos(X)==(-0.38): SAT Incorrect
+Math.cos(X)==(-0.82): SAT Incorrect
+Math.cos(X)==(-1.0): SAT Correct  , Solution Correct with solution ['3.141592653589793'].
+Math.cos(X)==(0.36): SAT Incorrect
+Math.cos(X)==(-0.76): SAT Incorrect
+Math.cos(X)==(-0.72): SAT Incorrect
+Math.cos(X)==(0.87): SAT Incorrect
+Math.cos(X)==(0.42): SAT Incorrect
+Math.cos(X)==(-0.6): SAT Incorrect
+Math.cos(X)==(-0.88): SAT Incorrect
+Math.cos(X)==(0.34): SAT Incorrect
+Math.cos(X)==(-0.58): SAT Incorrect
+Math.cos(X)==(-0.52): SAT Incorrect
+Math.cos(X)==(0.96): SAT Incorrect
+Math.cos(X)==(-0.03): SAT Incorrect
+Math.cos(X)==(0.54): SAT Incorrect
+Math.cos(X)==(0.95): SAT Correct  , Solution Correct with solution ['0.3175604292915217'].
+Math.cos(X)==(0.83): SAT Correct  , Solution Correct with solution ['11.974681971932629'].
+Math.cos(X)==(0.2): SAT Incorrect
+Math.cos(X)==(-0.63): SAT Incorrect
+Math.cos(X)==(0.8): SAT Incorrect
+Math.cos(X)==(-0.64): SAT Correct  , Solution Correct with solution ['14.831665206780626'].
+Math.cos(X)==(-0.31): SAT Incorrect
+Math.cos(X)==(-0.54): SAT Incorrect
+Math.cos(X)==(-0.11): SAT Incorrect
+Math.cos(X)==(-0.54): SAT Incorrect
+Math.cos(X)==(-0.12): SAT Incorrect
+Math.cos(X)==(-0.01): SAT Incorrect
+Math.cos(X)==(0.96): SAT Incorrect
+Math.cos(X)==(0.62): SAT Incorrect
+Math.cos(X)==(0.67): SAT Incorrect
+Math.cos(X)==(-0.95): SAT Incorrect
+Math.cos(X)==(0.82): SAT Incorrect
+Math.cos(X)==(0.21): SAT Incorrect
+Math.cos(X)==(0.89): SAT Incorrect
+Math.cos(X)==(0.91): SAT Incorrect
+Math.cos(X)==(0.15): SAT Incorrect
+Math.cos(X)==(-0.94): SAT Incorrect
+Math.cos(X)==(0.25): SAT Incorrect
+Math.cos(X)==(-0.76): SAT Incorrect
+Math.cos(X)==(-0.21): SAT Incorrect
+
+cos, 50 in total tested, 6 correct
+
+
+Math.pow(X,Y)==(58.3): SAT Correct  Solution InCorrect with solution ['13.96385330352993', '1.5420614988695083'].
+Math.pow(X,Y)==(89.07): SAT Correct  Solution InCorrect with solution ['75.71147706039113', '1.03755383725438'].
+Math.pow(X,Y)==(43.98): SAT Correct  Solution InCorrect with solution ['73.66551376336376', '0.8800335836720082'].
+Math.pow(X,Y)==(29.74): SAT Correct  Solution InCorrect with solution ['9.048624005864463', '1.5402131010257396'].
+Math.pow(X,Y)==(2.35): SAT Correct  Solution InCorrect with solution ['58.36896347299247', '0.21009605252655178'].
+Math.pow(X,Y)==(60.53): SAT Correct  Solution InCorrect with solution ['14.836482275183098', '1.521321267884434'].
+Math.pow(X,Y)==(42.6): SAT Correct  Solution InCorrect with solution ['77.95933536999627', '0.8612701778883024'].
+Math.pow(X,Y)==(87.59): SAT Correct  Solution InCorrect with solution ['75.72982887613564', '1.0336235094324875'].
+Math.pow(X,Y)==(2.18): SAT Correct  Solution InCorrect with solution ['62.50285154627993', '0.18846067451796084'].
+Math.pow(X,Y)==(71.65): SAT Correct  Solution InCorrect with solution ['99.99866126749424', '0.9276107939685114'].
+Math.pow(X,Y)==(63.94): SAT Correct  Solution InCorrect with solution ['5.156683035427123', '2.534878676513493'].
+Math.pow(X,Y)==(12.86): SAT Correct  Solution InCorrect with solution ['4.2806968762747815', '1.75647750156477'].
+Math.pow(X,Y)==(7.55): SAT Correct  Solution InCorrect with solution ['92.2315481224209', '0.44681974255476475'].
+Math.pow(X,Y)==(69.74): SAT Correct  Solution InCorrect with solution ['99.69404678757158', '0.9223546946810125'].
+Math.pow(X,Y)==(8.15): SAT Correct  Solution InCorrect with solution ['59.9676726831122', '0.5124859648181102'].
+Math.pow(X,Y)==(22.38): SAT Correct  Solution InCorrect with solution ['8.11744627267957', '1.4843097126769265'].
+Math.pow(X,Y)==(83.17): SAT Correct  Solution InCorrect with solution ['91.50872009207674', '0.9788444693942869'].
+Math.pow(X,Y)==(71.26): SAT Correct  Solution InCorrect with solution ['99.84695082368529', '0.9267311366760916'].
+Math.pow(X,Y)==(78.27): SAT Correct  Solution InCorrect with solution ['98.23417631053489', '0.950474764850466'].
+Math.pow(X,Y)==(90.4): SAT Correct  Solution InCorrect with solution ['75.75242901074112', '1.0408492113267784'].
+Math.pow(X,Y)==(53.4): SAT Correct  Solution InCorrect with solution ['9.63891914602807', '1.7555808014282706'].
+Math.pow(X,Y)==(67.64): SAT Correct  Solution InCorrect with solution ['99.13330883128121', '0.9168347996270124'].
+Math.pow(X,Y)==(4.89): SAT Correct  Solution InCorrect with solution ['81.59299093117139', '0.36058265388432603'].
+Math.pow(X,Y)==(63.3): SAT Correct  Solution InCorrect with solution ['4.956091470284168', '2.591428330804837'].
+Math.pow(X,Y)==(42.73): SAT Correct  Solution InCorrect with solution ['77.40187865219795', '0.8633919768210015'].
+Math.pow(X,Y)==(82.79): SAT Correct  Solution InCorrect with solution ['94.15707708990465', '0.9716923769990901'].
+Math.pow(X,Y)==(87.91): SAT Correct  Solution InCorrect with solution ['75.80283890126505', '1.0342359454834842'].
+Math.pow(X,Y)==(39.69): SAT Correct  Solution InCorrect with solution ['70.99486232585569', '0.8635792189939707'].
+Math.pow(X,Y)==(13.88): SAT Correct  Solution InCorrect with solution ['3.2465813849898955', '2.2337323658951327'].
+Math.pow(X,Y)==(93.03): SAT Correct  Solution InCorrect with solution ['81.08316366462309', '1.0312700382278226'].
+Math.pow(X,Y)==(67.27): SAT Correct  Solution InCorrect with solution ['99.00451498297286', '0.9159005074503506'].
+Math.pow(X,Y)==(4.54): SAT Correct  Solution InCorrect with solution ['86.71044179866824', '0.3390256175260955'].
+Math.pow(X,Y)==(63.12): SAT Correct  Solution InCorrect with solution ['8.77316846780761', '1.908662082393322'].
+Math.pow(X,Y)==(58.43): SAT Correct  Solution InCorrect with solution ['15.398104194221604', '1.4877344030332784'].
+Math.pow(X,Y)==(60.91): SAT Correct  Solution InCorrect with solution ['13.766156862309835', '1.5671484675773326'].
+Math.pow(X,Y)==(44.0): SAT Correct  Solution InCorrect with solution ['72.40537489204836', '0.8836855975614264'].
+Math.pow(X,Y)==(64.15): SAT Correct  Solution InCorrect with solution ['5.211149442259738', '2.520731128718662'].
+Math.pow(X,Y)==(16.78): SAT Correct  Solution InCorrect with solution ['2.3349961666526258', '3.3256528478730596'].
+Math.pow(X,Y)==(69.61): SAT Correct  Solution InCorrect with solution ['99.97415722969443', '0.9213875289400552'].
+Math.pow(X,Y)==(58.15): SAT Correct  Solution InCorrect with solution ['13.68730952083169', '1.552865995107607'].
+Math.pow(X,Y)==(30.11): SAT Correct  Solution InCorrect with solution ['1.8662491850684275', '5.457108789503356'].
+Math.pow(X,Y)==(93.43): SAT Correct  Solution InCorrect with solution ['81.01930085303589', '1.032431222322584'].
+Math.pow(X,Y)==(64.11): SAT Correct  Solution InCorrect with solution ['5.231190177438701', '2.5145066758843075'].
+Math.pow(X,Y)==(1.15): SAT Correct  Solution InCorrect with solution ['8.113692407524296', '0.06675825197145942'].
+Math.pow(X,Y)==(80.03): SAT Correct  Solution InCorrect with solution ['94.61827344412495', '0.9631968008888132'].
+Math.pow(X,Y)==(66.56): SAT Correct  Solution InCorrect with solution ['2.797561622859106', '4.080788517779491'].
+Math.pow(X,Y)==(74.55): SAT Correct  Solution InCorrect with solution ['88.37016383093265', '0.96205220286636'].
+Math.pow(X,Y)==(57.4): SAT Correct  Solution InCorrect with solution ['23.66354833407685', '1.2800652525248437'].
+Math.pow(X,Y)==(22.71): SAT Correct  Solution InCorrect with solution ['4.356232122995893', '2.122036870297628'].
+Math.pow(X,Y)==(90.66): SAT Correct  Solution InCorrect with solution ['75.49000419164531', '1.0423487470246915'].
+
+pow, 50 in total tested, 50 correct
+
+

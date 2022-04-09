@@ -11,6 +11,7 @@ def mathInputGenerator(num):
     inputList=random.sample(range(1, 1000), num)
     return inputList
 class SymSEtest():
+
     def __init__(self,func,argNum):
         self.func=func
         self.argNum=argNum
@@ -19,8 +20,8 @@ class SymSEtest():
 
         protoPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes"
         self.jpfPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/mytest_SE"
-        self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result.txt"
-        self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure.txt"
+        self.resultFilePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/result{text}.txt"
+        self.procedurePath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/result/procedure{text}.txt"
         SEPath="/home/hiragi/Desktop/jpf/jpf-symbc/src/examples/"
 
         compileCommand0="javac -d /home/hiragi/Desktop/jpf/jpf-symbc/build/examples -g /home/hiragi/Desktop/jpf/jpf-symbc/src/examples/SETest_{FUNC}.java"
@@ -37,6 +38,29 @@ class SymSEtest():
         self.testFilePath=testFilePath0.format(FUNC=func)
         self.testScriptPath=testScriptPath0.format(FUNC=func)
     
+
+    def findGroundTruth(self,input):
+
+        """
+        used in fusion -> to get solution
+        """
+        originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.prototype","r")
+        originalTestLines=[]
+        for line in originalProtoFile.readlines():
+            line=line.replace("FUNC",self.func)
+            line=line.replace("input",input)
+            originalTestLines.append(line)
+
+        originalTestPath=self.jpfPath+"/math_{func}.java".format(func=self.func)
+        originalTestFile=open(originalTestPath,"w+")
+        originalTestFile.writelines(originalTestLines)
+        originalTestFile.close()
+        runCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-symbc/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/build/annotations:/home/hiragi/Desktop/jpf/jpf-symbc/build/examples:/home/hiragi/Desktop/jpf/jpf-symbc/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/lib/grappa.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/aima-core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/automaton.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/bcel.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-1_2_04.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-solver-2.1.1-20100709.142532-2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/com.microsoft.z3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-lang-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-math-1.2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/coral.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/green.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/hampi.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/iasolver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jaxen.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jedis-2.0.0.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/JSAP-2.1.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/libcvc3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/opt4j-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.pb.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/scale.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/solver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/Statemachines.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/STPJNI.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/string.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/yicesapijava.jar:/snap/eclipse/48/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/48/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/proteus.jar mytest_SE.math_{func}".format(func=self.func)
+        p1 = Popen(runCommand, shell=True, stdout=PIPE, stderr=PIPE)
+        result, stderr=p1.communicate()
+        result=result.decode("utf-8")
+        return float(result)
+
     def SEProtoReading(self,variables,constraints,otherVariables):
         protoSE=open(self.protoSEPath, 'r')
         protoSEList=[]
@@ -98,27 +122,6 @@ class SymSEtest():
             self.procedureFile.write(SEResult)
         return compileResult,SEResult
 
-    def findGroundTruth(self,input):
-
-        """
-        no use
-        """
-        originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.prototype","r")
-        originalTestLines=[]
-        for line in originalProtoFile.readlines():
-            line=line.replace("FUNC",self.func)
-            line=line.replace("input",input)
-            originalTestLines.append(line)
-
-        originalTestPath=self.jpfPath+"/math_{func}.java".format(func=self.func)
-        originalTestFile=open(originalTestPath,"w+")
-        originalTestFile.writelines(originalTestLines)
-        originalTestFile.close()
-        runCommand="/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -classpath /home/hiragi/Desktop/jpf/jpf-symbc/build/main:/home/hiragi/Desktop/jpf/jpf-symbc/build/annotations:/home/hiragi/Desktop/jpf/jpf-symbc/build/examples:/home/hiragi/Desktop/jpf/jpf-symbc/build/peers:/home/hiragi/Desktop/jpf/jpf-symbc/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/main:/home/hiragi/Desktop/jpf/jpf-core/build/peers:/home/hiragi/Desktop/jpf/jpf-core/build/classes:/home/hiragi/Desktop/jpf/jpf-core/build/annotations:/home/hiragi/Desktop/jpf/jpf-core/build/examples:/home/hiragi/Desktop/jpf/jpf-core/build/tests:/home/hiragi/Desktop/jpf/jpf-symbc/lib/grappa.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/aima-core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/automaton.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/bcel.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-1_2_04.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/choco-solver-2.1.1-20100709.142532-2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/com.microsoft.z3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-lang-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/commons-math-1.2.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/coral.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/green.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/hampi.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/iasolver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jaxen.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/jedis-2.0.0.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/JSAP-2.1.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/libcvc3.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/opt4j-2.4.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.core.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/org.sat4j.pb.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/scale.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/solver.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/Statemachines.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/STPJNI.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/string.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/yicesapijava.jar:/snap/eclipse/48/plugins/org.junit_4.12.0.v201504281640/junit.jar:/snap/eclipse/48/plugins/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/hiragi/Desktop/jpf/jpf-symbc/lib/proteus.jar mytest_SE.math_{func}".format(func=self.func)
-        p1 = Popen(runCommand, shell=True, stdout=PIPE, stderr=PIPE)
-        result, stderr=p1.communicate()
-        result=result.decode("utf-8")
-        return float(result)
 
     def checkSolution(self,constraint,solutions):
         originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.proto2","r")
@@ -126,9 +129,10 @@ class SymSEtest():
         # solutions are str
         iterNum=0
         for solution in solutions:
+            iterNum=0
             for item in solution:
                 solutionNum=float(item)
-                solutionNum=round(solutionNum,2)
+                # solutionNum=round(solutionNum,2)
                 item=str(solutionNum)
                 letter=letters[iterNum]
                 if(constraint.find(letter)):
@@ -249,11 +253,14 @@ class SymSEtest():
         UNSATInputFile.close()
     
     def normalFormulaTest(self):
+        ##cannot 
         self.readFormula()
         # only test SAT
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.scriptProtoReading(jpfVariables)
         # test SAT File
+        self.resultFilePath=self.resultFilePath.format(text="")
+        self.procedurePath=self.procedurePath.format(text="")
         self.resultFile = open(self.resultFilePath,"a")
         if(STORE_RESULT):
             self.procedureFile=open(self.procedurePath,"a")
@@ -268,11 +275,12 @@ class SymSEtest():
             self.procedureFile.close()
 
 
-    def unitTest0(self,input,mode):
+    def unitTest0(self,input):
         """
         input=string 1.1,52.3
         args= x,y 
         """
+        mode=self.mode
         args="("
         for i in range(self.argNum):
             args+=letters[i]+","
@@ -290,12 +298,13 @@ class SymSEtest():
         SATStatus=True
         self.CheckResult(result,SATStatus,constraint)
 
-    def unitTest(self,mode,testRound,inputRange=[1,100]):
+    def unitTest(self,mode,testRound,inputRange=[1,100],other=None):
         """
         mode=1 -> math.atan2(x,y)==integer
         mode=2 -> math.atan2(x,y)==float
         mode=3 -> x==math.atan2(a,b)
         """
+        self.mode=mode
         self.round=testRound
         if (mode ==1 or mode==2):
             inputNum=1
@@ -305,9 +314,14 @@ class SymSEtest():
         
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
         self.scriptProtoReading(jpfVariables)
+        self.resultFilePath=self.resultFilePath.format(text="_MODE%d"%mode)
+        self.procedurePath=self.procedurePath.format(text="_MODE%d"%mode)
         self.resultFile = open(self.resultFilePath,"a")
         if(STORE_RESULT):
             self.procedureFile=open(self.procedurePath,"a")
+
+        #specialDef:
+        onlyIntList=["round","ceil","floor","rint"]
 
         ## change for each test
         for i in range(self.round):
@@ -315,15 +329,15 @@ class SymSEtest():
             start=inputRange[0]
             end=inputRange[1]
             for i in range(inputNum):
-                if(mode==1):
+                if(mode==1 or self.func in onlyIntList):
                     start=round(start)
                     end=round(end)
                     input.append(str(random.randint(start,end)))
                 else:
                     input.append(str(round(random.uniform(start,end),2)))
             input=",".join(input)
-
-            self.unitTest0(input,mode)
+        
+            self.unitTest0(input)
             self.totalCounter=self.totalCounter+1
         
         funcResult="\n{func}, {total} in total tested, {correct} correct\n\n\n".format(func=self.func,total=self.totalCounter,correct=self.correctCounter)
@@ -332,6 +346,8 @@ class SymSEtest():
         if(STORE_RESULT):
             self.procedureFile.close()
 
+    def fusionTest(self):
+        pass
 SEDeleteCommand="cd ~/Desktop/jpf/obfuscator/my_Semantic_Fusion/result" +"&& rm -rf * "
 
 def getRange(functionName):
@@ -350,21 +366,28 @@ def getDomain(functionName):
     else:
         range=[0,100]
     return range
+
+def getBoundary(functionName):
+    "not implemented yet"
+    pass
+
+
 def unitTestAll():
     os.system(SEDeleteCommand)
-    fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2"]
-    funcList=["tan1","atan1","log1","atan22","cos1","sin1","pow2"]
-    for item in fullFuncList:
-        # argNum represents how many arguments the "run" function needs.
-        # in unit test 2, random input numbers are not in correspondence to argNum
-        argNum=int(item[-1])
-        funcName=item[:-1]
-        test=SymSEtest(funcName,argNum)
-        mode=1
-        if (mode in [1,2]):
-            funcRange=getRange(funcName)
-        elif(mode ==3):
-            funcRange=getDomain(funcName)    
-        test.unitTest(mode=mode,testRound=1,inputRange=funcRange)
+    fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]
+    compensateList=["abs1","max2","min2","round1","ceil1","floor1","rint1"]
+    
+    for mode in [1,2,3]:
+        for item in compensateList:
+            # argNum represents how many arguments the "run" function needs.
+            # in unit test 2, random input numbers are not in correspondence to argNum
+            argNum=int(item[-1])
+            funcName=item[:-1]
+            test=SymSEtest(funcName,argNum)
+            if (mode in [1,2]):
+                funcRange=getRange(funcName)
+            elif(mode ==3):
+                funcRange=getDomain(funcName)    
+            test.unitTest(mode=mode,testRound=50,inputRange=funcRange)
 
 unitTestAll()

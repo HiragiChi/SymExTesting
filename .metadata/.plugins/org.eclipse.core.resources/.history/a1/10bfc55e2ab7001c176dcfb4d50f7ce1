@@ -1,0 +1,9 @@
+target=SETest_atan2
+
+symbolic.method=SETest_atan2.run(sym)
+
+classpath=${jpf-symbc}/build/examples
+vm.storage.class=nil
+listener = gov.nasa.jpf.symbc.SymbolicListener
+symbolic.dp=coral
+search.multiple_errors=true

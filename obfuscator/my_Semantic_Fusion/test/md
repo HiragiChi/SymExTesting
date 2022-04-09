@@ -1,0 +1,48 @@
+
+MODE1  
+|    function name    | correct solved | constraint found | constraint not found|
+| ---------- | --- | --- | --- | --- |
+| sqrt |  4 |  0   | 46 |
+| exp |  10 |  40   | 0 |
+| asin |  2 |  11   | 37 |
+| acos |  6 |  10   | 34 |
+| atan |  18 |  4   | 28 |
+| atan2 |  50 |  0   | 0 |
+| log |  49 |  0   | 1 |
+| tan |  0 |  50   | 0 |
+| sin |  50 |  0   | 0 |
+| cos |  39 |  11   | 0 |
+| pow |  48 |  1   | 1 |
+
+
+MODE2  
+|    function name    | correct solved | constraint found | constraint not found|
+| ---------- | --- | --- | --- | --- |
+| sqrt |  2 |  0   | 48 |
+| exp |  12 |  38   | 0 |
+| asin |  3 |  22   | 25 |
+| acos |  3 |  16   | 31 |
+| atan |  12 |  13   | 25 |
+| atan2 |  48 |  2   | 0 |
+| log |  50 |  0   | 0 |
+| tan |  0 |  50   | 0 |
+| sin |  6 |  44   | 0 |
+| cos |  6 |  44   | 0 |
+| pow |  50 |  0   | 0 |
+
+
+MODE3  
+|    function name    | correct solved | constraint found | constraint not found|
+| ---------- | --- | --- | --- | --- |
+| sqrt |  50 |  0   | 0 |
+| exp |  50 |  0   | 0 |
+| asin |  50 |  0   | 0 |
+| acos |  50 |  0   | 0 |
+| atan |  50 |  0   | 0 |
+| atan2 |  50 |  0   | 0 |
+| log |  50 |  0   | 0 |
+| tan |  50 |  0   | 0 |
+| sin |  50 |  0   | 0 |
+| cos |  50 |  0   | 0 |
+| pow |  50 |  0   | 0 |
+
