@@ -139,8 +139,9 @@ class SymSEtest():
         return compileResult,SEResult
 
 
-    def checkConstraint0(self,constraints):
+    def convertConstraint(self,constraints):
         """
+        Convert constraint containing "=="
         Used in checkSolution, to solve cases where log(1.999)==log(2) is not identified as correct result 
         modify constraint log(x)==0 to (log(x)-0)<epsilon
         """
