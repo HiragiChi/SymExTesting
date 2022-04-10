@@ -141,27 +141,36 @@ class SymSEtest():
 
     def convertConstraint(self,constraints):
         """
-        Convert constraint containing "=="
+        Convert constraint in which all the subparts contain "=="
         Used in checkSolution, to solve cases where log(1.999)==log(2) is not identified as correct result 
         modify constraint log(x)==0 to (log(x)-0)<epsilon
         """
         # this is a comment
-        formulas=constraints.split("&")
+        if (constraints.find("==")==-1):
+            return constraints
+        formulas=constraints.split("&&")
         template="abs({left}-{right})"
         testFormulas=[]
+        testFormulasWithoutEqualList=[]
         for formula in formulas:
+            if(formula.find("==")==-1):
+                testFormulasWithoutEqualList.append(formula)
+                continue
             bothSide=formula.split("==")
             testFormula=template.format(left=bothSide[0],right=bothSide[1])
             testFormulas.append(testFormula)
         testFinal="+".join(testFormulas)
         testFinal=testFinal+"< 0.01"
+        testFinal+=" && "+" && ".join(testFormulasWithoutEqualList)
         return testFinal
 
     def checkSolution(self,constraint,solutions):
         """
         Check if solution is correct. Used in CheckResult
         """
+        print("before conversion: "+constraint)
         constraint=self.convertConstraint(constraint)
+        print("after conversion: "+constraint)
         originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.proto2","r")
         originalTestLines=[]
         # solutions are str
@@ -340,8 +349,11 @@ class SymSEtest():
             args+=letters[i]+","
         args=args[:-1]
         args+=")"
+        opList=[">","<","=="]
+        op=random.sample(opList,1)[0]
+        # op=="=="
         if (mode == 1 or mode == 2):
-            constraint="Math.{func}{args}==({x})".format(func=func,x=input,args=args)
+            constraint="Math.{func}{args}{op}({x})".format(func=func,x=input,args=args,op=op)
         elif(mode == 3):
             constraint="X==Math.{func}({x})".format(func=func,x=input,args=args)
         elif(mode == 4):
@@ -426,7 +438,7 @@ class SymSEtest():
 
     def unitFusionTest0(self,mode,func1,func2):
         """
-            Test with fused formulas - fusion between different function
+            Test with fused formulas - fusion between different function or the same function
         """
         args1=int(func1[-1])
         func1=func1[:-1]
@@ -455,15 +467,19 @@ class SymSEtest():
         self.CheckResult(result,SATStatus,constraint)
         pass
 
-    def unitFusionTest(self,mode,testRound,funcList):
+    def unitFusionTest(self,mode,testRound,funcList,ifDiff=False):
         """
-            Test with fused formulas        
+            Test with fused formulas
+            mode - same definition with unitTest
+            testRound - round tested for each function pairs
+            funcList - list of functions that is to be tested
+            ifDiff - whether the two functions in a pair are not the same       
         """ 
         self.round=testRound
         (variables, otherVariables,jpfVariables)=self.getTestArgs(3)
         self.scriptProtoReading(jpfVariables)
-        self.resultFilePath=self.resultFilePath.format(text="Fusion")
-        self.procedurePath=self.procedurePath.format(text="Fusion")
+        self.resultFilePath=self.resultFilePath.format(text="Fusion_MODE%s"%(mode))
+        self.procedurePath=self.procedurePath.format(text="Fusion_MODE%s"%(mode))
         self.resultFile = open(self.resultFilePath,"a")
         if(STORE_RESULT):
             self.procedureFile=open(self.procedurePath,"a")
@@ -472,14 +488,20 @@ class SymSEtest():
         # unit constraint generation
         onlyIntList=["round","ceil","floor","rint"]
         listLength=len(funcList)
-        for i in range(listLength):
-            for j in range(i+1,listLength):
-                func1=funcList[i]
-                func2=funcList[j]
-                for i in range(self.round):
-                    self.unitFusionTest0(mode,func1,func2)
 
-        
+        ## testBetween different functions
+        if(ifDiff):
+            for i in range(listLength):
+                for j in range(i+1,listLength):
+                    func1=funcList[i]
+                    func2=funcList[j]
+                    for i in range(self.round):
+                        self.unitFusionTestDiff0(mode,func1,func2)
+        else:
+            # test between the same function
+            for func in funcList:
+                for i in range(self.round):
+                    self.unitFusionTest0(mode,func,func)
         pass
 
 
@@ -535,5 +557,6 @@ def TestSingleFunc():
     fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]
     no2FuncList=["sqrt1","exp1","asin1","acos1","atan1","log1","tan1","sin1","cos1","abs1","round1","ceil1","floor1","rint1"]
     test=SymSEtest("fusion",1)
-
+    a=test.unitFusionTest(1,1,no2FuncList)
+    
 TestSingleFunc()

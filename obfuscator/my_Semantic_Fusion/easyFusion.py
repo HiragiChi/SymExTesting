@@ -37,10 +37,10 @@ def fusion(formulas,fusionFunc,oracle):
                 formula.body=formula.body.replace("#",formula.var,1)
             # print(formula.body)
     if(oracle=="SAT"):
-        finalFormula= " & ".join(formula.body for formula in formulas)
+        finalFormula= " && ".join(formula.body for formula in formulas)
 
     else:
-        finalFormula= " & ".join(formula.body for formula in formulas) + " & "+ fusionFunc["z"]
+        finalFormula= " && ".join(formula.body for formula in formulas) + " && "+ fusionFunc["z"]
     return finalFormula
 
 class formulaTemplate():
