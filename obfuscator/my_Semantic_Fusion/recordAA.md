@@ -13,3 +13,6 @@ SETest_round.run(0.5)  --> Return Value: 0.0
 SETest_round.run(65.5)  --> Return Value: 0.0
 SETest_round.run(99.5)  --> Return Value: 0.0
 are tested.
+
+## fusion
+Math.floor((Z-Y))==(89) && Math.abs(Y)==(75) will generate a correct result and an incorrect result

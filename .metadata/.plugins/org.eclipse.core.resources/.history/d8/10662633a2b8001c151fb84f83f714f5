@@ -1,0 +1,22 @@
+package mytest_SE;
+
+
+public class math_fusion {
+     public static void main(String[] args) {
+
+        if(Math.atan((642.4131822732661-642.4131822732661))==(0) & Math.abs((642.4131822732661-627.4131822732661))==(15)){
+            System.out.println("True");
+        }
+        else {
+            System.out.println("False");
+        }
+
+    }
+     public static boolean checkEqual(int x,int y) {
+    	 if(Math.abs(x-y)<0.001) {
+    	 return true;
+    	 }
+    	 else {return false;}
+
+     }
+}

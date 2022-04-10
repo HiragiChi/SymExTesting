@@ -4,7 +4,9 @@ different mode represents different types of constraints:
 -        mode=1 -> math.atan2(x,y)==integer
 -        mode=2 -> math.atan2(x,y)==float
 -        mode=3 -> x==math.atan2(a,b)
-fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]  while the number followed by a function name indicate the number of parameters it takes.
+
+
+**fullFuncList**=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]  while the number followed by a function name indicate the number of parameters it takes.
 
 P.S. log10 is supported, but not good for sym testing.(detailed info can be found in /jpf-symbc/src/peers/gov/nasa/jpf/symbc/JPF_java_lang_Math.java)
 
@@ -31,6 +33,13 @@ There are 3 kinds of result:
 | sin |  50 |  0   | 0 |
 | cos |  39 |  11   | 0 |
 | pow |  48 |  1   | 1 |
+| abs |  50 |  0   | 0 |
+| max |  50 |  0   | 0 |
+| min |  50 |  0   | 0 |
+| round |  2 |  48   | 0 |
+| ceil |  50 |  0   | 0 |
+| floor |  50 |  0   | 0 |
+| rint |  50 |  0   | 0 |
 
 
 ### MODE2  math.atan2(x,y)==float
@@ -47,7 +56,13 @@ There are 3 kinds of result:
 | sin |  6 |  44   | 0 |
 | cos |  6 |  44   | 0 |
 | pow |  50 |  0   | 0 |
-
+| abs |  50 |  0   | 0 |
+| max |  50 |  0   | 0 |
+| min |  50 |  0   | 0 |
+| round |  2 |  48   | 0 |
+| ceil |  50 |  0   | 0 |
+| floor |  50 |  0   | 0 |
+| rint |  50 |  0   | 0 |
 
 ### MODE3 x==math.atan2(a,b)  
 |    function name    | correct solved | constraint found | constraint not found|
@@ -63,6 +78,13 @@ There are 3 kinds of result:
 | sin |  50 |  0   | 0 |
 | cos |  50 |  0   | 0 |
 | pow |  50 |  0   | 0 |
+| abs |  50 |  0   | 0 |
+| max |  50 |  0   | 0 |
+| min |  50 |  0   | 0 |
+| round |  50 |  0   | 0 |
+| ceil |  50 |  0   | 0 |
+| floor |  50 |  0   | 0 |
+| rint |  50 |  0   | 0 |
 
 
 

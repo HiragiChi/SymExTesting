@@ -1,0 +1,9 @@
+target=SETest_fusion
+
+symbolic.method=SETest_fusion.run(sym)
+
+classpath=${jpf-symbc}/build/examples
+vm.storage.class=nil
+listener = gov.nasa.jpf.symbc.SymbolicListener
+symbolic.dp=coral
+search.multiple_errors=true

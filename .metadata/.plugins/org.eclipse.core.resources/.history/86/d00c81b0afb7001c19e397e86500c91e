@@ -1,0 +1,19 @@
+public class SETest_asin {
+public double run(double X,double Y,double Z) {
+
+		if (Math.log((X))==3 & Math.ceil((Y))==5) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_asin num = new SETest_asin();
+		num.run(1,1,1);
+	}
+	
+}

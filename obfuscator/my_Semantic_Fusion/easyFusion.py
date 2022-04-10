@@ -8,9 +8,14 @@
 import random
 from curses.ascii import isalpha
 
-letters=["x","y","a","b","c"]
+letters=["X","Y","A","B","C"]
+fusionFunc2={"Z":"Z=X+Y","X":"(Z-Y)", "Y":"(Z-X)"}
 
 def fusion(formulas,fusionFunc,oracle):
+    """
+    formulas - list of formula, formula should have 1 variable #
+    orables - "SAT" or "UNSAT" 
+    """
     num=0
     for formula in formulas:
         formula.setvar(letters[num])
@@ -67,10 +72,18 @@ def getRecipe():
 
 
 def test():
-    SATFormulas,UNSATFormulas=getRecipe()
-    SATRecipes=random.sample(SATFormulas,2)
-    UNSATRecipes=random.sample(UNSATFormulas,2)
-    fusionFunc={"z":"z=x+y","x":"(z-y)", "y":"(z-x)"}
+    a="Math.log(#)==3"
+    b="Math.ceil(#)==5"
+    # SATFormulas,UNSATFormulas=getRecipe()
+    # SATRecipes=random.sample(SATFormulas,2)
+    # UNSATRecipes=random.sample(UNSATFormulas,2)
+    formulaA=formulaTemplate(a,"SAT")
+    formulaB=formulaTemplate(b,"SAT")
+    fusionFunc={"Z":"Z=X+Y","X":"(Z-Y)", "Y":"(Z-X)"}
+    formulaList=[formulaA,formulaB]
+    print(fusion(formulaList,fusionFunc,"SAT"))
+
+
 
 """
     randomly altering

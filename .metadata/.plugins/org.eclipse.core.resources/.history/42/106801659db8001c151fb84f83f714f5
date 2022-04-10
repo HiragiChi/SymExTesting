@@ -1,0 +1,19 @@
+public class SETest_fusion {
+public double run(double X,double Y,double Z) {
+
+		if (Math.floor((Z-Y))==(89) & Math.abs(Y)==(75)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_fusion num = new SETest_fusion();
+		num.run(1,12,12);
+	}
+	
+}

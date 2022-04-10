@@ -1,0 +1,19 @@
+public class SETest_fusion {
+public double run(double X,double Y,double A) {
+
+		if (Math.abs(X)==(37) & Math.tan((Z-X))==(61)) {
+			System.out.println("Correct Find Path");
+			return 1;
+		}
+		else{
+			System.out.println("The Other Path");
+			return 0;
+		}
+	}
+
+	public static void main(String[] args) {
+		SETest_fusion num = new SETest_fusion();
+		num.run(1,12,12);
+	}
+	
+}

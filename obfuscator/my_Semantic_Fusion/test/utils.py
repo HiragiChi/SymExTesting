@@ -1,6 +1,6 @@
 # statistics
 path="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/APermanentResult/UnitTest/result_MODE{mode}.txt"
-
+path2="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/APermanentResult/UnitTest/Append_result_MODE{mode}.txt"
 templateLine="| {name} |  {correct} |  {found}   | {notfound} |\n"
 for mode in [1,2,3]:
     template="""
@@ -9,11 +9,15 @@ MODE{mode}
 | ---------- | --- | --- | --- | --- |
 """.format(mode=mode)
     modePath=path.format(mode=mode)
+    modePath2=path2.format(mode=mode)
     resultFile = open(modePath, 'r')
+    resultFile2=open(modePath2, 'r')
     correct=0
     found=0
     notfound=0
-    for line in resultFile.readlines():
+    resultLines=resultFile.readlines()
+    resultLines+=resultFile2.readlines()
+    for line in resultLines:
         if(line.find("no path condition found")!=-1):
             notfound+=1
         elif(line.find("SAT Correct")!=-1):

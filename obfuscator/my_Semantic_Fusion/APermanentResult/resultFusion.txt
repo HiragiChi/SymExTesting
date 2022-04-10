@@ -1,0 +1,91 @@
+Math.sqrt((Z-Y))==(90) & Math.exp(Y)==(19): SAT Incorrect
+Math.sqrt(X)==(74) & Math.asin((Z-X))==(2): no path condition found
+Math.sqrt(X)==(6) & Math.acos(Y)==(3): SAT Incorrect
+Math.sqrt((Z-Y))==(23) & Math.atan(Y)==(1): SAT Incorrect
+Math.sqrt((Z-Y))==(34) & Math.log((Z-X))==(42): no path condition found
+Math.sqrt(X)==(28) & Math.tan((Z-X))==(45): SAT Incorrect
+Math.sqrt(X)==(76) & Math.sin(Y)==(-1): SAT Incorrect
+Math.sqrt((Z-Y))==(28) & Math.cos((Z-X))==(0): SAT Incorrect
+Math.sqrt((Z-Y))==(44) & Math.abs((Z-X))==(16): SAT Incorrect
+Math.sqrt((Z-Y))==(88) & Math.round((Z-X))==(52): SAT Incorrect
+Math.sqrt((Z-Y))==(68) & Math.ceil((Z-X))==(60): SAT Incorrect
+Math.sqrt(X)==(67) & Math.floor((Z-X))==(18): SAT Incorrect
+Math.sqrt(X)==(18) & Math.rint((Z-X))==(87): SAT Incorrect
+Math.exp(X)==(74) & Math.asin(Y)==(3): SAT Incorrect
+Math.exp((Z-Y))==(54) & Math.acos((Z-X))==(2): SAT Incorrect
+Math.exp(X)==(68) & Math.atan(Y)==(2): SAT Incorrect
+Math.exp(X)==(39) & Math.log((Z-X))==(90): SAT Incorrect
+Math.exp(X)==(39) & Math.tan(Y)==(33): SAT Incorrect
+Math.exp(X)==(64) & Math.sin(Y)==(-1): SAT Incorrect
+Math.exp(X)==(55) & Math.cos((Z-X))==(1): SAT Incorrect
+Math.exp(X)==(99) & Math.abs((Z-X))==(30): SAT Incorrect
+Math.exp((Z-Y))==(15) & Math.round((Z-X))==(3): SAT Incorrect
+Math.exp((Z-Y))==(21) & Math.ceil(Y)==(78): SAT Incorrect
+Math.exp((Z-Y))==(74) & Math.floor(Y)==(96): SAT Incorrect
+Math.exp(X)==(85) & Math.rint((Z-X))==(62): SAT Incorrect
+Math.asin((Z-Y))==(3) & Math.acos(Y)==(2): SAT Incorrect
+Math.asin(X)==(2) & Math.atan((Z-X))==(-1): SAT Incorrect
+Math.asin((Z-Y))==(0) & Math.log((Z-X))==(54): SAT Incorrect
+Math.asin(X)==(2) & Math.tan(Y)==(85): SAT Incorrect
+Math.asin((Z-Y))==(0) & Math.sin(Y)==(1): SAT Incorrect
+Math.asin((Z-Y))==(3) & Math.cos((Z-X))==(1): SAT Incorrect
+Math.asin((Z-Y))==(3) & Math.abs(Y)==(12): SAT Incorrect
+Math.asin(X)==(0) & Math.round(Y)==(1): SAT Incorrect
+Math.asin(X)==(-2) & Math.ceil(Y)==(76): SAT Incorrect
+Math.asin(X)==(1) & Math.floor(Y)==(84): SAT Incorrect
+Math.asin((Z-Y))==(-1) & Math.rint((Z-X))==(95): SAT Incorrect
+Math.acos((Z-Y))==(-1) & Math.atan(Y)==(3): no path condition found
+Math.acos(X)==(-2) & Math.log(Y)==(47): SAT Incorrect
+Math.acos(X)==(0) & Math.tan((Z-X))==(76): SAT Incorrect
+Math.acos((Z-Y))==(3) & Math.sin((Z-X))==(0): SAT Incorrect
+Math.acos((Z-Y))==(2) & Math.cos(Y)==(1): SAT Incorrect
+Math.acos(X)==(-1) & Math.abs(Y)==(58): SAT Incorrect
+Math.acos(X)==(-3) & Math.round((Z-X))==(34): SAT Incorrect
+Math.acos((Z-Y))==(-2) & Math.ceil((Z-X))==(73): SAT Incorrect
+Math.acos((Z-Y))==(-3) & Math.floor((Z-X))==(74): SAT Incorrect
+Math.acos((Z-Y))==(-3) & Math.rint((Z-X))==(96): SAT Incorrect
+Math.atan(X)==(0) & Math.log((Z-X))==(88): SAT Incorrect
+Math.atan(X)==(2) & Math.tan(Y)==(73): SAT Incorrect
+Math.atan(X)==(-2) & Math.sin((Z-X))==(1): SAT Incorrect
+Math.atan(X)==(-2) & Math.cos(Y)==(0): SAT Incorrect
+Math.atan((Z-Y))==(0) & Math.abs((Z-X))==(15): SAT Correct  Solution InCorrect with solution ['627.4131822732661', '642.4131822732661', '642.4131822732661'].
+Math.atan((Z-Y))==(-2) & Math.round((Z-X))==(11): SAT Incorrect
+Math.atan((Z-Y))==(0) & Math.ceil((Z-X))==(43): SAT Incorrect
+Math.atan(X)==(-2) & Math.floor(Y)==(31): SAT Incorrect
+Math.atan(X)==(2) & Math.rint(Y)==(75): SAT Incorrect
+Math.log(X)==(29) & Math.tan(Y)==(7): SAT Incorrect
+Math.log((Z-Y))==(66) & Math.sin(Y)==(1): SAT Incorrect
+Math.log(X)==(26) & Math.cos((Z-X))==(-1): SAT Incorrect
+Math.log(X)==(22) & Math.abs((Z-X))==(69): SAT Incorrect
+Math.log((Z-Y))==(100) & Math.round(Y)==(48): SAT Incorrect
+Math.log((Z-Y))==(18) & Math.ceil(Y)==(81): SAT Incorrect
+Math.log((Z-Y))==(77) & Math.floor((Z-X))==(59): SAT Incorrect
+Math.log(X)==(86) & Math.rint(Y)==(68): SAT Correct  Solution InCorrect with solution ['2.2352466037347046E37', '67.5', '1'].
+Math.tan((Z-Y))==(61) & Math.sin((Z-X))==(1): SAT Incorrect
+Math.tan((Z-Y))==(32) & Math.cos(Y)==(1): SAT Incorrect
+Math.tan(X)==(32) & Math.abs((Z-X))==(10): SAT Incorrect
+Math.tan(X)==(97) & Math.round((Z-X))==(20): SAT Incorrect
+Math.tan(X)==(89) & Math.ceil((Z-X))==(17): SAT Incorrect
+Math.tan(X)==(82) & Math.floor(Y)==(91): SAT Incorrect
+Math.tan((Z-Y))==(7) & Math.rint((Z-X))==(64): SAT Incorrect
+Math.sin(X)==(-1) & Math.cos((Z-X))==(1): SAT Correct  Solution InCorrect with solution ['4.71238898038469', '1', '4.71238898038469'].
+Math.sin((Z-Y))==(0) & Math.abs(Y)==(65): SAT Incorrect
+Math.sin(X)==(-1) & Math.round(Y)==(98): SAT Incorrect
+Math.sin((Z-Y))==(0) & Math.ceil(Y)==(28): SAT Incorrect
+Math.sin((Z-Y))==(0) & Math.floor(Y)==(0): SAT Correct  Solution InCorrect with solution ['1', '0.0', '0.0'].
+Math.sin(X)==(-1) & Math.rint((Z-X))==(85): SAT Incorrect
+Math.cos(X)==(1) & Math.abs((Z-X))==(93): SAT Correct  Solution InCorrect with solution ['0.0', '1', '93.0'].
+Math.cos(X)==(0) & Math.round((Z-X))==(91): SAT Incorrect
+Math.cos(X)==(-1) & Math.ceil((Z-X))==(50): SAT Incorrect
+Math.cos((Z-Y))==(-1) & Math.floor((Z-X))==(42): SAT Incorrect
+Math.cos((Z-Y))==(1) & Math.rint((Z-X))==(64): SAT Incorrect
+Math.abs(X)==(97) & Math.round(Y)==(48): SAT Incorrect
+Math.abs((Z-Y))==(88) & Math.ceil(Y)==(7): SAT Correct  Solution InCorrect with solution ['1', '7.0', '-81.0'] ['1', '7.0', '95.0'].
+Math.abs(X)==(59) & Math.floor(Y)==(74): SAT Correct  Solution InCorrect with solution ['-59.0', '74.0', '1'] ['59.0', '74.0', '1'].
+Math.abs(X)==(1) & Math.rint(Y)==(1): SAT Correct  Solution InCorrect with solution ['1.0', '0.5', '1'].
+Math.round((Z-Y))==(22) & Math.ceil((Z-X))==(10): SAT Incorrect
+Math.round((Z-Y))==(100) & Math.floor(Y)==(5): SAT Incorrect
+Math.round((Z-Y))==(17) & Math.rint((Z-X))==(7): no path condition found
+Math.ceil((Z-Y))==(40) & Math.floor((Z-X))==(51): SAT Incorrect
+Math.ceil(X)==(80) & Math.rint((Z-X))==(70): SAT Incorrect
+Math.floor(X)==(95) & Math.rint((Z-X))==(19): SAT Incorrect
