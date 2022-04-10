@@ -46,6 +46,8 @@ class SymSEtest():
     def findGroundTruth(self,input):
 
         """
+        currently depreciated
+        find groundtruth for a math.log(A)==x constraint
         used in fusion -> to get solution
         """
         originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.prototype","r")
@@ -66,6 +68,10 @@ class SymSEtest():
         return float(result)
 
     def SEProtoReading(self,variables,constraints,otherVariables):
+        """
+        Automatically generate SymSE testing files from prototype file
+        """
+        
         protoSE=open(self.protoSEPath, 'r')
         protoSEList=[]
         for line in protoSE.readlines():
@@ -88,6 +94,9 @@ class SymSEtest():
 
 
     def scriptProtoReading(self,jpfVariables):
+        """
+        Automatically read jpf proto file and generate real jpf file for testing
+        """
         func=self.func
         scriptProtoFile=open(self.protoScriptPath,"r")
         scriptProtoList=scriptProtoFile.readlines()
@@ -106,7 +115,10 @@ class SymSEtest():
         scriptFile.close()
 
     def ExecuteCommand(self):
-        
+        """
+        Execute given command to run tests
+        command is stored in __init__
+        """
         p1 = Popen(self.compileCommand, shell=True, stdout=PIPE, stderr=PIPE)
         compileResult, stderr=p1.communicate()
         if(stderr):
@@ -129,7 +141,8 @@ class SymSEtest():
 
     def checkConstraint0(self,constraints):
         """
-           
+        Used in checkSolution, to solve cases where log(1.999)==log(2) is not identified as correct result 
+        modify constraint log(x)==0 to (log(x)-0)<epsilon
         """
         # this is a comment
         formulas=constraints.split("&")
@@ -144,7 +157,7 @@ class SymSEtest():
 
     def checkSolution(self,constraint,solutions):
         """
-
+        Check if solution is correct. Used in CheckResult
         """
 
         originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.proto2","r")
@@ -203,7 +216,6 @@ class SymSEtest():
 
     def CheckResult(self,result,SATStatus,constraints):
         """
-        using check solution
         check if the result from SE is correct
         """
         if(not ((result.find("Correct Find Path")!=-1) ^ SATStatus)):
@@ -232,6 +244,9 @@ class SymSEtest():
             return
     
     def getTestArgs(self,num):
+        """
+        A util function to generate parameters used for jpf file and SymSE testing file
+        """
         variables="double X"
         otherVariables="1"
         jpfVariables="sym"
@@ -242,7 +257,9 @@ class SymSEtest():
         return(variables, otherVariables,jpfVariables)
     
     def test0(self,formulaSolutionPair):
-        
+        """
+        Run an individual test - used in normalFormulaTest
+        """
         constraint=formulaSolutionPair[0]
         solution=formulaSolutionPair[1]
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
@@ -257,6 +274,9 @@ class SymSEtest():
 
     
     def readFormula(self,ifFusion="NOFusion"):
+        """
+        Read formulas from /formulaRecipe
+        """
         SATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/SAT"
         UNSATInputPath="/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/formatRecipe/UNSAT"
         SATInputFile=open(SATInputPath, 'r')
@@ -283,7 +303,10 @@ class SymSEtest():
         UNSATInputFile.close()
     
     def normalFormulaTest(self):
-        ##cannot 
+        """
+        Run tests for constraints containing normal formulas like x^2+2x+4>9
+        """
+         
         self.readFormula()
         # only test SAT
         (variables, otherVariables,jpfVariables)=self.getTestArgs(self.argNum)
@@ -305,6 +328,10 @@ class SymSEtest():
             self.procedureFile.close()
 
     def unitConstraintGeneration(self,func,mode,input,argNum):
+        """
+        Util function used in unitTest and fusionTest
+        Generate constraints from parameters.
+        """
         args="("
         for i in range(argNum):
             args+=letters[i]+","
@@ -342,6 +369,7 @@ class SymSEtest():
 
     def unitTest0(self,input):
         """
+        Run 1 round of unit test
         input=string 1.1,52.3
         args= x,y 
         """
@@ -395,7 +423,7 @@ class SymSEtest():
 
     def unitFusionTest(self,mode,testRound,funcList):
         """
-        a function fuse with other functions
+            Test with fused formulas        
         """ 
         self.round=testRound
         (variables, otherVariables,jpfVariables)=self.getTestArgs(3)
@@ -460,8 +488,10 @@ def getRange(functionName):
 def getDomain(functionName):
     if(functionName=="asin" or functionName=="acos"):
         range=[-1,1]
+    elif(functionName in ['abs']):
+        range=[-100,100]
     else:
-        range=[0,100]
+        range=[100,100]
     return range
 
 def getBoundary(functionName):
@@ -487,6 +517,9 @@ def unitTestAll():
                 funcRange=getDomain(funcName)    
             test.unitTest(mode=mode,testRound=50,inputRange=funcRange)
 def TestSingleFunc():
+    """
+    Testing a function
+    """
     os.system(SEDeleteCommand)
     fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]
     no2FuncList=["sqrt1","exp1","asin1","acos1","atan1","log1","tan1","sin1","cos1","abs1","round1","ceil1","floor1","rint1"]

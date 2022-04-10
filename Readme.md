@@ -4,6 +4,9 @@
 ### Input Generation- Semantic Fusion Part
 /obfuscator/my\_Semantic\_Fusion/easyFusion.py
 
+### Test Script
+/obfuscator/my\_Semantic\_Fusion/testScriptClass.py
+More detailed information can be found at /obfuscator/my\_Semantic\_Fusion/Readme.md
 
 ### Jpf Part
 
