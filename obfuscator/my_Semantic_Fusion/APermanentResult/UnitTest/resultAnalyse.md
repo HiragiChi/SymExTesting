@@ -15,9 +15,11 @@ for unmodelled function, you simply cannot use it. It seems SPF has implemented 
 
 ## Result
 There are 3 kinds of result:
-1) Find a solution and the solution is correct
-2) Find the constraint but cannot solve it
-3) Cannot even find constraint (output: No path conditions for FILE). The related code can be found in /jpf-symbc/src/main/gov/nasa/jpf/symbc/heap/HeapSymbolicListener.java where it indicates that spf cannot find a constraint
+1) Find a solution and the solution is correct -- correct solved
+2) Find the constraint but cannot solve it -- constraint found
+3) Cannot even find constraint (output: No path conditions for FILE).
+-- constraint not found 
+ The related code can be found in /jpf-symbc/src/main/gov/nasa/jpf/symbc/heap/HeapSymbolicListener.java where it indicates that spf cannot find a constraint
 
 ### MODE 1: math.atan2(x,y)==integer
 |    function name    | correct solved | constraint found | constraint not found|
