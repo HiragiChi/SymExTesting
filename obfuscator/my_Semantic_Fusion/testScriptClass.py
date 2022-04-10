@@ -155,12 +155,13 @@ class SymSEtest():
             testFormulas.append(testFormula)
         testFinal="+".join(testFormulas)
         testFinal=testFinal+"< 0.01"
+        return testFinal
 
     def checkSolution(self,constraint,solutions):
         """
         Check if solution is correct. Used in CheckResult
         """
-
+        constraint=self.convertConstraint(constraint)
         originalProtoFile=open("/home/hiragi/Desktop/jpf/obfuscator/my_Semantic_Fusion/inputGeneration/prototypes/mathOrigin.java.proto2","r")
         originalTestLines=[]
         # solutions are str
@@ -218,6 +219,7 @@ class SymSEtest():
     def CheckResult(self,result,SATStatus,constraints):
         """
         check if the result from SE is correct
+        with full output
         """
         if(not ((result.find("Correct Find Path")!=-1) ^ SATStatus)):
             self.correctCounter+=1 # had not solved the little inaccuracy problem of solution
@@ -422,6 +424,37 @@ class SymSEtest():
         if(STORE_RESULT):
             self.procedureFile.close()
 
+    def unitFusionTest0(self,mode,func1,func2):
+        """
+            Test with fused formulas - fusion between different function
+        """
+        args1=int(func1[-1])
+        func1=func1[:-1]
+
+        args2=int(func2[-1])
+        func2=func2[:-1]
+        
+        input1=self.inputGeneration(mode=mode,func=func1,inputNum=1,inputRange=getRange(func1))
+        input2=self.inputGeneration(mode=mode,func=func2,inputNum=1,inputRange=getRange(func2))
+        constraint1=self.unitConstraintGeneration(func1,mode,input1,args1)
+        constraint2=self.unitConstraintGeneration(func2,mode,input2,args2)    
+        constraint1=constraint1.replace("X","#")
+        constraint2=constraint2.replace("X","#")
+        formula1=formulaTemplate(constraint1,"SAT")
+        formula2=formulaTemplate(constraint2,"SAT")
+        constraintList=[formula1,formula2]
+        #fusion
+        constraint=fusion(constraintList,fusionFunc2,"SAT")
+        print("current Constraint is %s"%constraint)
+        
+        # test
+        (variables, otherVariables,jpfVariables)=self.getTestArgs(3)
+        self.SEProtoReading(variables,constraint,otherVariables)
+        _,result=self.ExecuteCommand()
+        SATStatus=True
+        self.CheckResult(result,SATStatus,constraint)
+        pass
+
     def unitFusionTest(self,mode,testRound,funcList):
         """
             Test with fused formulas        
@@ -443,31 +476,8 @@ class SymSEtest():
             for j in range(i+1,listLength):
                 func1=funcList[i]
                 func2=funcList[j]
-                args1=int(func1[-1])
-                func1=func1[:-1]
-
-                args2=int(func2[-1])
-                func2=func2[:-1]
-                
-                input1=self.inputGeneration(mode=mode,func=func1,inputNum=1,inputRange=getRange(func1))
-                input2=self.inputGeneration(mode=mode,func=func2,inputNum=1,inputRange=getRange(func2))
-                constraint1=self.unitConstraintGeneration(func1,mode,input1,args1)
-                constraint2=self.unitConstraintGeneration(func2,mode,input2,args2)    
-                constraint1=constraint1.replace("X","#")
-                constraint2=constraint2.replace("X","#")
-                formula1=formulaTemplate(constraint1,"SAT")
-                formula2=formulaTemplate(constraint2,"SAT")
-                constraintList=[formula1,formula2]
-                #fusion
-                constraint=fusion(constraintList,fusionFunc2,"SAT")
-                print("current Constraint is %s"%constraint)
-                
-                # test
-                (variables, otherVariables,jpfVariables)=self.getTestArgs(3)
-                self.SEProtoReading(variables,constraint,otherVariables)
-                _,result=self.ExecuteCommand()
-                SATStatus=True
-                self.CheckResult(result,SATStatus,constraint)
+                for i in range(self.round):
+                    self.unitFusionTest0(mode,func1,func2)
 
         
         pass
@@ -525,7 +535,5 @@ def TestSingleFunc():
     fullFuncList=["sqrt1","exp1","asin1","acos1","atan1","atan22","log1","tan1","sin1","cos1","pow2","abs1","max2","min2","round1","ceil1","floor1","rint1"]
     no2FuncList=["sqrt1","exp1","asin1","acos1","atan1","log1","tan1","sin1","cos1","abs1","round1","ceil1","floor1","rint1"]
     test=SymSEtest("fusion",1)
-    a=test.checkSolution("Math.atan((Z-Y))==(0) & Math.abs((Z-X))==(15)",[['627.4131822732661', '642.4131822732661', '642.4131822732661']])
-    print(a)
 
 TestSingleFunc()
