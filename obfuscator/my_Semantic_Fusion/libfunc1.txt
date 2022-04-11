@@ -1,0 +1,38 @@
+abs:(float):float
+strpbrk:(str, str):point
+atoi:(str):int
+atof:(str):float
+atol:(str):long
+strtod:(str, null):double
+strtof:(str, null):float
+strcspn:(str, str):int
+strncpy:(str, str, int):null
+strxfrm:(str, str, int):int
+stpncpy:(str, str, int):null
+strtok:(str, str):null
+strncat:(str, str, int):null
+strtold:(str, null):long
+strcoll:(str, str):int
+strstr:(str, str):point
+strnlen:(str, int):int
+strtol:(str, null, int):lonng
+strtoul:(str, null, int):int
+strspn:(str, str):int
+strrchr:(str, char):point
+strchr:(str, char):point
+strcpy:(str, str):null
+memcmp:(str, str, int):int
+strncmp:(str, str, int):int
+strcmp:(str, str):int
+strlen:(str):int
+acos:(double):double
+asin:(double):double
+atan:(double):double
+atan2:(double):double
+asin:(double):double
+cos:(double):double
+cosh:(double):double
+floor:(double):double
+ceil:(double):double
+tolower(int):int
+toupper(int):int
